@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page Not Found | Famewoven</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#080A07', bg2: '#0E120C', ink: '#101210', text: '#F2F5EC',
+            muted: '#9AA391', lime: '#D4F54F', limepale: '#F0FFB0', green: '#7CB83A'
+          },
+          fontFamily: {
+            head: ['Space Grotesk', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="css/glass.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#080A07] text-[#F2F5EC] min-h-screen flex flex-col justify-between p-6 relative overflow-hidden">
+  
+  <canvas id="bg" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+  <div class="grain-overlay"></div>
+
+  <!-- Header Mini -->
+  <header class="relative z-10 max-w-[1280px] w-full mx-auto flex items-center justify-between py-4">
+    <a href="index.html" class="flex items-center gap-3">
+      <svg viewBox="0 0 400 400" class="w-8 h-8" fill="#D4F54F"><path d="M 90 120 L 200 310 L 245 235 L 180 120 L 290 120 L 310 90 L 130 90 Z"/><polygon points="260,85 295,140 225,140"/></svg>
+      <span class="font-head text-xl font-bold text-[#F2F5EC]">Famewoven</span>
+    </a>
+  </header>
+
+  <!-- 404 Center (Blueprint spec 11.8) -->
+  <main class="relative z-10 max-w-lg mx-auto text-center my-auto py-12">
+    <div class="glass p-12">
+      <div class="font-head text-8xl sm:text-9xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-white/5 select-none mb-2">
+        404
+      </div>
+      <h1 class="font-head text-2xl font-bold text-[#F2F5EC] mb-2">This page didn't get woven in.</h1>
+      <p class="text-sm text-[#9AA391] mb-8">The link you followed may be broken or the URL was relocated.</p>
+      
+      <a href="index.html" class="btn-swap glass glass--lime glass--pill px-8 py-3.5 text-xs font-mono font-bold uppercase tracking-wider text-[#101210] inline-flex">
+        <span class="btn-text-wrap"><span class="btn-text-primary">Return to Homepage</span><span class="btn-text-clone">Return to Homepage</span></span>
+      </a>
+    </div>
+  </main>
+
+  <footer class="relative z-10 text-center text-xs font-mono text-[#9AA391] py-4">
+    © 2026 Famewoven. Influence, Engineered.
+  </footer>
+
+  <script src="js/bg.js"></script>
+</body>
+</html>
