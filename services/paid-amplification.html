@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paid Amplification & Whitelisting — Famewoven</title>
+  <meta name="description" content="Scale top-performing creator posts with paid advertising. Creator account whitelisting, partnership ads, and full funnel performance scaling.">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#080A07', bg2: '#0E120C', ink: '#101210', text: '#F2F5EC',
+            muted: '#9AA391', lime: '#D4F54F', limepale: '#F0FFB0', green: '#7CB83A'
+          },
+          fontFamily: {
+            head: ['Space Grotesk', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="../css/glass.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-[#080A07] text-[#F2F5EC] relative overflow-x-hidden selection:bg-[#D4F54F] selection:text-[#101210]">
+
+  <div id="scroll-progress"></div>
+  <div class="grain-overlay"></div>
+  <div id="custom-cursor-dot"></div>
+  <div id="custom-cursor-ring"></div>
+  <canvas id="bg" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+  <header id="main-header" class="fixed top-4 inset-x-0 z-50 px-4 transition-transform duration-300 pointer-events-none flex justify-center">
+    <div id="header-pill" class="glass glass--pill max-w-[1100px] w-full px-5 py-3 flex items-center justify-between pointer-events-auto">
+      <a href="../index.html" class="flex items-center gap-3 group">
+        <svg viewBox="0 0 400 400" class="w-7 h-7" fill="#D4F54F"><path d="M 90 120 L 200 310 L 245 235 L 180 120 L 290 120 L 310 90 L 130 90 Z"/><polygon points="260,85 295,140 225,140"/></svg>
+        <span class="font-head text-xl font-bold tracking-tight text-[#F2F5EC]">Famewoven</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-1">
+        <a href="index.html" class="nav-link is-current text-sm font-medium px-4 py-2 text-[#D4F54F]">Services</a>
+        <a href="../work/index.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC]">Work</a>
+        <a href="../creators.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC]">Creators</a>
+        <a href="../about.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC]">About</a>
+        <a href="../insights/index.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC]">Insights</a>
+      </nav>
+      <a href="../contact.html" class="btn-swap glass glass--lime glass--pill px-5 py-2.5 text-xs tracking-wider uppercase font-mono font-semibold hidden md:inline-flex">
+        <span class="btn-text-wrap"><span class="btn-text-primary">Book a strategy call</span><span class="btn-text-clone">Book a strategy call</span></span>
+      </a>
+    </div>
+  </header>
+
+  <main class="relative z-10 pt-36 pb-24 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+    <!-- 1. Hero -->
+    <div class="max-w-3xl mb-16">
+      <div class="label-caps text-[#D4F54F] mb-3">Service 04 / Media Scaling</div>
+      <h1 class="font-head text-4xl sm:text-6xl font-bold tracking-tight text-[#F2F5EC] mb-4">Paid Amplification</h1>
+      <p class="text-xl text-[#9AA391] mb-8 leading-relaxed">
+        Why let a viral post die in 24 hours? We whitelist creator handles and put paid ad spend behind verified organic winners to scale sales infinitely.
+      </p>
+      <a href="../contact.html" class="btn-swap glass glass--lime glass--pill px-8 py-4 text-xs font-mono font-bold uppercase tracking-wider text-[#101210] inline-flex">
+        <span class="btn-text-wrap"><span class="btn-text-primary">Scale your top posts</span><span class="btn-text-clone">Scale your top posts</span></span>
+      </a>
+    </div>
+
+    <!-- 2. Two Columns -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+      <div class="glass p-8 border-l-4 border-l-[#D4F54F]">
+        <div class="label-caps text-[#D4F54F] mb-3">Who it's for</div>
+        <ul class="space-y-3 text-sm text-[#F2F5EC]">
+          <li class="flex items-start gap-2"><span class="text-[#D4F54F] font-bold">✓</span> D2C brands spending ৳100,000+ monthly on Meta or TikTok ads hitting creative fatigue.</li>
+          <li class="flex items-start gap-2"><span class="text-[#D4F54F] font-bold">✓</span> Brands that want ads to run under the creator's real profile name for maximum social proof.</li>
+          <li class="flex items-start gap-2"><span class="text-[#D4F54F] font-bold">✓</span> Growth teams wanting precise pixel tracking and retargeting on creator traffic.</li>
+        </ul>
+      </div>
+
+      <div class="glass p-8 border-l-4 border-l-rose-500/60">
+        <div class="label-caps text-rose-400 mb-3">Who it's not for</div>
+        <ul class="space-y-3 text-sm text-[#9AA391]">
+          <li class="flex items-start gap-2"><span class="text-rose-400 font-bold">✕</span> Brands with zero paid media budget relying strictly on organic algorithmic luck.</li>
+          <li class="flex items-start gap-2"><span class="text-rose-400 font-bold">✕</span> Teams that do not have conversion tracking or pixels configured on their site.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 3. Deliverables -->
+    <div class="glass p-10 mb-20">
+      <div class="label-caps text-[#D4F54F] mb-3">Amplification Systems</div>
+      <h2 class="font-head text-3xl font-bold text-[#F2F5EC] mb-8">What is included in Paid Amplification</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass glass--sub p-5">
+          <span class="font-mono text-xs text-[#D4F54F] block mb-2">01 / Access</span>
+          <h3 class="font-head text-lg font-bold text-[#F2F5EC] mb-1">Creator Whitelisting</h3>
+          <p class="text-xs text-[#9AA391]">Seamless advertiser partner permissions granted via Meta Business Manager and TikTok Spark Ads.</p>
+        </div>
+        <div class="glass glass--sub p-5">
+          <span class="font-mono text-xs text-[#D4F54F] block mb-2">02 / Media Buying</span>
+          <h3 class="font-head text-lg font-bold text-[#F2F5EC] mb-1">Campaign Optimization</h3>
+          <p class="text-xs text-[#9AA391]">Audience testing, lookalike modeling from purchasers, and algorithmic budget management.</p>
+        </div>
+        <div class="glass glass--sub p-5">
+          <span class="font-mono text-xs text-[#D4F54F] block mb-2">03 / Attribution</span>
+          <h3 class="font-head text-lg font-bold text-[#F2F5EC] mb-1">Blended ROAS Reporting</h3>
+          <p class="text-xs text-[#9AA391]">Live transparency into ad spend vs. generated revenue down to the individual creator post level.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Pricing & Case Study -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20">
+      <div class="lg:col-span-5 glass p-8 flex flex-col justify-between">
+        <div>
+          <div class="label-caps text-[#D4F54F] mb-2">Transparent Model</div>
+          <h3 class="font-head text-3xl font-bold text-[#F2F5EC] mb-2">Tiered Management</h3>
+          <p class="text-xs text-[#9AA391] mb-6">Flat management fee + small performance bonus tied directly to achieving your target ROAS.</p>
+        </div>
+        <a href="../contact.html" class="btn-swap glass glass--lime w-full py-3 rounded-full text-center text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+          Book Amplification Review
+        </a>
+      </div>
+
+      <div class="lg:col-span-7 glass glass--lift p-8 flex flex-col justify-between">
+        <div>
+          <div class="label-caps text-[#D4F54F] mb-2">Case Study Metric</div>
+          <div class="font-head text-4xl font-bold text-[#F2F5EC] mb-2">৳12.8M Scaled Rev</div>
+          <p class="text-sm text-[#9AA391] mb-2">Velocity Apparel Spark Ads Sprint</p>
+          <p class="text-xs text-[#9AA391] leading-relaxed">
+            Took the top 3 performing organic TikTok review videos and scaled them through Meta & TikTok whitelisted campaigns, maintaining a 3.4x ROAS over 6 weeks.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-white/10 mt-6">
+          <a href="../work/case-study.html" class="text-xs font-semibold text-[#D4F54F] hover:underline">Read Case Study →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final CTA -->
+    <div class="glass glass--lime p-10 rounded-3xl text-center">
+      <h2 class="font-head text-3xl font-bold text-[#101210] mb-2">Scale your winning creator content.</h2>
+      <p class="text-xs sm:text-sm text-[#101210]/80 mb-6">Let's audit your current ad accounts and creator whitelisting opportunities.</p>
+      <a href="../contact.html" class="btn-swap inline-flex px-8 py-3.5 bg-[#101210] text-[#F2F5EC] rounded-full text-xs font-mono font-bold uppercase tracking-wider">
+        <span class="btn-text-wrap"><span class="btn-text-primary">Book a strategy call</span><span class="btn-text-clone">Book a strategy call</span></span>
+      </a>
+    </div>
+  </main>
+
+  <footer class="pt-12 pb-8 border-t border-white/[0.08] bg-[#080A07] text-center text-xs font-mono text-[#9AA391]">
+    © 2026 Famewoven. Influence, Engineered.
+  </footer>
+
+  <script src="../js/bg.js"></script>
+  <script src="../js/header.js"></script>
+  <script src="../js/scroll.js"></script>
+</body>
+</html>

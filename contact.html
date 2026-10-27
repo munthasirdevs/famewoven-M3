@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Strategy Call — Famewoven</title>
+  <meta name="description" content="Tell us what you want to move. Book a strategy call with Famewoven to receive a tailored creator marketing blueprint and talent shortlist in 48 hours.">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#080A07', bg2: '#0E120C', ink: '#101210', text: '#F2F5EC',
+            muted: '#9AA391', lime: '#D4F54F', limepale: '#F0FFB0', green: '#7CB83A'
+          },
+          fontFamily: {
+            head: ['Space Grotesk', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="css/glass.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#080A07] text-[#F2F5EC] relative overflow-x-hidden selection:bg-[#D4F54F] selection:text-[#101210]">
+
+  <div id="scroll-progress"></div>
+  <div class="grain-overlay"></div>
+  <div id="custom-cursor-dot"></div>
+  <div id="custom-cursor-ring"></div>
+  <canvas id="bg" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+  <header id="main-header" class="fixed top-4 inset-x-0 z-50 px-4 transition-transform duration-300 pointer-events-none flex justify-center">
+    <div id="header-pill" class="glass glass--pill max-w-[1100px] w-full px-5 py-3 flex items-center justify-between pointer-events-auto">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <svg viewBox="0 0 400 400" class="w-7 h-7" fill="#D4F54F"><path d="M 90 120 L 200 310 L 245 235 L 180 120 L 290 120 L 310 90 L 130 90 Z"/><polygon points="260,85 295,140 225,140"/></svg>
+        <span class="font-head text-xl font-bold tracking-tight text-[#F2F5EC]">Famewoven</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-1">
+        <a href="services/index.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC]">Services</a>
+        <a href="work/index.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC]">Work</a>
+        <a href="creators.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC]">Creators</a>
+        <a href="about.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC]">About</a>
+        <a href="insights/index.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC]">Insights</a>
+      </nav>
+      <div class="hidden md:flex items-center gap-3">
+        <span class="label-caps text-[#D4F54F] px-3 py-1 bg-white/[0.04] rounded-full border border-white/10">Intake Open</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 pt-36 pb-24 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+    
+    <!-- Title -->
+    <div class="max-w-3xl mb-16">
+      <div class="label-caps text-[#D4F54F] mb-3">Initiate Partnership</div>
+      <h1 class="font-head text-4xl sm:text-7xl font-bold tracking-tight text-[#F2F5EC] mb-4">
+        Tell us what you want to move.
+      </h1>
+      <p class="text-xl text-[#9AA391]">
+        Tell us your goal. You get a custom creator strategy and talent architecture within 48 hours.
+      </p>
+    </div>
+
+    <!-- Split Layout (Blueprint spec 11.7) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      
+      <!-- Left Column: Strategy Intake Form -->
+      <div class="lg:col-span-7">
+        <div class="glass p-8 sm:p-12">
+          
+          <form id="strategy-call-form" class="space-y-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label class="block label-caps text-[#9AA391] mb-2">Your Name</label>
+                <input type="text" required placeholder="Safwan Ahmed"
+                       class="w-full px-4 py-3 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
+              </div>
+
+              <div>
+                <label class="block label-caps text-[#9AA391] mb-2">Company / Brand Name</label>
+                <input type="text" required placeholder="Aura Goods Ltd"
+                       class="w-full px-4 py-3 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label class="block label-caps text-[#9AA391] mb-2">Work Email</label>
+                <input type="email" required placeholder="safwan@auragoods.com"
+                       class="w-full px-4 py-3 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
+              </div>
+
+              <div>
+                <label class="block label-caps text-[#9AA391] mb-2">Phone / WhatsApp</label>
+                <input type="tel" required placeholder="+880 1700 000000"
+                       class="w-full px-4 py-3 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
+              </div>
+            </div>
+
+            <!-- Goal Select -->
+            <div>
+              <label class="block label-caps text-[#9AA391] mb-2">Primary Campaign Goal</label>
+              <select required class="w-full px-4 py-3 bg-[#0E120C] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
+                <option value="ecommerce-sales">Drive Direct E-Commerce Revenue & Orders</option>
+                <option value="new-launch">Launch a New Collection, Product, or Menu</option>
+                <option value="ugc-ads">Produce UGC Video Assets for Paid Ad Testing</option>
+                <option value="brand-awareness">Saturate Market with Creator Social Proof</option>
+                <option value="app-installs">Acquire App Users / Qualified Signups</option>
+              </select>
+            </div>
+
+            <!-- Budget Qualifier (Blueprint Section 11.7: doubles as qualifier, includes Not sure yet) -->
+            <div>
+              <label class="block label-caps text-[#9AA391] mb-2">Estimated Campaign Budget</label>
+              <select required class="w-full px-4 py-3 bg-[#0E120C] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
+                <option value="50k-150k">৳50,000 - ৳150,000 (Targeted Pilot Sprint)</option>
+                <option value="150k-350k">৳150,000 - ৳350,000 (Full Multi-Creator Launch)</option>
+                <option value="350k-750k">৳350,000 - ৳750,000 (Omnichannel Scale & Ads)</option>
+                <option value="750k+">৳750,000+ (Enterprise Quarterly Retainer)</option>
+                <option value="not-sure">Not sure yet (Help us recommend a tier)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block label-caps text-[#9AA391] mb-2">Tell us about your product & target customer</label>
+              <textarea rows="4" required placeholder="What are you selling, what is your current monthly revenue, and what would make this campaign a massive win?"
+                        class="w-full px-4 py-3 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none"></textarea>
+            </div>
+
+            <button type="submit" class="btn-swap glass glass--lime w-full py-4 rounded-xl text-center text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+              <span class="btn-text-wrap">
+                <span class="btn-text-primary">Book a strategy call</span>
+                <span class="btn-text-clone">Book a strategy call</span>
+              </span>
+            </button>
+          </form>
+
+          <!-- Success State (Blueprint spec 11.7: form collapses, animated lime check draws itself) -->
+          <div id="strategy-call-success" class="hidden text-center py-12">
+            <div class="w-20 h-20 rounded-full bg-[#D4F54F]/10 border border-[#D4F54F]/30 mx-auto flex items-center justify-center mb-6">
+              <svg class="w-10 h-10" viewBox="0 0 48 48" fill="none">
+                <path id="success-check-path" d="M 12 24 L 21 33 L 36 15" stroke="#D4F54F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h2 class="font-head text-3xl font-bold text-[#F2F5EC] mb-3">Brief Received.</h2>
+            <p class="text-sm text-[#9AA391] max-w-md mx-auto leading-relaxed mb-6">
+              Our partners will review your product economics and reach out via WhatsApp and email within <span class="text-[#D4F54F] font-semibold">24 to 48 hours</span> with a customized campaign proposal.
+            </p>
+            <div class="label-caps text-xs text-[#9AA391]">Ticket: FW-STRATEGY-2026</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right Column: What Happens Next & Direct Contacts (Blueprint Section 11.7) -->
+      <div class="lg:col-span-5 space-y-6">
+        
+        <!-- What Happens Next Glass Card -->
+        <div class="glass p-8">
+          <div class="label-caps text-[#D4F54F] mb-4">What happens next</div>
+          
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-full bg-white/[0.05] border border-white/10 text-[#D4F54F] flex items-center justify-center font-mono font-bold text-xs flex-shrink-0">
+                1
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-[#F2F5EC]">48-Hour Review</h3>
+                <p class="text-xs text-[#9AA391] mt-1">We evaluate your customer acquisition targets, competitor landscape, and category dynamics.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-full bg-white/[0.05] border border-white/10 text-[#D4F54F] flex items-center justify-center font-mono font-bold text-xs flex-shrink-0">
+                2
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-[#F2F5EC]">30-Min Strategy Call</h3>
+                <p class="text-xs text-[#9AA391] mt-1">We present initial creative hook angles, talent tier recommendations, and attribution mechanics.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-full bg-white/[0.05] border border-white/10 text-[#D4F54F] flex items-center justify-center font-mono font-bold text-xs flex-shrink-0">
+                3
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-[#F2F5EC]">10-Day Execution Sprint</h3>
+                <p class="text-xs text-[#9AA391] mt-1">Upon sign-off, we onboard vetted creators, shoot drafts, and launch with live dashboard tracking.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Direct Contact Glass Card -->
+        <div class="glass p-8">
+          <div class="label-caps text-[#D4F54F] mb-3">Direct Reach</div>
+          <p class="text-xs text-[#9AA391] mb-6">Prefer direct founder communication? Reach out directly via WhatsApp or email.</p>
+
+          <div class="space-y-3 font-mono text-xs">
+            <a href="mailto:hello@famewoven.com" class="flex items-center justify-between p-3.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.06] text-[#F2F5EC] hover:text-[#D4F54F] transition-colors">
+              <span>Email: hello@famewoven.com</span>
+              <span>→</span>
+            </a>
+            <a href="https://wa.me/8801700000000" target="_blank" class="flex items-center justify-between p-3.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.06] text-[#F2F5EC] hover:text-[#D4F54F] transition-colors">
+              <span>WhatsApp: +880 1700 000000</span>
+              <span>→</span>
+            </a>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-white/10 text-[11px] font-mono text-[#9AA391]">
+            Dhaka Studio · Gulshan 2, Dhaka 1212
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="pt-16 pb-12 border-t border-white/[0.08] bg-[#080A07] text-center text-xs font-mono text-[#9AA391]">
+    © 2026 Famewoven. Influence, Engineered.
+  </footer>
+
+  <script src="js/bg.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/scroll.js"></script>
+</body>
+</html>

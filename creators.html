@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creator Network Portal — Famewoven</title>
+  <meta name="description" content="The curated creator network. For brands: access 350+ vetted creators. For creators: get paid to be you with direct brand campaigns and guaranteed escrow payouts.">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#080A07', bg2: '#0E120C', ink: '#101210', text: '#F2F5EC',
+            muted: '#9AA391', lime: '#D4F54F', limepale: '#F0FFB0', green: '#7CB83A'
+          },
+          fontFamily: {
+            head: ['Space Grotesk', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="css/glass.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#080A07] text-[#F2F5EC] relative overflow-x-hidden selection:bg-[#D4F54F] selection:text-[#101210]">
+
+  <div id="scroll-progress"></div>
+  <div class="grain-overlay"></div>
+  <div id="custom-cursor-dot"></div>
+  <div id="custom-cursor-ring"></div>
+  <canvas id="bg" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+  <!-- Global Header -->
+  <header id="main-header" class="fixed top-4 inset-x-0 z-50 px-4 transition-transform duration-300 pointer-events-none flex justify-center">
+    <div id="header-pill" class="glass glass--pill max-w-[1100px] w-full px-5 py-3 flex items-center justify-between pointer-events-auto">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <svg viewBox="0 0 400 400" class="w-7 h-7" fill="#D4F54F"><path d="M 90 120 L 200 310 L 245 235 L 180 120 L 290 120 L 310 90 L 130 90 Z"/><polygon points="260,85 295,140 225,140"/></svg>
+        <span class="font-head text-xl font-bold tracking-tight text-[#F2F5EC]">Famewoven</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-1">
+        <a href="services/index.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC]">Services</a>
+        <a href="work/index.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC]">Work</a>
+        <a href="creators.html" class="nav-link is-current text-sm font-medium px-4 py-2 text-[#D4F54F]">Creators</a>
+        <a href="about.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC]">About</a>
+        <a href="insights/index.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC]">Insights</a>
+      </nav>
+
+      <div class="hidden md:flex items-center gap-3">
+        <a href="contact.html" class="btn-swap glass glass--lime glass--pill px-5 py-2.5 text-xs tracking-wider uppercase font-mono font-semibold">
+          <span class="btn-text-wrap"><span class="btn-text-primary">Book a strategy call</span><span class="btn-text-clone">Book a strategy call</span></span>
+        </a>
+      </div>
+
+      <button id="mobile-menu-toggle" class="md:hidden p-2 text-[#F2F5EC] hover:text-[#D4F54F]" aria-label="Open Mobile Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div id="mobile-drawer" class="fixed inset-0 z-[100] bg-[#080A07]/95 backdrop-blur-2xl p-6 hidden flex-col justify-between" aria-hidden="true">
+    <div class="flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2">
+        <svg viewBox="0 0 400 400" class="w-8 h-8" fill="#D4F54F"><path d="M 90 120 L 200 310 L 245 235 L 180 120 L 290 120 L 310 90 L 130 90 Z"/><polygon points="260,85 295,140 225,140"/></svg>
+        <span class="font-head text-xl font-bold text-[#F2F5EC]">Famewoven</span>
+      </a>
+      <button id="mobile-menu-close" class="p-2 text-[#9AA391] hover:text-[#F2F5EC]"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    </div>
+    <nav class="flex flex-col gap-6 my-auto">
+      <a href="services/index.html" class="mobile-nav-item font-head text-3xl font-semibold text-[#F2F5EC]">Services</a>
+      <a href="work/index.html" class="mobile-nav-item font-head text-3xl font-semibold text-[#F2F5EC]">Work</a>
+      <a href="creators.html" class="mobile-nav-item font-head text-3xl font-semibold text-[#D4F54F]">Creators</a>
+      <a href="about.html" class="mobile-nav-item font-head text-3xl font-semibold text-[#F2F5EC]">About</a>
+      <a href="insights/index.html" class="mobile-nav-item font-head text-3xl font-semibold text-[#F2F5EC]">Insights</a>
+    </nav>
+    <a href="contact.html" class="glass glass--lime w-full py-4 rounded-xl text-center font-mono font-semibold uppercase tracking-wider text-sm block">Book a strategy call</a>
+  </div>
+
+  <main class="relative z-10 pt-36 pb-24 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+    
+    <!-- Audience Toggle Switch (Section 11.3: glass segmented control with sliding lime thumb) -->
+    <div class="flex justify-center mb-16">
+      <div class="glass glass--pill p-1.5 flex items-center relative border border-white/10 w-full max-w-xs">
+        <!-- Sliding Thumb -->
+        <div id="audience-toggle-thumb" class="absolute left-1.5 top-1.5 bottom-1.5 w-[calc(50%-6px)] bg-[#D4F54F] rounded-full transition-transform duration-300 pointer-events-none"></div>
+
+        <button id="toggle-brands" class="w-1/2 py-2 text-xs font-mono font-bold uppercase tracking-wider text-[#101210] relative z-10 transition-colors text-center focus:outline-none">
+          For Brands
+        </button>
+        <button id="toggle-creators" class="w-1/2 py-2 text-xs font-mono font-bold uppercase tracking-wider text-[#9AA391] relative z-10 transition-colors text-center focus:outline-none">
+          For Creators
+        </button>
+      </div>
+    </div>
+
+    <!-- VIEW A: FOR BRANDS -->
+    <div id="audience-brands-view" class="transition-opacity duration-300">
+      <div class="max-w-3xl mb-16">
+        <div class="label-caps text-[#D4F54F] mb-3">Vetted Network Architecture</div>
+        <h1 class="font-head text-4xl sm:text-7xl font-bold tracking-tight text-[#F2F5EC] mb-4">
+          Access 350+ creators vetted for real buying power.
+        </h1>
+        <p class="text-xl text-[#9AA391] leading-relaxed">
+          We filter out bot rings, engagement pods, and fake impressions so your brand partners exclusively with trusted community voices.
+        </p>
+      </div>
+
+      <!-- Categories Breakdown -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+        <div class="glass glass--lift p-7">
+          <div class="font-mono text-xs text-[#D4F54F] mb-2">95+ Creators</div>
+          <h3 class="font-head text-2xl font-bold text-[#F2F5EC] mb-2">Fashion & Apparel</h3>
+          <p class="text-xs text-[#9AA391]">OOTD stylists, streetwear curators, and modest wear influencers driving proven e-commerce checkouts.</p>
+        </div>
+
+        <div class="glass glass--lift p-7">
+          <div class="font-mono text-xs text-[#D4F54F] mb-2">60+ Creators</div>
+          <h3 class="font-head text-2xl font-bold text-[#F2F5EC] mb-2">Food & Beverage</h3>
+          <p class="text-xs text-[#9AA391]">Culinary explorers, cloud kitchen reviewers, and recipe creators with high localized save rates.</p>
+        </div>
+
+        <div class="glass glass--lift p-7">
+          <div class="font-mono text-xs text-[#D4F54F] mb-2">45+ Creators</div>
+          <h3 class="font-head text-2xl font-bold text-[#F2F5EC] mb-2">Tech & Productivity</h3>
+          <p class="text-xs text-[#9AA391]">Gadget reviewers, desk setup builders, and software educators testing apps and consumer hardware.</p>
+        </div>
+
+        <div class="glass glass--lift p-7">
+          <div class="font-mono text-xs text-[#D4F54F] mb-2">80+ Creators</div>
+          <h3 class="font-head text-2xl font-bold text-[#F2F5EC] mb-2">Lifestyle & Beauty</h3>
+          <p class="text-xs text-[#9AA391]">Skincare enthusiasts, vloggers, and home decor creators with highly loyal female-majority audiences.</p>
+        </div>
+
+        <div class="glass glass--lift p-7">
+          <div class="font-mono text-xs text-[#D4F54F] mb-2">40+ Creators</div>
+          <h3 class="font-head text-2xl font-bold text-[#F2F5EC] mb-2">Founders & Business</h3>
+          <p class="text-xs text-[#9AA391]">Fintech creators, career mentors, and startup builders driving B2B leads and financial app installs.</p>
+        </div>
+
+        <div class="glass glass--sub p-7 flex flex-col justify-between border-dashed border-white/20">
+          <div>
+            <div class="label-caps text-[#D4F54F] mb-2">Custom Sourcing</div>
+            <h3 class="font-head text-xl font-bold text-[#F2F5EC] mb-2">Need a specific niche?</h3>
+            <p class="text-xs text-[#9AA391]">Our talent intelligence team sources and vets custom creators matching your exact buyer persona.</p>
+          </div>
+          <a href="contact.html" class="mt-6 text-xs font-mono font-semibold text-[#D4F54F] hover:underline">Request Custom Cohort →</a>
+        </div>
+      </div>
+
+      <!-- Brand Network Banner CTA -->
+      <div class="glass glass--lime p-10 sm:p-14 rounded-3xl text-center">
+        <h2 class="font-head text-3xl sm:text-5xl font-bold text-[#101210] mb-3">Book a curated creator shortlist.</h2>
+        <p class="text-xs sm:text-sm text-[#101210]/80 mb-6 max-w-xl mx-auto">Tell us your product and target demographic. We deliver 10 pre-vetted creators in 48 hours.</p>
+        <a href="contact.html" class="btn-swap inline-flex px-8 py-3.5 bg-[#101210] text-[#F2F5EC] rounded-full text-xs font-mono font-bold uppercase tracking-wider">
+          <span class="btn-text-wrap"><span class="btn-text-primary">Request creator shortlist</span><span class="btn-text-clone">Request creator shortlist</span></span>
+        </a>
+      </div>
+    </div>
+
+    <!-- VIEW B: FOR CREATORS -->
+    <div id="audience-creators-view" class="hidden transition-opacity duration-300">
+      <div class="max-w-3xl mb-16">
+        <div class="label-caps text-[#D4F54F] mb-3">Creator Onboarding</div>
+        <h1 class="font-head text-5xl sm:text-7xl font-bold tracking-tight text-[#F2F5EC] mb-4">
+          Get paid to be you.
+        </h1>
+        <p class="text-xl text-[#9AA391] leading-relaxed">
+          No ghosting brands. No delayed payments. Join Famewoven to work with top-tier brands on professional, high-paying campaign sprints.
+        </p>
+      </div>
+
+      <!-- 3 Creator Perks -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div class="glass p-7">
+          <span class="font-mono text-xs text-[#D4F54F] block mb-2">01 / Prompt Payouts</span>
+          <h3 class="font-head text-xl font-bold text-[#F2F5EC] mb-2">Guaranteed Escrow</h3>
+          <p class="text-xs text-[#9AA391] leading-relaxed">Brand funds are secured in escrow before you shoot. You get paid immediately upon brief completion.</p>
+        </div>
+
+        <div class="glass p-7">
+          <span class="font-mono text-xs text-[#D4F54F] block mb-2">02 / Clean Briefs</span>
+          <h3 class="font-head text-xl font-bold text-[#F2F5EC] mb-2">Clear Expectations</h3>
+          <p class="text-xs text-[#9AA391] leading-relaxed">No 15-page vague guidelines. You get sharp direct response talking points while retaining creative authenticity.</p>
+        </div>
+
+        <div class="glass p-7">
+          <span class="font-mono text-xs text-[#D4F54F] block mb-2">03 / Long-Term Retainers</span>
+          <h3 class="font-head text-xl font-bold text-[#F2F5EC] mb-2">Ambassador Contracts</h3>
+          <p class="text-xs text-[#9AA391] leading-relaxed">High-converting creators graduate into lucrative 6-month brand ambassadorships and whitelisted ad royalties.</p>
+        </div>
+      </div>
+
+      <!-- Interactive Creator Application Form (Section 11.3) -->
+      <div class="glass p-8 sm:p-12 max-w-2xl mx-auto">
+        <h2 class="font-head text-2xl sm:text-3xl font-bold text-[#F2F5EC] mb-2">Join the creator network</h2>
+        <p class="text-xs text-[#9AA391] mb-8">We review applications within 4 business days. Creators must have >3,000 real followers.</p>
+
+        <form id="creator-apply-form" class="space-y-5" onsubmit="event.preventDefault(); document.getElementById('creator-form-inner').classList.add('hidden'); document.getElementById('creator-form-success').classList.remove('hidden');">
+          <div id="creator-form-inner" class="space-y-5">
+            <div>
+              <label class="block label-caps text-[#9AA391] mb-2">Full Name</label>
+              <input type="text" required placeholder="Safwan Ahmed" 
+                     class="w-full px-4 py-3 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block label-caps text-[#9AA391] mb-2">Primary Platform</label>
+                <select required class="w-full px-4 py-3 bg-[#0E120C] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
+                  <option value="instagram">Instagram</option>
+                  <option value="tiktok">TikTok</option>
+                  <option value="youtube">YouTube</option>
+                  <option value="facebook">Facebook Video</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block label-caps text-[#9AA391] mb-2">Handle / Profile URL</label>
+                <input type="text" required placeholder="@yourhandle" 
+                       class="w-full px-4 py-3 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block label-caps text-[#9AA391] mb-2">Content Niche</label>
+                <select required class="w-full px-4 py-3 bg-[#0E120C] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
+                  <option value="fashion">Fashion & Apparel</option>
+                  <option value="food">Food & Beverage</option>
+                  <option value="tech">Tech & Gaming</option>
+                  <option value="beauty">Lifestyle & Beauty</option>
+                  <option value="business">Business & Tech</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block label-caps text-[#9AA391] mb-2">Audience Size</label>
+                <select required class="w-full px-4 py-3 bg-[#0E120C] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
+                  <option value="3k-15k">3,000 - 15,000 (Micro)</option>
+                  <option value="15k-75k">15,000 - 75,000 (Mid-Tier)</option>
+                  <option value="75k-250k">75,000 - 250,000 (Macro)</option>
+                  <option value="250k+">250,000+ (Headliner)</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block label-caps text-[#9AA391] mb-2">Email Address</label>
+              <input type="email" required placeholder="safwan@creators.com" 
+                     class="w-full px-4 py-3 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
+            </div>
+
+            <button type="submit" class="btn-swap glass glass--lime w-full py-4 rounded-xl text-center text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+              <span class="btn-text-wrap"><span class="btn-text-primary">Submit creator application</span><span class="btn-text-clone">Submit creator application</span></span>
+            </button>
+          </div>
+
+          <div id="creator-form-success" class="hidden text-center py-10">
+            <div class="w-14 h-14 rounded-full bg-[#D4F54F]/20 text-[#D4F54F] flex items-center justify-center mx-auto mb-4 text-2xl font-bold">✓</div>
+            <h3 class="font-head text-2xl font-bold text-[#F2F5EC] mb-2">Application Received</h3>
+            <p class="text-xs text-[#9AA391] max-w-sm mx-auto">Our talent audit team will review your profile metrics and reach out via email within 4 business days.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="pt-16 pb-12 border-t border-white/[0.08] bg-[#080A07] text-center text-xs font-mono text-[#9AA391]">
+    © 2026 Famewoven. Influence, Engineered.
+  </footer>
+
+  <script src="js/bg.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/scroll.js"></script>
+</body>
+</html>

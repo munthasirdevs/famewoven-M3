@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Famewoven — Influence, Engineered | Creator Marketing Agency</title>
+  <meta name="description" content="Famewoven weaves brands into creator culture, and tracks every taka of it. Creator marketing, influencer campaigns, UGC production, and paid amplification.">
+  <meta name="keywords" content="influencer marketing, creator agency, UGC, influencer campaigns, paid amplification, Dhaka, creator marketing agency">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="Famewoven — Influence, Engineered">
+  <meta property="og:description" content="Creators don't sell ads. They sell trust. We weave it into your brand and track every taka it earns.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://famewoven.com/">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#080A07',
+            bg2: '#0E120C',
+            ink: '#101210',
+            text: '#F2F5EC',
+            muted: '#9AA391',
+            lime: '#D4F54F',
+            limepale: '#F0FFB0',
+            green: '#7CB83A'
+          },
+          fontFamily: {
+            head: ['Space Grotesk', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Project Styles -->
+  <link rel="stylesheet" href="css/glass.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#080A07] text-[#F2F5EC] relative overflow-x-hidden selection:bg-[#D4F54F] selection:text-[#101210]">
+
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress"></div>
+
+  <!-- Noise Grain Overlay -->
+  <div class="grain-overlay"></div>
+
+
+  <!-- Custom Cursor -->
+  <div id="custom-cursor-dot"></div>
+  <div id="custom-cursor-ring"></div>
+
+  <!-- Background Weave Helix Canvas -->
+  <canvas id="bg" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+  <!-- 7.1 Loading Screen (Session controlled) -->
+  <div id="loader" class="fixed inset-0 z-[999] bg-[#080A07] grid place-items-center">
+    <div class="text-center px-4">
+      <svg id="loader-mark" viewBox="0 0 400 400" class="w-24 h-24 mx-auto mb-2" fill="none">
+        <!-- V/W/F Geometric Hybrid Mark -->
+        <path id="mark-main" d="M 90 120 L 200 310 L 245 235 L 180 120 L 290 120 L 310 90 L 130 90 Z" 
+              stroke="#D4F54F" stroke-width="2.5" stroke-linejoin="round" />
+        <!-- Detached Triangle Apex -->
+        <polygon id="mark-tri" points="260,85 295,140 225,140" 
+                 stroke="#D4F54F" stroke-width="2" stroke-linejoin="round" />
+      </svg>
+      <div id="loader-word" class="font-head text-3xl font-semibold tracking-tight text-[#F2F5EC] overflow-hidden">
+        <span class="inline-block">Famewoven</span>
+      </div>
+      <div id="loader-bar-wrap" class="w-48 h-[2px] bg-white/10 mt-6 mx-auto overflow-hidden rounded-full">
+        <div id="loader-bar" class="h-full w-full bg-[#D4F54F] origin-left scale-x-0"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9.1 Global Floating Glass Navigation -->
+  <header id="main-header" class="fixed top-4 inset-x-0 z-50 px-4 transition-transform duration-300 pointer-events-none flex justify-center">
+    <div id="header-pill" class="glass glass--pill max-w-[1100px] w-full px-5 py-3 flex items-center justify-between pointer-events-auto transition-all duration-300">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3 group focus:outline-none" aria-label="Famewoven Home">
+        <svg viewBox="0 0 400 400" class="w-7 h-7 flex-shrink-0 group-hover:scale-105 transition-transform" fill="#D4F54F">
+          <path d="M 90 120 L 200 310 L 245 235 L 180 120 L 290 120 L 310 90 L 130 90 Z"/>
+          <polygon points="260,85 295,140 225,140"/>
+        </svg>
+        <span class="font-head text-xl font-bold tracking-tight text-[#F2F5EC]">Famewoven</span>
+      </a>
+
+      <!-- Desktop Nav Items Track with Sliding Lime Dot -->
+      <nav class="hidden md:flex items-center gap-1 relative px-3 py-1" id="nav-items-track" aria-label="Primary Navigation">
+        <div id="nav-active-dot" class="absolute bottom-0 left-0 w-1.5 h-1.5 rounded-full bg-[#D4F54F] opacity-0 pointer-events-none transition-transform duration-300"></div>
+
+        <!-- Services with Mega-Menu Trigger -->
+        <div class="relative">
+          <button id="nav-services-trigger" class="nav-link is-current text-sm font-medium px-4 py-2 text-[#F2F5EC] hover:text-[#D4F54F] transition-colors flex items-center gap-1" aria-expanded="false" aria-haspopup="true">
+            Services
+            <svg class="w-3.5 h-3.5 text-[#9AA391]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <a href="work/index.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC] transition-colors">Work</a>
+        <a href="creators.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC] transition-colors">Creators</a>
+        <a href="about.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC] transition-colors">About</a>
+        <a href="insights/index.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC] transition-colors">Insights</a>
+      </nav>
+
+      <!-- Primary Action CTA -->
+      <div class="hidden md:flex items-center gap-3">
+        <a href="contact.html" class="btn-swap glass glass--lime glass--pill px-5 py-2.5 text-xs tracking-wider uppercase font-mono font-semibold" id="header-cta">
+          <span class="btn-text-wrap">
+            <span class="btn-text-primary">Book a strategy call</span>
+            <span class="btn-text-clone">Book a strategy call</span>
+          </span>
+          <svg class="btn-icon w-3.5 h-3.5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobile-menu-toggle" class="md:hidden p-2 text-[#F2F5EC] hover:text-[#D4F54F] focus:outline-none" aria-label="Open Mobile Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+
+    </div>
+
+    <!-- Mega Panel: Services (Section 9.1 Two-column glass panel) -->
+    <div id="services-mega-menu" class="absolute top-20 left-1/2 -translate-x-1/2 w-[92vw] max-w-[880px] glass p-6 z-50 pointer-events-none">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+        <!-- 6 Services Links -->
+        <div class="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <a href="services/influencer-campaigns.html" class="p-3 rounded-xl hover:bg-white/[0.04] transition-colors group">
+            <div class="text-sm font-semibold text-[#F2F5EC] group-hover:text-[#D4F54F] flex items-center justify-between">
+              Influencer Campaigns
+              <span class="text-xs text-[#9AA391] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </div>
+            <p class="text-xs text-[#9AA391] mt-1">End-to-end strategy, sourcing, content & reporting.</p>
+          </a>
+
+          <a href="services/creator-sourcing.html" class="p-3 rounded-xl hover:bg-white/[0.04] transition-colors group">
+            <div class="text-sm font-semibold text-[#F2F5EC] group-hover:text-[#D4F54F] flex items-center justify-between">
+              Creator Sourcing & Vetting
+              <span class="text-xs text-[#9AA391] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </div>
+            <p class="text-xs text-[#9AA391] mt-1">Audience fraud check & brand-alignment scores.</p>
+          </a>
+
+          <a href="services/ugc-content-production.html" class="p-3 rounded-xl hover:bg-white/[0.04] transition-colors group">
+            <div class="text-sm font-semibold text-[#F2F5EC] group-hover:text-[#D4F54F] flex items-center justify-between">
+              UGC & Content Production
+              <span class="text-xs text-[#9AA391] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </div>
+            <p class="text-xs text-[#9AA391] mt-1">High-converting creator video for ads & brand channels.</p>
+          </a>
+
+          <a href="services/paid-amplification.html" class="p-3 rounded-xl hover:bg-white/[0.04] transition-colors group">
+            <div class="text-sm font-semibold text-[#F2F5EC] group-hover:text-[#D4F54F] flex items-center justify-between">
+              Paid Amplification
+              <span class="text-xs text-[#9AA391] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </div>
+            <p class="text-xs text-[#9AA391] mt-1">Whitelisting & scaling top posts via creator ad handles.</p>
+          </a>
+
+          <a href="services/creator-management.html" class="p-3 rounded-xl hover:bg-white/[0.04] transition-colors group">
+            <div class="text-sm font-semibold text-[#F2F5EC] group-hover:text-[#D4F54F] flex items-center justify-between">
+              Creator Management
+              <span class="text-xs text-[#9AA391] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </div>
+            <p class="text-xs text-[#9AA391] mt-1">Contracts, briefs, approvals, single point of contact.</p>
+          </a>
+
+          <a href="services/analytics-reporting.html" class="p-3 rounded-xl hover:bg-white/[0.04] transition-colors group">
+            <div class="text-sm font-semibold text-[#F2F5EC] group-hover:text-[#D4F54F] flex items-center justify-between">
+              Analytics & Reporting
+              <span class="text-xs text-[#9AA391] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </div>
+            <p class="text-xs text-[#9AA391] mt-1">Tracked promo links, live dashboards & ROI proof.</p>
+          </a>
+        </div>
+
+        <!-- Featured Case Study Card Right -->
+        <div class="md:col-span-5 glass glass--sub p-5 flex flex-col justify-between">
+          <div>
+            <div class="label-caps text-[#D4F54F] mb-1">Featured Result</div>
+            <div class="font-head text-2xl font-bold text-[#F2F5EC] mt-1">3.4x ROAS</div>
+            <p class="text-xs text-[#9AA391] mt-2">D2C fashion launch deployed across 18 vetted creators with Whitelisted Meta ads.</p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
+            <span class="text-xs font-mono text-[#9AA391]">Velocity Apparel</span>
+            <a href="work/case-study.html" class="text-xs font-semibold text-[#D4F54F] hover:underline">View Study →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Fullscreen Sheet Menu -->
+  <div id="mobile-drawer" class="fixed inset-0 z-[100] bg-[#080A07]/95 backdrop-blur-2xl p-6 hidden flex-col justify-between pointer-events-auto" aria-hidden="true">
+    <div class="flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2">
+        <svg viewBox="0 0 400 400" class="w-8 h-8" fill="#D4F54F"><path d="M 90 120 L 200 310 L 245 235 L 180 120 L 290 120 L 310 90 L 130 90 Z"/><polygon points="260,85 295,140 225,140"/></svg>
+        <span class="font-head text-xl font-bold text-[#F2F5EC]">Famewoven</span>
+      </a>
+      <button id="mobile-menu-close" class="p-2 text-[#9AA391] hover:text-[#F2F5EC]" aria-label="Close Mobile Menu">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <nav class="flex flex-col gap-6 my-auto">
+      <a href="services/index.html" class="mobile-nav-item font-head text-3xl font-semibold text-[#F2F5EC] hover:text-[#D4F54F]">Services</a>
+      <a href="work/index.html" class="mobile-nav-item font-head text-3xl font-semibold text-[#F2F5EC] hover:text-[#D4F54F]">Work</a>
+      <a href="creators.html" class="mobile-nav-item font-head text-3xl font-semibold text-[#F2F5EC] hover:text-[#D4F54F]">Creators</a>
+      <a href="about.html" class="mobile-nav-item font-head text-3xl font-semibold text-[#F2F5EC] hover:text-[#D4F54F]">About</a>
+      <a href="insights/index.html" class="mobile-nav-item font-head text-3xl font-semibold text-[#F2F5EC] hover:text-[#D4F54F]">Insights</a>
+    </nav>
+
+    <div class="pt-6 border-t border-white/10">
+      <a href="contact.html" class="btn-swap glass glass--lime w-full py-4 rounded-xl text-center font-mono font-semibold uppercase tracking-wider text-sm block">
+        Book a strategy call
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content Landmark -->
+  <main class="relative z-10">
+
+    <!-- 10.1 Hero Section -->
+    <section id="hero" class="min-h-screen relative flex items-center pt-28 pb-16 px-6 sm:px-10 lg:px-16 overflow-hidden">
+      <div class="max-w-[1280px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Column: Copy & Mechanical Split-Flap Engine -->
+        <div class="lg:col-span-8 flex flex-col items-start z-10">
+          
+          <!-- Mono Glass Pill Badge -->
+          <div id="hero-badge" class="glass glass--pill px-4 py-1.5 flex items-center gap-2 mb-6">
+            <span class="w-2 h-2 rounded-full bg-[#D4F54F] animate-pulse"></span>
+            <span class="label-caps text-[#F2F5EC]">Creator marketing, engineered</span>
+          </div>
+
+          <!-- Main H1 with masked line reveal -->
+          <h1 class="font-head text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-[#F2F5EC] mb-4">
+            <span class="line-mask"><span class="hero-h1-line">Influence,</span></span>
+            <span class="line-mask"><span class="hero-h1-line text-[#D4F54F]">engineered.</span></span>
+          </h1>
+
+          <!-- Split-Flap Airport Roller Board (Section 10.1) -->
+          <div id="hero-audience-line" class="flex flex-wrap items-center gap-2 sm:gap-3 text-lg sm:text-2xl font-mono text-[#F2F5EC] my-4" aria-live="polite">
+            <span class="text-[#9AA391]">Built for</span>
+            <div id="flap-container" class="inline-flex items-center" aria-label="Built for fashion brands">
+              <span id="flap-board" class="flap-board"></span>
+            </div>
+          </div>
+
+          <!-- Elastic Wobble Founding Sticker -->
+          <div class="my-3">
+            <div id="founding-sticker" class="sticker-wobble inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#D4F54F] text-[#101210] rounded-full text-xs font-mono font-bold shadow-lg shadow-[#D4F54F]/20">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <span>Now onboarding 5 founding brands</span>
+            </div>
+          </div>
+
+          <!-- Subtitle (max 52ch) -->
+          <p id="hero-sub" class="text-lg sm:text-xl text-[#9AA391] max-w-[52ch] mt-4 mb-8 leading-relaxed font-normal">
+            Creators don't sell ads. They sell trust. We weave it into your brand and track every taka it earns.
+          </p>
+
+          <!-- CTAs -->
+          <div id="hero-ctas" class="flex flex-wrap items-center gap-4">
+            <a href="contact.html" class="btn-swap glass glass--lime glass--pill px-8 py-4 text-xs font-mono font-bold uppercase tracking-wider text-[#101210] shadow-xl">
+              <span class="btn-text-wrap">
+                <span class="btn-text-primary">Book a strategy call</span>
+                <span class="btn-text-clone">Book a strategy call</span>
+              </span>
+              <svg class="btn-icon w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+
+            <a href="work/index.html" class="glass glass--pill px-7 py-4 text-xs font-mono uppercase tracking-wider text-[#F2F5EC] hover:text-[#D4F54F] transition-colors border border-white/10 hover:border-[#D4F54F]/40">
+              See the work
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Live Campaign Tracker Card Overlapping Helix -->
+        <div class="lg:col-span-4 flex justify-end">
+          <div id="hero-tracker-card" class="glass glass--lift p-6 w-full max-w-sm">
+            <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[#D4F54F]"></span>
+                <span class="label-caps text-[#F2F5EC]">Active Pipeline</span>
+              </div>
+              <span class="font-mono text-xs text-[#9AA391]">Q4 Verified</span>
+            </div>
+
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between text-xs font-mono mb-1">
+                  <span class="text-[#9AA391]">Campaign Target ROAS</span>
+                  <span class="text-[#D4F54F] font-semibold" id="hero-tracker-num">0%</span>
+                </div>
+                <div class="h-2 w-full bg-white/10 rounded-full overflow-hidden">
+                  <div id="hero-tracker-fill" class="h-full bg-gradient-to-r from-[#D4F54F] to-[#7CB83A] w-0 rounded-full"></div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 pt-2">
+                <div class="glass glass--sub p-3">
+                  <span class="block label-caps text-[#9AA391] text-[10px]">Tracked Clicks</span>
+                  <span class="font-mono text-sm font-semibold text-[#F2F5EC] mt-0.5 block">142,850</span>
+                </div>
+                <div class="glass glass--sub p-3">
+                  <span class="block label-caps text-[#9AA391] text-[10px]">Attrib. Revenue</span>
+                  <span class="font-mono text-sm font-semibold text-[#D4F54F] mt-0.5 block">৳4,820,000</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 text-[11px] font-mono text-[#9AA391] flex items-center justify-between">
+              <span>Audience Authenticity: 98.4%</span>
+              <span class="text-[#D4F54F]">Live Tracking</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Scroll cue vertical lime line -->
+      <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none opacity-60">
+        <span class="label-caps text-[10px] text-[#9AA391]">Scroll</span>
+        <div class="w-[1.5px] h-8 bg-white/20 relative overflow-hidden">
+          <div class="w-full h-1/2 bg-[#D4F54F] animate-bounce"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10.2 Trust Strip (Infinite Marquee) -->
+    <section class="py-12 border-y border-white/[0.06] bg-[#0E120C]/40 backdrop-blur-md overflow-hidden" aria-label="Brands and Partners">
+      <div class="max-w-[1280px] mx-auto px-6 mb-4 text-center">
+        <h2 class="label-caps text-[#9AA391]">Trusted by brands that track their results</h2>
+      </div>
+      
+      <div class="marquee-mask w-full overflow-hidden py-3">
+        <div class="marquee-track flex items-center gap-16 text-lg sm:text-xl font-head font-medium text-[#9AA391]/70 select-none animate-[marquee_35s_linear_infinite] hover:[animation-play-state:paused]">
+          <span>AURA COLLECTIVE</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm">/</span>
+          <span>VELOCITY D2C</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm">/</span>
+          <span>LUMINA APPAREL</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm">/</span>
+          <span>KAZI GOURMET</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm">/</span>
+          <span>BYTESTACK TECH</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm">/</span>
+          <span>NORTHSTAR LABS</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm">/</span>
+          <span>CRAVEBOX FOODS</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm">/</span>
+          <span>APEX DIGITAL</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm">/</span>
+          <!-- Duplicate for seamless infinite loop -->
+          <span>AURA COLLECTIVE</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm">/</span>
+          <span>VELOCITY D2C</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm">/</span>
+          <span>LUMINA APPAREL</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm">/</span>
+          <span>KAZI GOURMET</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm">/</span>
+          <span>BYTESTACK TECH</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm">/</span>
+          <span>NORTHSTAR LABS</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10.3 The Problem (Positioning) -->
+    <section class="py-24 sm:py-32 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+      <div class="max-w-3xl mb-16">
+        <div class="label-caps text-[#D4F54F] mb-3">The Industry Flaw</div>
+        <h2 class="font-head text-3xl sm:text-5xl font-bold tracking-tight text-[#F2F5EC]">
+          Most influencer campaigns are guesswork with a invoice.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Problem Card 1 -->
+        <div class="problem-card glass p-8 flex flex-col justify-between">
+          <div>
+            <span class="font-mono text-xs text-[#D4F54F] mb-4 block">01 / MISALIGNED TALENT</span>
+            <h3 class="font-head text-xl font-semibold text-[#F2F5EC] mb-3">Wrong creators, right follower counts.</h3>
+            <p class="text-sm text-[#9AA391] leading-relaxed">
+              Agencies book who is available on WhatsApp instead of checking audience authenticity. You pay for bot comments and teenagers who never buy.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-white/10 font-mono text-xs text-[#9AA391]">
+            Impact: <span class="text-rose-400">Burned ad spend</span>
+          </div>
+        </div>
+
+        <!-- Problem Card 2 -->
+        <div class="problem-card glass p-8 flex flex-col justify-between">
+          <div>
+            <span class="font-mono text-xs text-[#D4F54F] mb-4 block">02 / ZERO ATTRIBUTION</span>
+            <h3 class="font-head text-xl font-semibold text-[#F2F5EC] mb-3">Posts go live. Nobody knows what they earned.</h3>
+            <p class="text-sm text-[#9AA391] leading-relaxed">
+              Vanity views and screenshot decks delivered weeks later. When leadership asks "what did this campaign make us?", the room goes silent.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-white/10 font-mono text-xs text-[#9AA391]">
+            Impact: <span class="text-rose-400">Zero ROI visibility</span>
+          </div>
+        </div>
+
+        <!-- Problem Card 3 -->
+        <div class="problem-card glass p-8 flex flex-col justify-between">
+          <div>
+            <span class="font-mono text-xs text-[#D4F54F] mb-4 block">03 / NO COMPOUNDING ASSETS</span>
+            <h3 class="font-head text-xl font-semibold text-[#F2F5EC] mb-3">Every campaign starts from zero.</h3>
+            <p class="text-sm text-[#9AA391] leading-relaxed">
+              Creator posts expire after 24 hours. No whitelisting rights, no retained UGC raw files, and no performance data carried over to the next sprint.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-white/10 font-mono text-xs text-[#9AA391]">
+            Impact: <span class="text-rose-400">Ephemeral waste</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10.4 The System (The Weave System) -->
+    <section id="weave-system-section" class="py-24 sm:py-32 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto relative">
+      <div class="text-center max-w-2xl mx-auto mb-20">
+        <div class="label-caps text-[#D4F54F] mb-3">The Named Operating Model</div>
+        <h2 class="font-head text-3xl sm:text-5xl font-bold tracking-tight text-[#F2F5EC] mb-4">The Weave System</h2>
+        <p class="text-base text-[#9AA391]">Four steps. Every campaign. No improvisation.</p>
+      </div>
+
+      <!-- Connecting SVG Thread (Scrubbed on scroll) -->
+      <div class="hidden lg:block relative mb-8">
+        <svg class="w-full h-8" viewBox="0 0 1000 30" fill="none">
+          <path id="weave-thread-path" d="M 50 15 L 950 15" stroke="#D4F54F" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Step 1 -->
+        <div class="weave-step-card glass p-7 transition-all duration-300">
+          <div class="font-mono text-2xl font-bold text-[#D4F54F] mb-4">01</div>
+          <h3 class="font-head text-xl font-bold text-[#F2F5EC] mb-2">Map</h3>
+          <p class="text-xs text-[#9AA391] leading-relaxed">
+            Target buyer personas, customer acquisition targets, channel economics, and campaign attribution architecture.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="weave-step-card glass p-7 transition-all duration-300">
+          <div class="font-mono text-2xl font-bold text-[#D4F54F] mb-4">02</div>
+          <h3 class="font-head text-xl font-bold text-[#F2F5EC] mb-2">Match</h3>
+          <p class="text-xs text-[#9AA391] leading-relaxed">
+            Multi-layer creator vetting: audience fraud detection, authentic engagement scoring, and category brand-safety check.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="weave-step-card glass p-7 transition-all duration-300">
+          <div class="font-mono text-2xl font-bold text-[#D4F54F] mb-4">03</div>
+          <h3 class="font-head text-xl font-bold text-[#F2F5EC] mb-2">Make</h3>
+          <p class="text-xs text-[#9AA391] leading-relaxed">
+            Direct response creative briefs, high-converting hooks, revision rounds, and synchronized multi-platform publishing.
+          </p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="weave-step-card glass p-7 transition-all duration-300">
+          <div class="font-mono text-2xl font-bold text-[#D4F54F] mb-4">04</div>
+          <h3 class="font-head text-xl font-bold text-[#F2F5EC] mb-2">Measure</h3>
+          <p class="text-xs text-[#9AA391] leading-relaxed">
+            Tracked promo codes, custom UTM links, real-time conversion dashboard, and paid ad scaling of top-performing creator posts.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10.5 Services Overview (3x2 Grid) -->
+    <section class="py-24 sm:py-32 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+        <div>
+          <div class="label-caps text-[#D4F54F] mb-3">Full-Service Capabilities</div>
+          <h2 class="font-head text-3xl sm:text-5xl font-bold tracking-tight text-[#F2F5EC]">What we run</h2>
+        </div>
+        <a href="services/index.html" class="mt-4 md:mt-0 text-sm font-mono text-[#D4F54F] hover:underline flex items-center gap-1">
+          Explore all services <span>→</span>
+        </a>
+      </div>
+
+      <div class="stagger-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Service 1 -->
+        <a href="services/influencer-campaigns.html" class="glass glass--lift p-8 flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#D4F54F] mb-6 group-hover:border-[#D4F54F]/40 transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>
+            </div>
+            <h3 class="font-head text-xl font-bold text-[#F2F5EC] mb-2 group-hover:text-[#D4F54F] transition-colors">Influencer Campaigns</h3>
+            <p class="text-sm text-[#9AA391] leading-relaxed">
+              Full-cycle campaigns from creative hypothesis to creator onboarding, distribution, and verified sales reporting.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-[#9AA391]">
+            <span>Full Turnkey</span>
+            <span class="text-[#D4F54F] group-hover:translate-x-1 transition-transform">Learn more →</span>
+          </div>
+        </a>
+
+        <!-- Service 2 -->
+        <a href="services/creator-sourcing.html" class="glass glass--lift p-8 flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#D4F54F] mb-6 group-hover:border-[#D4F54F]/40 transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <h3 class="font-head text-xl font-bold text-[#F2F5EC] mb-2 group-hover:text-[#D4F54F] transition-colors">Creator Sourcing & Vetting</h3>
+            <p class="text-sm text-[#9AA391] leading-relaxed">
+              Algorithmic shortlists screened for fake followers, audience demographics, comment sentiment, and historical brand affinity.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-[#9AA391]">
+            <span>Fraud Protected</span>
+            <span class="text-[#D4F54F] group-hover:translate-x-1 transition-transform">Learn more →</span>
+          </div>
+        </a>
+
+        <!-- Service 3 -->
+        <a href="services/ugc-content-production.html" class="glass glass--lift p-8 flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#D4F54F] mb-6 group-hover:border-[#D4F54F]/40 transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            </div>
+            <h3 class="font-head text-xl font-bold text-[#F2F5EC] mb-2 group-hover:text-[#D4F54F] transition-colors">UGC & Content Production</h3>
+            <p class="text-sm text-[#9AA391] leading-relaxed">
+              Authentic creator-led video and photo assets crafted specifically for high-converting TikTok, Meta, and YouTube ad creatives.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-[#9AA391]">
+            <span>Ad Optimized</span>
+            <span class="text-[#D4F54F] group-hover:translate-x-1 transition-transform">Learn more →</span>
+          </div>
+        </a>
+
+        <!-- Service 4 -->
+        <a href="services/paid-amplification.html" class="glass glass--lift p-8 flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#D4F54F] mb-6 group-hover:border-[#D4F54F]/40 transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+            </div>
+            <h3 class="font-head text-xl font-bold text-[#F2F5EC] mb-2 group-hover:text-[#D4F54F] transition-colors">Paid Amplification</h3>
+            <p class="text-sm text-[#9AA391] leading-relaxed">
+              Whitelisting creator accounts and running partnership ads behind winning organic videos to scale reach and purchase velocity.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-[#9AA391]">
+            <span>Performance Scaling</span>
+            <span class="text-[#D4F54F] group-hover:translate-x-1 transition-transform">Learn more →</span>
+          </div>
+        </a>
+
+        <!-- Service 5 -->
+        <a href="services/creator-management.html" class="glass glass--lift p-8 flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#D4F54F] mb-6 group-hover:border-[#D4F54F]/40 transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            </div>
+            <h3 class="font-head text-xl font-bold text-[#F2F5EC] mb-2 group-hover:text-[#D4F54F] transition-colors">Creator Management</h3>
+            <p class="text-sm text-[#9AA391] leading-relaxed">
+              We handle all contracts, usage rights, product shipping, brief adherence, revisions, and payments with zero headache.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-[#9AA391]">
+            <span>Zero Ops Friction</span>
+            <span class="text-[#D4F54F] group-hover:translate-x-1 transition-transform">Learn more →</span>
+          </div>
+        </a>
+
+        <!-- Service 6 -->
+        <a href="services/analytics-reporting.html" class="glass glass--lift p-8 flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#D4F54F] mb-6 group-hover:border-[#D4F54F]/40 transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            </div>
+            <h3 class="font-head text-xl font-bold text-[#F2F5EC] mb-2 group-hover:text-[#D4F54F] transition-colors">Analytics & Reporting</h3>
+            <p class="text-sm text-[#9AA391] leading-relaxed">
+              Dedicated tracking links, custom promo codes, live client dashboard, and post-sprint performance economics breakdown.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-[#9AA391]">
+            <span>Revenue Grounded</span>
+            <span class="text-[#D4F54F] group-hover:translate-x-1 transition-transform">Learn more →</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- 10.6 Stat Band (Section 10.6 live counter animation) -->
+    <section class="py-20 border-y border-white/[0.06] bg-[#0E120C]/60 backdrop-blur-md">
+      <div class="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-16 grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <div class="font-head text-4xl sm:text-6xl font-bold text-[#F2F5EC] tracking-tight">
+            <span class="stat-counter" data-target="140" data-suffix="+">0</span>
+          </div>
+          <div class="label-caps text-[#9AA391] mt-2">Campaigns Executed</div>
+        </div>
+
+        <div>
+          <div class="font-head text-4xl sm:text-6xl font-bold text-[#D4F54F] tracking-tight">
+            <span class="stat-counter" data-target="350" data-suffix="+">0</span>
+          </div>
+          <div class="label-caps text-[#9AA391] mt-2">Vetted Creators</div>
+        </div>
+
+        <div>
+          <div class="font-head text-4xl sm:text-6xl font-bold text-[#F2F5EC] tracking-tight">
+            <span class="stat-counter" data-target="18.4" data-suffix="M+" data-decimals="1">0</span>
+          </div>
+          <div class="label-caps text-[#9AA391] mt-2">Organic Impressions</div>
+        </div>
+
+        <div>
+          <div class="font-head text-4xl sm:text-6xl font-bold text-[#D4F54F] tracking-tight">
+            <span class="stat-counter" data-target="3.4" data-suffix="x" data-decimals="1">0</span>
+          </div>
+          <div class="label-caps text-[#9AA391] mt-2">Average Verified ROAS</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10.7 Case Studies / Pilot Program (Section 10.7) -->
+    <section class="py-24 sm:py-32 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+        <div>
+          <div class="label-caps text-[#D4F54F] mb-3">Proven Performance</div>
+          <h2 class="font-head text-3xl sm:text-5xl font-bold tracking-tight text-[#F2F5EC]">Results, not reach.</h2>
+        </div>
+        <p class="text-sm font-mono text-[#9AA391] mt-3 md:mt-0">Every number verified by analytics dashboards</p>
+      </div>
+
+      <!-- Founding Brand Pilot Program Banner -->
+      <div class="glass p-6 sm:p-8 mb-12 border-l-4 border-l-[#D4F54F] flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="px-2 py-0.5 rounded bg-[#D4F54F] text-[#101210] font-mono text-[10px] font-bold uppercase">Pilot Program</span>
+            <span class="text-xs font-mono text-[#9AA391]">Limited Cohort · Q4 & Q1</span>
+          </div>
+          <h3 class="font-head text-2xl font-bold text-[#F2F5EC]">We're taking 5 founding brands.</h3>
+          <p class="text-sm text-[#9AA391] max-w-2xl mt-1">
+            Reduced rate. Full attribution tracking. You get the high-margin case study, we get the public proof.
+          </p>
+        </div>
+        <a href="contact.html" class="btn-swap glass glass--lime px-6 py-3 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210] whitespace-nowrap">
+          Apply for Pilot →
+        </a>
+      </div>
+
+      <!-- 3 Case Study Metric Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <a href="work/case-study.html" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group" data-cursor-view="true">
+          <div>
+            <div class="flex items-center justify-between mb-8">
+              <span class="label-caps text-[#D4F54F]">Fashion & D2C</span>
+              <span class="font-mono text-xs text-[#9AA391]">6 Weeks</span>
+            </div>
+            <div class="font-head text-4xl sm:text-5xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-3">
+              3.4x ROAS
+            </div>
+            <p class="text-sm text-[#9AA391]">
+              Engineered launch for Velocity Apparel. 18 fashion creators with whitelisted Meta partnership ads.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs text-[#9AA391]">
+            <span>Velocity Apparel</span>
+            <span class="text-[#D4F54F] group-hover:translate-x-1 transition-transform">Read breakdown →</span>
+          </div>
+        </a>
+
+        <!-- Card 2 -->
+        <a href="work/case-study.html" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group" data-cursor-view="true">
+          <div>
+            <div class="flex items-center justify-between mb-8">
+              <span class="label-caps text-[#D4F54F]">F&B Growth</span>
+              <span class="font-mono text-xs text-[#9AA391]">30 Days</span>
+            </div>
+            <div class="font-head text-4xl sm:text-5xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-3">
+              ৳4.2M Rev
+            </div>
+            <p class="text-sm text-[#9AA391]">
+              Direct revenue tracking via personalized creator promo codes for gourmet food delivery rollout.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs text-[#9AA391]">
+            <span>Kazi Gourmet</span>
+            <span class="text-[#D4F54F] group-hover:translate-x-1 transition-transform">Read breakdown →</span>
+          </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="work/case-study.html" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group" data-cursor-view="true">
+          <div>
+            <div class="flex items-center justify-between mb-8">
+              <span class="label-caps text-[#D4F54F]">SaaS & App</span>
+              <span class="font-mono text-xs text-[#9AA391]">Quarter Sprint</span>
+            </div>
+            <div class="font-head text-4xl sm:text-5xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-3">
+              -42% CAC
+            </div>
+            <p class="text-sm text-[#9AA391]">
+              Replaced stock studio ads with authentic creator UGC testing 12 hook variations across TikTok.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs text-[#9AA391]">
+            <span>ByteStack Tech</span>
+            <span class="text-[#D4F54F] group-hover:translate-x-1 transition-transform">Read breakdown →</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- 10.8 Creator Network Teaser (Vetting Score Meter) -->
+    <section id="vetting-section" class="py-24 sm:py-32 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+      <div class="glass p-8 sm:p-14 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Left: Criteria checks -->
+        <div class="lg:col-span-7">
+          <div class="label-caps text-[#D4F54F] mb-3">Rigorous Quality Gate</div>
+          <h2 class="font-head text-3xl sm:text-5xl font-bold tracking-tight text-[#F2F5EC] mb-4">
+            Creators, vetted.
+          </h2>
+          <p class="text-base text-[#9AA391] mb-8 leading-relaxed">
+            Every creator in our network passes an audience-quality check before they touch your brand. No vanity metrics. No suspicious follower spikes.
+          </p>
+
+          <div class="space-y-4 mb-8">
+            <div class="flex items-start gap-4">
+              <div class="w-6 h-6 rounded-full bg-[#D4F54F]/20 text-[#D4F54F] flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">✓</div>
+              <div>
+                <h4 class="text-sm font-semibold text-[#F2F5EC]">Audience Authenticity</h4>
+                <p class="text-xs text-[#9AA391] mt-0.5">Deep inspection of follower geographic clusters, comment depth, and bot ratio.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-6 h-6 rounded-full bg-[#D4F54F]/20 text-[#D4F54F] flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">✓</div>
+              <div>
+                <h4 class="text-sm font-semibold text-[#F2F5EC]">Engagement Quality</h4>
+                <p class="text-xs text-[#9AA391] mt-0.5">Sustained organic watch-through rates and high saves/shares on recent video posts.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-6 h-6 rounded-full bg-[#D4F54F]/20 text-[#D4F54F] flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">✓</div>
+              <div>
+                <h4 class="text-sm font-semibold text-[#F2F5EC]">Brand Safety Guarantee</h4>
+                <p class="text-xs text-[#9AA391] mt-0.5">Zero toxic controversy history and strict adherence to creative delivery timelines.</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="creators.html" class="inline-flex items-center gap-2 text-sm font-mono text-[#D4F54F] hover:underline font-semibold">
+            Explore the creator network <span>→</span>
+          </a>
+        </div>
+
+        <!-- Right: Animated Circular Vetting Score Gauge (Section 10.8) -->
+        <div class="lg:col-span-5 flex flex-col items-center justify-center">
+          <div class="glass glass--sub p-8 w-full max-w-xs flex flex-col items-center text-center">
+            <div class="relative w-36 h-36 mb-4">
+              <svg class="w-full h-full -rotate-90" viewBox="0 0 120 120">
+                <!-- Track circle -->
+                <circle cx="60" cy="60" r="54" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="8"/>
+                <!-- Meter fill circle -->
+                <circle id="vetting-score-ring" cx="60" cy="60" r="54" fill="none" stroke="#D4F54F" stroke-width="8" stroke-linecap="round"/>
+              </svg>
+              <!-- Center Metric -->
+              <div class="absolute inset-0 flex flex-col items-center justify-center">
+                <span id="vetting-score-val" class="font-head text-3xl font-bold text-[#F2F5EC]">94%</span>
+                <span class="label-caps text-[9px] text-[#9AA391]">Pass Score</span>
+              </div>
+            </div>
+            <div class="font-mono text-xs font-semibold text-[#D4F54F]">Vetting Standard</div>
+            <p class="text-[11px] text-[#9AA391] mt-1">Average quality threshold for network onboarding.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10.9 Why Famewoven (Differentiation Table) -->
+    <section class="py-24 sm:py-32 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <div class="label-caps text-[#D4F54F] mb-3">Engineered Differentiation</div>
+        <h2 class="font-head text-3xl sm:text-5xl font-bold tracking-tight text-[#F2F5EC]">
+          Built like software. Run like a studio.
+        </h2>
+      </div>
+
+      <!-- Glass Comparison Table (Section 10.9) -->
+      <div class="glass overflow-x-auto">
+        <table class="w-full text-left border-collapse min-w-[620px]">
+          <thead>
+            <tr class="border-b border-white/10 bg-white/[0.02]">
+              <th class="py-5 px-6 label-caps text-[#9AA391] w-1/3">Core Capability</th>
+              <th class="py-5 px-6 label-caps text-[#9AA391] w-1/3">Typical Agency</th>
+              <th class="py-5 px-6 label-caps text-[#D4F54F] w-1/3 bg-[#D4F54F]/[0.05]">Famewoven</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/[0.06] text-sm">
+            <tr>
+              <td class="py-5 px-6 font-semibold text-[#F2F5EC]">Attribution & Reporting</td>
+              <td class="py-5 px-6 text-[#9AA391]">PDF screenshots of views 3 weeks later</td>
+              <td class="py-5 px-6 text-[#F2F5EC] bg-[#D4F54F]/[0.05] font-medium flex items-center gap-2">
+                <span class="text-[#D4F54F]">✓</span> Real-time UTM dashboard & revenue tracking
+              </td>
+            </tr>
+            <tr>
+              <td class="py-5 px-6 font-semibold text-[#F2F5EC]">Creator Selection</td>
+              <td class="py-5 px-6 text-[#9AA391]">Whoever replies first on WhatsApp</td>
+              <td class="py-5 px-6 text-[#F2F5EC] bg-[#D4F54F]/[0.05] font-medium">
+                <span class="text-[#D4F54F]">✓</span> Multi-layer bot fraud check & brand fit score
+              </td>
+            </tr>
+            <tr>
+              <td class="py-5 px-6 font-semibold text-[#F2F5EC]">Turnaround Speed</td>
+              <td class="py-5 px-6 text-[#9AA391]">3-4 weeks to review a single draft</td>
+              <td class="py-5 px-6 text-[#F2F5EC] bg-[#D4F54F]/[0.05] font-medium">
+                <span class="text-[#D4F54F]">✓</span> 7-day turnaround from brief to shoot
+              </td>
+            </tr>
+            <tr>
+              <td class="py-5 px-6 font-semibold text-[#F2F5EC]">Pricing Clarity</td>
+              <td class="py-5 px-6 text-[#9AA391]">Opaque agency markups on talent fees</td>
+              <td class="py-5 px-6 text-[#F2F5EC] bg-[#D4F54F]/[0.05] font-medium">
+                <span class="text-[#D4F54F]">✓</span> 100% transparent creator fees + flat management
+              </td>
+            </tr>
+            <tr>
+              <td class="py-5 px-6 font-semibold text-[#F2F5EC]">Asset Ownership & Ads</td>
+              <td class="py-5 px-6 text-[#9AA391]">Organic only; rights expire in 30 days</td>
+              <td class="py-5 px-6 text-[#F2F5EC] bg-[#D4F54F]/[0.05] font-medium">
+                <span class="text-[#D4F54F]">✓</span> Full whitelisting rights & reusable raw UGC
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 10.10 Testimonials (Crossfade Slider) -->
+    <section class="py-24 sm:py-32 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+      <div class="glass p-8 sm:p-16 relative overflow-hidden">
+        <div class="label-caps text-[#D4F54F] mb-6">Client Endorsements</div>
+
+        <!-- Slider Wrapper -->
+        <div class="relative min-h-[180px] sm:min-h-[140px]">
+          <!-- Slide 1 -->
+          <div class="testimonial-slide opacity-100 transition-opacity duration-700 absolute inset-0">
+            <blockquote class="font-head text-2xl sm:text-3xl lg:text-4xl font-medium text-[#F2F5EC] leading-snug">
+              "Famewoven is the first agency that didn't hand us screenshot PDFs. They gave us an attribution link that tied every sale directly to creator posts."
+            </blockquote>
+            <div class="mt-6 flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-[#D4F54F] text-[#101210] font-bold text-xs flex items-center justify-center font-mono">TR</div>
+              <div>
+                <div class="font-mono text-sm font-semibold text-[#F2F5EC]">Tanvir Rahman</div>
+                <div class="text-xs text-[#9AA391]">Head of Growth · Velocity Apparel</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="testimonial-slide opacity-0 pointer-events-none transition-opacity duration-700 absolute inset-0">
+            <blockquote class="font-head text-2xl sm:text-3xl lg:text-4xl font-medium text-[#F2F5EC] leading-snug">
+              "Their creator vetting process filtered out 80% of accounts we thought were good. The remaining 20% drove 4x the orders of our previous campaigns."
+            </blockquote>
+            <div class="mt-6 flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-[#D4F54F] text-[#101210] font-bold text-xs flex items-center justify-center font-mono">SA</div>
+              <div>
+                <div class="font-mono text-sm font-semibold text-[#F2F5EC]">Samira Ahmed</div>
+                <div class="text-xs text-[#9AA391]">Founder · Kazi Gourmet Foods</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10.11 FAQ (Glass Accordions) -->
+    <section class="py-24 sm:py-32 px-6 sm:px-10 lg:px-16 max-w-[960px] mx-auto">
+      <div class="text-center mb-16">
+        <div class="label-caps text-[#D4F54F] mb-3">Transparent Clarity</div>
+        <h2 class="font-head text-3xl sm:text-5xl font-bold tracking-tight text-[#F2F5EC]">Straight answers.</h2>
+      </div>
+
+      <div class="space-y-4">
+        <!-- Question 1 -->
+        <div class="faq-accordion-item glass">
+          <button class="faq-trigger w-full p-6 text-left flex items-center justify-between text-base sm:text-lg font-semibold text-[#F2F5EC] hover:text-[#D4F54F] transition-colors" aria-expanded="false">
+            <span>What is the minimum budget to work with Famewoven?</span>
+            <span class="faq-icon text-[#D4F54F] font-mono text-xl transition-transform duration-300 ml-4">+</span>
+          </button>
+          <div class="faq-answer-inner transition-all duration-300 px-6 pb-6 text-sm text-[#9AA391] leading-relaxed">
+            Our minimum campaign sprint begins at ৳50,000 for targeted creator UGC and testing cohorts. For full turnkey monthly retainers with whitelisting and live dashboard reporting, engagements typically scale from ৳150,000 upwards.
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="faq-accordion-item glass">
+          <button class="faq-trigger w-full p-6 text-left flex items-center justify-between text-base sm:text-lg font-semibold text-[#F2F5EC] hover:text-[#D4F54F] transition-colors" aria-expanded="false">
+            <span>How fast does a campaign go from brief to live?</span>
+            <span class="faq-icon text-[#D4F54F] font-mono text-xl transition-transform duration-300 ml-4">+</span>
+          </button>
+          <div class="faq-answer-inner transition-all duration-300 px-6 pb-6 text-sm text-[#9AA391] leading-relaxed">
+            Standard turnaround is 7 to 10 business days. We maintain an active pre-vetted creator network, allowing us to source talent, review scripts, ship products, and approve video drafts in parallel sprints rather than serial delays.
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="faq-accordion-item glass">
+          <button class="faq-trigger w-full p-6 text-left flex items-center justify-between text-base sm:text-lg font-semibold text-[#F2F5EC] hover:text-[#D4F54F] transition-colors" aria-expanded="false">
+            <span>Which social platforms do you run campaigns across?</span>
+            <span class="faq-icon text-[#D4F54F] font-mono text-xl transition-transform duration-300 ml-4">+</span>
+          </button>
+          <div class="faq-answer-inner transition-all duration-300 px-6 pb-6 text-sm text-[#9AA391] leading-relaxed">
+            We focus heavily on the platforms Bangladeshi audiences actually buy from: Instagram (Reels & Stories), TikTok (Direct discovery & UGC hooks), YouTube (Deep integration reviews), and Facebook (Video feeds and community scaling).
+          </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="faq-accordion-item glass">
+          <button class="faq-trigger w-full p-6 text-left flex items-center justify-between text-base sm:text-lg font-semibold text-[#F2F5EC] hover:text-[#D4F54F] transition-colors" aria-expanded="false">
+            <span>How do you track revenue and prove ROI?</span>
+            <span class="faq-icon text-[#D4F54F] font-mono text-xl transition-transform duration-300 ml-4">+</span>
+          </button>
+          <div class="faq-answer-inner transition-all duration-300 px-6 pb-6 text-sm text-[#9AA391] leading-relaxed">
+            Every creator receives an individualized tracking link with custom UTM parameters and an exclusive discount promo code. Sales are tracked directly in your e-commerce platform (Shopify, WooCommerce, custom backend), feeding a unified attribution dashboard.
+          </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="faq-accordion-item glass">
+          <button class="faq-trigger w-full p-6 text-left flex items-center justify-between text-base sm:text-lg font-semibold text-[#F2F5EC] hover:text-[#D4F54F] transition-colors" aria-expanded="false">
+            <span>Can we whitelist and run paid ads through creator accounts?</span>
+            <span class="faq-icon text-[#D4F54F] font-mono text-xl transition-transform duration-300 ml-4">+</span>
+          </button>
+          <div class="faq-answer-inner transition-all duration-300 px-6 pb-6 text-sm text-[#9AA391] leading-relaxed">
+            Yes. Whitelisting (partnership ads) is one of our primary growth mechanisms. We secure advertiser access to creator handles so your paid team can run ads under their native profile, dramatically increasing click-through rates and reducing acquisition costs.
+          </div>
+        </div>
+
+        <!-- Question 6 (Filtering question per Blueprint section 10.11) -->
+        <div class="faq-accordion-item glass">
+          <button class="faq-trigger w-full p-6 text-left flex items-center justify-between text-base sm:text-lg font-semibold text-[#F2F5EC] hover:text-[#D4F54F] transition-colors" aria-expanded="false">
+            <span>Who is Famewoven NOT for?</span>
+            <span class="faq-icon text-[#D4F54F] font-mono text-xl transition-transform duration-300 ml-4">+</span>
+          </button>
+          <div class="faq-answer-inner transition-all duration-300 px-6 pb-6 text-sm text-[#9AA391] leading-relaxed">
+            We are not for brands seeking cheap vanity shoutouts from random accounts with millions of bot followers. If you do not care about tracking conversions or expect creators to promote your product for free barter gifts with zero strategy, we are not the right fit.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10.12 Final CTA Banner (Section 10.12 Full bleed lime gradient glass) -->
+    <section class="py-20 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+      <div class="glass glass--lime p-10 sm:p-16 rounded-3xl text-center relative overflow-hidden">
+        <div class="max-w-2xl mx-auto relative z-10">
+          <h2 class="font-head text-3xl sm:text-6xl font-bold tracking-tight text-[#101210] mb-4">
+            Let's weave your brand into culture.
+          </h2>
+          <p class="text-base sm:text-lg text-[#101210]/80 mb-8 max-w-xl mx-auto font-medium">
+            Tell us your goal. You get a custom creator strategy and attribution plan in 48 hours.
+          </p>
+          <a href="contact.html" class="btn-swap inline-flex items-center justify-center px-9 py-4 bg-[#101210] text-[#F2F5EC] hover:text-[#D4F54F] rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-colors shadow-2xl">
+            <span class="btn-text-wrap">
+              <span class="btn-text-primary">Book a strategy call</span>
+              <span class="btn-text-clone">Book a strategy call</span>
+            </span>
+            <svg class="btn-icon w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 9.2 Global Footer -->
+  <footer class="relative z-10 pt-20 pb-12 border-t border-white/[0.08] bg-[#080A07] overflow-hidden">
+    <!-- Giant cropped low-opacity wordmark background -->
+    <div class="absolute bottom-0 inset-x-0 font-head text-[16vw] font-bold tracking-tighter text-white/[0.03] select-none pointer-events-none text-center leading-none translate-y-1/3">
+      FAMEWOVEN
+    </div>
+
+    <div class="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 pb-16 border-b border-white/[0.08]">
+        
+        <!-- Brand Info -->
+        <div class="lg:col-span-2">
+          <a href="index.html" class="flex items-center gap-2 mb-4">
+            <svg viewBox="0 0 400 400" class="w-7 h-7" fill="#D4F54F"><path d="M 90 120 L 200 310 L 245 235 L 180 120 L 290 120 L 310 90 L 130 90 Z"/><polygon points="260,85 295,140 225,140"/></svg>
+            <span class="font-head text-xl font-bold text-[#F2F5EC]">Famewoven</span>
+          </a>
+          <p class="text-sm text-[#9AA391] max-w-sm mb-6 leading-relaxed">
+            The creator marketing system brands actually track. Weaving influence into culture with verified balance-sheet proof.
+          </p>
+          <div class="label-caps text-[#D4F54F]">Dhaka · Global Reach</div>
+        </div>
+
+        <!-- Column 1: Services -->
+        <div>
+          <h4 class="label-caps text-[#F2F5EC] mb-4">Services</h4>
+          <ul class="space-y-2.5 text-sm text-[#9AA391]">
+            <li><a href="services/influencer-campaigns.html" class="hover:text-[#D4F54F] transition-colors">Campaigns</a></li>
+            <li><a href="services/creator-sourcing.html" class="hover:text-[#D4F54F] transition-colors">Vetting & Sourcing</a></li>
+            <li><a href="services/ugc-content-production.html" class="hover:text-[#D4F54F] transition-colors">UGC Production</a></li>
+            <li><a href="services/paid-amplification.html" class="hover:text-[#D4F54F] transition-colors">Paid Amplification</a></li>
+            <li><a href="services/creator-management.html" class="hover:text-[#D4F54F] transition-colors">Talent Ops</a></li>
+            <li><a href="services/analytics-reporting.html" class="hover:text-[#D4F54F] transition-colors">Analytics & ROI</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 2: Company -->
+        <div>
+          <h4 class="label-caps text-[#F2F5EC] mb-4">Company</h4>
+          <ul class="space-y-2.5 text-sm text-[#9AA391]">
+            <li><a href="about.html" class="hover:text-[#D4F54F] transition-colors">About Us</a></li>
+            <li><a href="work/index.html" class="hover:text-[#D4F54F] transition-colors">Case Studies</a></li>
+            <li><a href="creators.html" class="hover:text-[#D4F54F] transition-colors">Creator Portal</a></li>
+            <li><a href="insights/index.html" class="hover:text-[#D4F54F] transition-colors">Insights Hub</a></li>
+            <li><a href="contact.html" class="hover:text-[#D4F54F] transition-colors">Book a Call</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Newsletter & Direct -->
+        <div>
+          <h4 class="label-caps text-[#F2F5EC] mb-4">Stay Ahead</h4>
+          <p class="text-xs text-[#9AA391] mb-3">Bi-weekly teardowns of high-converting creator campaigns.</p>
+          <form class="space-y-2" onsubmit="event.preventDefault(); alert('Subscribed to Famewoven Insights.');">
+            <input type="email" placeholder="work@brand.com" required 
+                   class="w-full px-3.5 py-2 bg-white/[0.04] border border-white/10 rounded-lg text-xs text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
+            <button type="submit" class="w-full py-2 bg-[#D4F54F] text-[#101210] rounded-lg text-xs font-mono font-bold uppercase tracking-wider hover:bg-[#F0FFB0] transition-colors">
+              Subscribe
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#9AA391]">
+        <div>© 2026 Famewoven. All rights reserved.</div>
+        <div class="flex items-center gap-6">
+          <a href="#" class="hover:text-[#F2F5EC]">Privacy Policy</a>
+          <a href="#" class="hover:text-[#F2F5EC]">Terms of Service</a>
+          <a href="sitemap.xml" class="hover:text-[#F2F5EC]">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/bg.js"></script>
+  <script src="js/loader.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/hero.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

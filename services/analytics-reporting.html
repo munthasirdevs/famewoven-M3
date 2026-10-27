@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics & Attribution — Famewoven</title>
+  <meta name="description" content="Tie every influencer marketing rupee to verified revenue. Custom tracking links, promo codes, live attribution dashboard, and post-campaign ROI teardowns.">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#080A07', bg2: '#0E120C', ink: '#101210', text: '#F2F5EC',
+            muted: '#9AA391', lime: '#D4F54F', limepale: '#F0FFB0', green: '#7CB83A'
+          },
+          fontFamily: {
+            head: ['Space Grotesk', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="../css/glass.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-[#080A07] text-[#F2F5EC] relative overflow-x-hidden selection:bg-[#D4F54F] selection:text-[#101210]">
+
+  <div id="scroll-progress"></div>
+  <div class="grain-overlay"></div>
+  <div id="custom-cursor-dot"></div>
+  <div id="custom-cursor-ring"></div>
+  <canvas id="bg" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+  <header id="main-header" class="fixed top-4 inset-x-0 z-50 px-4 transition-transform duration-300 pointer-events-none flex justify-center">
+    <div id="header-pill" class="glass glass--pill max-w-[1100px] w-full px-5 py-3 flex items-center justify-between pointer-events-auto">
+      <a href="../index.html" class="flex items-center gap-3 group">
+        <svg viewBox="0 0 400 400" class="w-7 h-7" fill="#D4F54F"><path d="M 90 120 L 200 310 L 245 235 L 180 120 L 290 120 L 310 90 L 130 90 Z"/><polygon points="260,85 295,140 225,140"/></svg>
+        <span class="font-head text-xl font-bold tracking-tight text-[#F2F5EC]">Famewoven</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-1">
+        <a href="index.html" class="nav-link is-current text-sm font-medium px-4 py-2 text-[#D4F54F]">Services</a>
+        <a href="../work/index.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC]">Work</a>
+        <a href="../creators.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC]">Creators</a>
+        <a href="../about.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC]">About</a>
+        <a href="../insights/index.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC]">Insights</a>
+      </nav>
+      <a href="../contact.html" class="btn-swap glass glass--lime glass--pill px-5 py-2.5 text-xs tracking-wider uppercase font-mono font-semibold hidden md:inline-flex">
+        <span class="btn-text-wrap"><span class="btn-text-primary">Book a strategy call</span><span class="btn-text-clone">Book a strategy call</span></span>
+      </a>
+    </div>
+  </header>
+
+  <main class="relative z-10 pt-36 pb-24 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+    <!-- 1. Hero -->
+    <div class="max-w-3xl mb-16">
+      <div class="label-caps text-[#D4F54F] mb-3">Service 06 / Commercial Proof</div>
+      <h1 class="font-head text-4xl sm:text-6xl font-bold tracking-tight text-[#F2F5EC] mb-4">Analytics & Reporting</h1>
+      <p class="text-xl text-[#9AA391] mb-8 leading-relaxed">
+        Influence without measurement is speculation. We provide live multi-touch attribution dashboards that prove exactly what every creator generated in sales.
+      </p>
+      <a href="../contact.html" class="btn-swap glass glass--lime glass--pill px-8 py-4 text-xs font-mono font-bold uppercase tracking-wider text-[#101210] inline-flex">
+        <span class="btn-text-wrap"><span class="btn-text-primary">See dashboard demo</span><span class="btn-text-clone">See dashboard demo</span></span>
+      </a>
+    </div>
+
+    <!-- 2. Two Columns -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+      <div class="glass p-8 border-l-4 border-l-[#D4F54F]">
+        <div class="label-caps text-[#D4F54F] mb-3">Who it's for</div>
+        <ul class="space-y-3 text-sm text-[#F2F5EC]">
+          <li class="flex items-start gap-2"><span class="text-[#D4F54F] font-bold">✓</span> Founders and CMOs who must defend influencer budgets to CFOs and investors with hard data.</li>
+          <li class="flex items-start gap-2"><span class="text-[#D4F54F] font-bold">✓</span> Brands with Shopify, WooCommerce, or custom checkouts wanting real-time order attribution.</li>
+          <li class="flex items-start gap-2"><span class="text-[#D4F54F] font-bold">✓</span> Growth teams wanting to identify high-ROI creators to sign for annual brand ambassadorships.</li>
+        </ul>
+      </div>
+
+      <div class="glass p-8 border-l-4 border-l-rose-500/60">
+        <div class="label-caps text-rose-400 mb-3">Who it's not for</div>
+        <ul class="space-y-3 text-sm text-[#9AA391]">
+          <li class="flex items-start gap-2"><span class="text-rose-400 font-bold">✕</span> Brands that measure success solely by superficial Instagram story view counters.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 3. Deliverables -->
+    <div class="glass p-10 mb-20">
+      <div class="label-caps text-[#D4F54F] mb-3">Attribution Stack</div>
+      <h2 class="font-head text-3xl font-bold text-[#F2F5EC] mb-8">What our analytics platform tracks</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass glass--sub p-5">
+          <span class="font-mono text-xs text-[#D4F54F] block mb-2">01 / Links</span>
+          <h3 class="font-head text-lg font-bold text-[#F2F5EC] mb-1">Custom UTM Shortlinks</h3>
+          <p class="text-xs text-[#9AA391]">Unique, branded shortlinks per creator tracking clicks, bounce rate, and add-to-cart velocity.</p>
+        </div>
+        <div class="glass glass--sub p-5">
+          <span class="font-mono text-xs text-[#D4F54F] block mb-2">02 / Promo Codes</span>
+          <h3 class="font-head text-lg font-bold text-[#F2F5EC] mb-1">E-Commerce Coupon Sync</h3>
+          <p class="text-xs text-[#9AA391]">Personalized promo codes synced with your shop to attribute sales even when links aren't clicked.</p>
+        </div>
+        <div class="glass glass--sub p-5">
+          <span class="font-mono text-xs text-[#D4F54F] block mb-2">03 / Dashboard</span>
+          <h3 class="font-head text-lg font-bold text-[#F2F5EC] mb-1">Live Client Portal</h3>
+          <p class="text-xs text-[#9AA391]">Real-time visibility into live campaign spend, attributed revenue, blended CPA, and net ROAS.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Pricing & Case Study -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20">
+      <div class="lg:col-span-5 glass p-8 flex flex-col justify-between">
+        <div>
+          <div class="label-caps text-[#D4F54F] mb-2">Attribution Suite</div>
+          <h3 class="font-head text-3xl font-bold text-[#F2F5EC] mb-2">Included / Standalone</h3>
+          <p class="text-xs text-[#9AA391] mb-6">Built into all Famewoven campaigns, or available as a standalone analytics stack for existing internal teams.</p>
+        </div>
+        <a href="../contact.html" class="btn-swap glass glass--lime w-full py-3 rounded-full text-center text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+          Connect Tracking Stack
+        </a>
+      </div>
+
+      <div class="lg:col-span-7 glass glass--lift p-8 flex flex-col justify-between">
+        <div>
+          <div class="label-caps text-[#D4F54F] mb-2">Attribution Case Study</div>
+          <div class="font-head text-4xl font-bold text-[#F2F5EC] mb-2">৳4.2M Verified Rev</div>
+          <p class="text-sm text-[#9AA391] mb-2">Kazi Gourmet Foods Campaign</p>
+          <p class="text-xs text-[#9AA391] leading-relaxed">
+            Every order tracked with unique creator promo codes. Identified that 3 micro-creators drove 62% of all orders at 1/4th the cost of celebrity macro-influencers.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-white/10 mt-6">
+          <a href="../work/case-study.html" class="text-xs font-semibold text-[#D4F54F] hover:underline">Read Case Study →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final CTA -->
+    <div class="glass glass--lime p-10 rounded-3xl text-center">
+      <h2 class="font-head text-3xl font-bold text-[#101210] mb-2">Turn influence into measurable revenue.</h2>
+      <p class="text-xs sm:text-sm text-[#101210]/80 mb-6">Let's install proper attribution tracking across your creator marketing today.</p>
+      <a href="../contact.html" class="btn-swap inline-flex px-8 py-3.5 bg-[#101210] text-[#F2F5EC] rounded-full text-xs font-mono font-bold uppercase tracking-wider">
+        <span class="btn-text-wrap"><span class="btn-text-primary">Book a strategy call</span><span class="btn-text-clone">Book a strategy call</span></span>
+      </a>
+    </div>
+  </main>
+
+  <footer class="pt-12 pb-8 border-t border-white/[0.08] bg-[#080A07] text-center text-xs font-mono text-[#9AA391]">
+    © 2026 Famewoven. Influence, Engineered.
+  </footer>
+
+  <script src="../js/bg.js"></script>
+  <script src="../js/header.js"></script>
+  <script src="../js/scroll.js"></script>
+</body>
+</html>
