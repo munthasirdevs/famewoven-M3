@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Launch Campaigns — Famewoven</title>
+  <meta name="description" content="Creator posts timed together around your product launch. Coordinated launch day blitz on X that generates inescapable momentum for AI, SaaS, and tech releases.">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#080A07', bg2: '#0E120C', ink: '#101210', text: '#F2F5EC',
+            muted: '#9AA391', lime: '#D4F54F', limepale: '#F0FFB0', green: '#7CB83A'
+          },
+          fontFamily: {
+            head: ['Space Grotesk', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="../css/glass.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-[#080A07] text-[#F2F5EC] relative overflow-x-hidden selection:bg-[#D4F54F] selection:text-[#101210]">
+
+  <div class="grain-overlay"></div>
+  <div id="custom-cursor-dot"></div>
+  <div id="custom-cursor-ring"></div>
+  <canvas id="bg" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+  <header id="main-header" class="fixed top-4 inset-x-0 z-50 px-4 transition-transform duration-300 pointer-events-none flex justify-center">
+    <div id="header-pill" class="glass glass--pill max-w-[1100px] w-full px-5 py-3 flex items-center justify-between pointer-events-auto">
+      <a href="../index.html" class="flex items-center group focus:outline-none" aria-label="Famewoven Home">
+        <img src="../css/namelogo.png" alt="Famewoven" class="h-7 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+      </a>
+      <nav class="hidden md:flex items-center gap-1">
+        <a href="../index.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#D4F54F]">Home</a>
+        <a href="index.html" class="nav-link is-current text-sm font-medium px-4 py-2 text-[#D4F54F]">Services</a>
+        <a href="../work/index.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC]">Work</a>
+        <a href="../creators.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC]">Creators</a>
+        <a href="../about.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC]">About</a>
+        <a href="../insights/index.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC]">Insights</a>
+      </nav>
+      <a href="../contact.html?service=launch-campaigns" class="btn-swap glass glass--lime glass--pill px-5 py-2.5 text-xs tracking-wider uppercase font-mono font-semibold hidden md:inline-flex">
+        <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
+      </a>
+      <button id="mobile-menu-toggle" class="md:hidden p-2 text-[#F2F5EC] hover:text-[#D4F54F]" aria-label="Open Mobile Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div id="mobile-drawer" class="fixed inset-0 z-[100] bg-[#080A07]/95 backdrop-blur-2xl p-6 hidden flex-col justify-between" aria-hidden="true">
+    <div class="flex items-center justify-between">
+      <a href="../index.html" class="flex items-center group focus:outline-none" aria-label="Famewoven Home">
+        <img src="../css/namelogo.png" alt="Famewoven" class="h-8 w-auto object-contain">
+      </a>
+      <button id="mobile-menu-close" class="p-2 text-[#9AA391] hover:text-[#F2F5EC]"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    </div>
+    <nav class="flex flex-col gap-6 my-auto">
+      <a href="../index.html" class="mobile-nav-item font-head text-3xl font-semibold text-[#F2F5EC] hover:text-[#D4F54F]">Home</a>
+      <a href="index.html" class="mobile-nav-item font-head text-3xl font-semibold text-[#D4F54F]">Services</a>
+      <a href="../work/index.html" class="mobile-nav-item font-head text-3xl font-semibold text-[#F2F5EC]">Work</a>
+      <a href="../creators.html" class="mobile-nav-item font-head text-3xl font-semibold text-[#F2F5EC]">Creators</a>
+      <a href="../about.html" class="mobile-nav-item font-head text-3xl font-semibold text-[#F2F5EC]">About</a>
+      <a href="../insights/index.html" class="mobile-nav-item font-head text-3xl font-semibold text-[#F2F5EC]">Insights</a>
+    </nav>
+    <a href="../contact.html?service=launch-campaigns" class="glass glass--lime w-full py-4 rounded-xl text-center font-mono font-semibold uppercase tracking-wider text-sm block">Start brief</a>
+  </div>
+
+  <main class="relative z-10 pt-36 pb-24 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+    <div class="mb-6 flex items-center gap-2 text-xs font-mono text-[#9AA391]">
+      <a href="index.html" class="hover:text-[#D4F54F] transition-colors">Services</a>
+      <span>/</span>
+      <span class="text-[#D4F54F]">Campaigns</span>
+    </div>
+
+    <!-- 1. Hero -->
+    <div class="max-w-3xl mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#D4F54F]/30 bg-[#D4F54F]/10 text-xs font-mono font-semibold text-[#D4F54F] mb-4">
+        Campaigns Pillar
+      </div>
+      <h1 class="font-head text-4xl sm:text-6xl font-bold tracking-tight text-[#F2F5EC] mb-4">Launch Campaigns</h1>
+      <p class="text-xl text-[#9AA391] mb-8 leading-relaxed font-normal">
+        Creator posts timed together around your product launch. Synchronize dozens of creators across a tight launch window to capture category attention and spike conversion velocity.
+      </p>
+      <div class="flex flex-wrap items-center gap-4">
+        <a href="../contact.html?service=launch-campaigns" class="btn-swap glass glass--lime glass--pill px-8 py-4 text-xs font-mono font-bold uppercase tracking-wider text-[#101210] shadow-xl">
+          <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
+        </a>
+        <a href="index.html" class="glass glass--pill px-6 py-4 text-xs font-mono uppercase tracking-wider text-[#F2F5EC] hover:text-[#D4F54F] transition-colors">
+          ← All Services
+        </a>
+      </div>
+    </div>
+
+    <!-- 2. Two Columns -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+      <div class="glass p-8 border-l-4 border-l-[#D4F54F]">
+        <div class="label-caps text-[#D4F54F] mb-3">Who it's for</div>
+        <ul class="space-y-3 text-sm text-[#F2F5EC]">
+          <li class="flex items-start gap-2"><span class="text-[#D4F54F] font-bold">✓</span> Major v1/v2 product releases, Product Hunt launches, and public beta unveilings.</li>
+          <li class="flex items-start gap-2"><span class="text-[#D4F54F] font-bold">✓</span> Tech brands that need the entire niche talking about one release on the exact same day.</li>
+          <li class="flex items-start gap-2"><span class="text-[#D4F54F] font-bold">✓</span> Maximizing initial sign-up velocity to generate social proof loops.</li>
+        </ul>
+      </div>
+
+      <div class="glass p-8 border-l-4 border-l-rose-500/60">
+        <div class="label-caps text-rose-400 mb-3">Who it's not for</div>
+        <ul class="space-y-3 text-sm text-[#9AA391]">
+          <li class="flex items-start gap-2"><span class="text-rose-400 font-bold">✕</span> Products with broken sign-up funnels or unvalidated server infrastructure.</li>
+          <li class="flex items-start gap-2"><span class="text-rose-400 font-bold">✕</span> Launches with no clear, differentiated value proposition to anchor the conversation.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 3. Deliverables -->
+    <div class="glass p-10 mb-20">
+      <div class="label-caps text-[#D4F54F] mb-3">Launch Orchestration</div>
+      <h2 class="font-head text-3xl font-bold text-[#F2F5EC] mb-8">What a Launch Campaign Includes</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass glass--sub p-6">
+          <span class="font-mono text-xs text-[#D4F54F] block mb-2">01 / Timing</span>
+          <h3 class="font-head text-lg font-bold text-[#F2F5EC] mb-1">Synchronized Drop Schedule</h3>
+          <p class="text-xs text-[#9AA391]">Exact hour-by-hour posting cadence calculated to hold your category feed hostage all day.</p>
+        </div>
+        <div class="glass glass--sub p-6">
+          <span class="font-mono text-xs text-[#D4F54F] block mb-2">02 / Variety</span>
+          <h3 class="font-head text-lg font-bold text-[#F2F5EC] mb-1">Multi-Angle Coverage</h3>
+          <p class="text-xs text-[#9AA391]">Some creators test features, others breakdown speed, others quote-boost—avoiding repetitive messaging.</p>
+        </div>
+        <div class="glass glass--sub p-6">
+          <span class="font-mono text-xs text-[#D4F54F] block mb-2">03 / Analytics</span>
+          <h3 class="font-head text-lg font-bold text-[#F2F5EC] mb-1">Live Launch War Room</h3>
+          <p class="text-xs text-[#9AA391]">Real-time tracking of impressions, referral visits, and trial completions as posts fire.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. FAQ -->
+    <div class="max-w-2xl mx-auto mb-20 space-y-4">
+      <div class="faq-accordion-item glass">
+        <button class="faq-trigger w-full p-5 text-left flex justify-between font-semibold text-sm sm:text-base text-[#F2F5EC]" aria-expanded="false">
+          <span>How far in advance should we plan a launch campaign?</span>
+          <span class="faq-icon text-[#D4F54F] font-mono">+</span>
+        </button>
+        <div class="faq-answer-inner px-5 pb-5 text-xs text-[#9AA391]">
+          We recommend 2 to 3 weeks of lead time to recruit top-tier creators, distribute early access accounts, and review drafts before launch day.
+        </div>
+      </div>
+      <div class="faq-accordion-item glass">
+        <button class="faq-trigger w-full p-5 text-left flex justify-between font-semibold text-sm sm:text-base text-[#F2F5EC]" aria-expanded="false">
+          <span>Can this integrate with a Product Hunt or press release launch?</span>
+          <span class="faq-icon text-[#D4F54F] font-mono">+</span>
+        </button>
+        <div class="faq-answer-inner px-5 pb-5 text-xs text-[#9AA391]">
+          Yes, we frequently align creator drop windows to support #1 Product of the Day runs and PR announcements.
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Bottom CTA -->
+    <div class="glass glass--lime p-10 sm:p-14 rounded-3xl text-center">
+      <h2 class="font-head text-3xl sm:text-5xl font-bold text-[#101210] mb-3">Plan your launch blitz</h2>
+      <p class="text-sm sm:text-base text-[#101210]/80 mb-6 max-w-lg mx-auto">Get your product in front of thousands of active buyers on your big day.</p>
+      <a href="../contact.html?service=launch-campaigns" class="btn-swap inline-flex px-8 py-3.5 bg-[#101210] text-[#F2F5EC] rounded-full text-xs font-mono font-bold uppercase tracking-wider">
+        <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
+      </a>
+    </div>
+  </main>
+
+  <footer class="pt-16 pb-12 border-t border-white/[0.08] bg-[#080A07] text-center text-xs font-mono text-[#9AA391]">
+    © 2026 Famewoven. Where Influence Is Woven.
+  </footer>
+
+  <script src="../js/bg.js"></script>
+  <script src="../js/header.js"></script>
+  <script src="../js/scroll.js"></script>
+</body>
+</html>

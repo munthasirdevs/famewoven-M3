@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Services — Famewoven | Creator Marketing Infrastructure</title>
-  <meta name="description" content="Everything between a brief and a result. End-to-end influencer campaigns, creator sourcing, UGC production, paid amplification, and attribution reporting.">
+  <meta name="description" content="14 specialized creator marketing formats on X. From sponsored posts and viral threads to coordinated launch blitzes and long-term ambassador partnerships.">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -58,10 +58,11 @@
 
       <div class="hidden md:flex items-center gap-3">
         <a href="../contact.html" class="btn-swap glass glass--lime glass--pill px-5 py-2.5 text-xs tracking-wider uppercase font-mono font-semibold">
-          <span class="btn-text-wrap"><span class="btn-text-primary">Book a strategy call</span><span class="btn-text-clone">Book a strategy call</span></span>
+          <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
         </a>
       </div>
 
+      <!-- Mobile Hamburger -->
       <button id="mobile-menu-toggle" class="md:hidden p-2 text-[#F2F5EC] hover:text-[#D4F54F]" aria-label="Open Mobile Menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
@@ -84,138 +85,470 @@
       <a href="../about.html" class="mobile-nav-item font-head text-3xl font-semibold text-[#F2F5EC]">About</a>
       <a href="../insights/index.html" class="mobile-nav-item font-head text-3xl font-semibold text-[#F2F5EC]">Insights</a>
     </nav>
-    <a href="../contact.html" class="glass glass--lime w-full py-4 rounded-xl text-center font-mono font-semibold uppercase tracking-wider text-sm block">Book a strategy call</a>
+    <a href="../contact.html" class="glass glass--lime w-full py-4 rounded-xl text-center font-mono font-semibold uppercase tracking-wider text-sm block">Start brief</a>
   </div>
 
   <main class="relative z-10 pt-36 pb-24 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
     <!-- Header Hero -->
-    <div class="max-w-3xl mb-20">
+    <div class="max-w-3xl mb-12">
       <div class="label-caps text-[#D4F54F] mb-3">Service Architecture</div>
       <h1 class="font-head text-5xl sm:text-7xl font-bold tracking-tight text-[#F2F5EC] mb-4">Services</h1>
-      <p class="text-xl text-[#9AA391]">Everything between a brief and a result. Six specialized mechanisms built for commercial velocity.</p>
+      <p class="text-lg sm:text-xl text-[#9AA391] leading-relaxed">
+        Everything between a brief and a result. 14 specialized creator marketing formats built for commercial velocity on X.
+      </p>
     </div>
 
-    <!-- 6 Detailed Service Cards with 3 Outcomes each -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
+    <!-- Category Filter Tabs -->
+    <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-12">
+      <button data-filter="all" class="filter-tab px-5 py-2.5 rounded-full text-xs font-mono font-semibold uppercase tracking-wider transition-all duration-300 bg-[#D4F54F] text-[#101210] shadow-lg shadow-[#D4F54F]/10">
+        All (14)
+      </button>
+      <button data-filter="content" class="filter-tab px-5 py-2.5 rounded-full text-xs font-mono font-semibold uppercase tracking-wider transition-all duration-300 glass text-[#9AA391] hover:text-[#F2F5EC] border border-white/10">
+        Content (4)
+      </button>
+      <button data-filter="campaigns" class="filter-tab px-5 py-2.5 rounded-full text-xs font-mono font-semibold uppercase tracking-wider transition-all duration-300 glass text-[#9AA391] hover:text-[#F2F5EC] border border-white/10">
+        Campaigns (6)
+      </button>
+      <button data-filter="partnerships" class="filter-tab px-5 py-2.5 rounded-full text-xs font-mono font-semibold uppercase tracking-wider transition-all duration-300 glass text-[#9AA391] hover:text-[#F2F5EC] border border-white/10">
+        Partnerships & Growth (4)
+      </button>
+    </div>
+
+    <!-- 14 Service Cards Grid -->
+    <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
       
-      <!-- Service 1 -->
-      <div class="glass glass--lift p-8 flex flex-col justify-between">
+      <!-- 01: Sponsored X Posts (Content) -->
+      <div class="service-card glass glass--lift p-7 flex flex-col justify-between group transition-all" data-category="content">
         <div>
           <div class="flex items-center justify-between mb-4">
-            <span class="label-caps text-[#D4F54F]">01 / Full-Cycle</span>
-            <span class="font-mono text-xs text-[#9AA391]">From ৳75,000</span>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold border border-[#D4F54F]/30 bg-[#D4F54F]/10 text-[#D4F54F]">
+              Content
+            </span>
+            <span class="font-mono text-xs text-[#9AA391]">01 / 14</span>
           </div>
-          <h2 class="font-head text-2xl font-bold text-[#F2F5EC] mb-3">Influencer Campaigns</h2>
-          <p class="text-sm text-[#9AA391] mb-6">Complete turn-key campaign execution designed around CPA and ROAS targets.</p>
-          <ul class="space-y-2 text-xs font-mono text-[#F2F5EC] mb-8">
-            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Synchronized multi-creator launch waves</li>
-            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Full brief, hook, and script direction</li>
-            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Live attribution dashboard tracking conversions</li>
+          <h2 class="font-head text-2xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-2">
+            Sponsored X Posts
+          </h2>
+          <p class="text-sm text-[#9AA391] leading-relaxed mb-6">
+            Single posts built around your brand or product.
+          </p>
+          <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Native creator voice integration</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Draft review before publishing</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Direct link & tracking setup</li>
           </ul>
         </div>
-        <a href="influencer-campaigns.html" class="btn-swap glass glass--lime px-6 py-3 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210] self-start">
-          Explore Campaigns →
-        </a>
+        <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
+          <a href="../contact.html?service=sponsored-x-posts" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+            <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
+          </a>
+          <a href="sponsored-x-posts.html" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
+            Details <span>→</span>
+          </a>
+        </div>
       </div>
 
-      <!-- Service 2 -->
-      <div class="glass glass--lift p-8 flex flex-col justify-between">
+      <!-- 02: X Threads (Content) -->
+      <div class="service-card glass glass--lift p-7 flex flex-col justify-between group transition-all" data-category="content">
         <div>
           <div class="flex items-center justify-between mb-4">
-            <span class="label-caps text-[#D4F54F]">02 / Talent Quality</span>
-            <span class="font-mono text-xs text-[#9AA391]">From ৳45,000</span>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold border border-[#D4F54F]/30 bg-[#D4F54F]/10 text-[#D4F54F]">
+              Content
+            </span>
+            <span class="font-mono text-xs text-[#9AA391]">02 / 14</span>
           </div>
-          <h2 class="font-head text-2xl font-bold text-[#F2F5EC] mb-3">Creator Sourcing & Vetting</h2>
-          <p class="text-sm text-[#9AA391] mb-6">Audience fraud scanning and historical performance verification across 500+ vetted creators.</p>
-          <ul class="space-y-2 text-xs font-mono text-[#F2F5EC] mb-8">
-            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Fake follower & bot engagement filtration</li>
-            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Niche demographic alignment scores</li>
-            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Pre-negotiated commercial rates</li>
+          <h2 class="font-head text-2xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-2">
+            X Threads
+          </h2>
+          <p class="text-sm text-[#9AA391] leading-relaxed mb-6">
+            Educational, storytelling, product-led or launch threads.
+          </p>
+          <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Viral hook & frame structure</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Workflow & code breakdowns</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> High bookmark velocity design</li>
           </ul>
         </div>
-        <a href="creator-sourcing.html" class="btn-swap glass glass--lime px-6 py-3 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210] self-start">
-          Explore Sourcing →
-        </a>
+        <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
+          <a href="../contact.html?service=x-threads" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+            <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
+          </a>
+          <a href="x-threads.html" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
+            Details <span>→</span>
+          </a>
+        </div>
       </div>
 
-      <!-- Service 3 -->
-      <div class="glass glass--lift p-8 flex flex-col justify-between">
+      <!-- 03: Quote Reposts (Content) -->
+      <div class="service-card glass glass--lift p-7 flex flex-col justify-between group transition-all" data-category="content">
         <div>
           <div class="flex items-center justify-between mb-4">
-            <span class="label-caps text-[#D4F54F]">03 / Creative Assets</span>
-            <span class="font-mono text-xs text-[#9AA391]">From ৳50,000</span>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold border border-[#D4F54F]/30 bg-[#D4F54F]/10 text-[#D4F54F]">
+              Content
+            </span>
+            <span class="font-mono text-xs text-[#9AA391]">03 / 14</span>
           </div>
-          <h2 class="font-head text-2xl font-bold text-[#F2F5EC] mb-3">UGC & Content Production</h2>
-          <p class="text-sm text-[#9AA391] mb-6">High-converting creator videos engineered specifically for paid ads, landing pages, and organic feeds.</p>
-          <ul class="space-y-2 text-xs font-mono text-[#F2F5EC] mb-8">
-            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Multiple hook variations per video for ad testing</li>
-            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Raw file deliverables + fully edited vertical cuts</li>
-            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Perpetual digital ad usage rights</li>
+          <h2 class="font-head text-2xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-2">
+            Quote Reposts
+          </h2>
+          <p class="text-sm text-[#9AA391] leading-relaxed mb-6">
+            Relevant creators quote and boost your official posts.
+          </p>
+          <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Instant social proof & authority</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Staggered timing for momentum</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Traffic directed to main handle</li>
           </ul>
         </div>
-        <a href="ugc-content-production.html" class="btn-swap glass glass--lime px-6 py-3 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210] self-start">
-          Explore UGC →
-        </a>
+        <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
+          <a href="../contact.html?service=quote-reposts" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+            <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
+          </a>
+          <a href="quote-reposts.html" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
+            Details <span>→</span>
+          </a>
+        </div>
       </div>
 
-      <!-- Service 4 -->
-      <div class="glass glass--lift p-8 flex flex-col justify-between">
+      <!-- 04: Organic Amplification (Content) -->
+      <div class="service-card glass glass--lift p-7 flex flex-col justify-between group transition-all" data-category="content">
         <div>
           <div class="flex items-center justify-between mb-4">
-            <span class="label-caps text-[#D4F54F]">04 / Paid Scale</span>
-            <span class="font-mono text-xs text-[#9AA391]">Custom Tier</span>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold border border-[#D4F54F]/30 bg-[#D4F54F]/10 text-[#D4F54F]">
+              Content
+            </span>
+            <span class="font-mono text-xs text-[#9AA391]">04 / 14</span>
           </div>
-          <h2 class="font-head text-2xl font-bold text-[#F2F5EC] mb-3">Paid Amplification</h2>
-          <p class="text-sm text-[#9AA391] mb-6">Whitelisting creator accounts to run Meta, TikTok, and YouTube Partnership ads with direct conversion tracking.</p>
-          <ul class="space-y-2 text-xs font-mono text-[#F2F5EC] mb-8">
-            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Native creator handle advertiser access</li>
-            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> 30-50% lower customer acquisition costs (CAC)</li>
-            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Audience retargeting and lookalike seeding</li>
+          <h2 class="font-head text-2xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-2">
+            Organic Amplification
+          </h2>
+          <p class="text-sm text-[#9AA391] leading-relaxed mb-6">
+            Real likes, reposts, replies and bookmarks from engaged accounts.
+          </p>
+          <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> High bookmark velocity triggers</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Real human builder interactions</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Zero bot penalty or shadowban risk</li>
           </ul>
         </div>
-        <a href="paid-amplification.html" class="btn-swap glass glass--lime px-6 py-3 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210] self-start">
-          Explore Amplification →
-        </a>
+        <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
+          <a href="../contact.html?service=organic-amplification" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+            <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
+          </a>
+          <a href="organic-amplification.html" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
+            Details <span>→</span>
+          </a>
+        </div>
       </div>
 
-      <!-- Service 5 -->
-      <div class="glass glass--lift p-8 flex flex-col justify-between">
+      <!-- 05: Launch Campaigns (Campaigns) -->
+      <div class="service-card glass glass--lift p-7 flex flex-col justify-between group transition-all" data-category="campaigns">
         <div>
           <div class="flex items-center justify-between mb-4">
-            <span class="label-caps text-[#D4F54F]">05 / Operations</span>
-            <span class="font-mono text-xs text-[#9AA391]">Monthly Retainer</span>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold border border-[#7CB83A]/40 bg-[#7CB83A]/10 text-[#F0FFB0]">
+              Campaigns
+            </span>
+            <span class="font-mono text-xs text-[#9AA391]">05 / 14</span>
           </div>
-          <h2 class="font-head text-2xl font-bold text-[#F2F5EC] mb-3">Creator Management</h2>
-          <p class="text-sm text-[#9AA391] mb-6">We remove all operational friction: contracts, NDA compliance, product logistics, and revisions.</p>
-          <ul class="space-y-2 text-xs font-mono text-[#F2F5EC] mb-8">
-            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Single dedicated campaign manager point-of-contact</li>
-            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Strict QA on creative deliverables</li>
-            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Timely creator payout escrow & tax receipts</li>
+          <h2 class="font-head text-2xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-2">
+            Launch Campaigns
+          </h2>
+          <p class="text-sm text-[#9AA391] leading-relaxed mb-6">
+            Creator posts timed together around your product launch.
+          </p>
+          <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Coordinated launch-day surge</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Multi-angle creator coverage</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Live traffic & sign-up monitoring</li>
           </ul>
         </div>
-        <a href="creator-management.html" class="btn-swap glass glass--lime px-6 py-3 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210] self-start">
-          Explore Management →
-        </a>
+        <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
+          <a href="../contact.html?service=launch-campaigns" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+            <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
+          </a>
+          <a href="launch-campaigns.html" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
+            Details <span>→</span>
+          </a>
+        </div>
       </div>
 
-      <!-- Service 6 -->
-      <div class="glass glass--lift p-8 flex flex-col justify-between">
+      <!-- 06: Product Promotion (Campaigns) -->
+      <div class="service-card glass glass--lift p-7 flex flex-col justify-between group transition-all" data-category="campaigns">
         <div>
           <div class="flex items-center justify-between mb-4">
-            <span class="label-caps text-[#D4F54F]">06 / Proof</span>
-            <span class="font-mono text-xs text-[#9AA391]">Integrated</span>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold border border-[#7CB83A]/40 bg-[#7CB83A]/10 text-[#F0FFB0]">
+              Campaigns
+            </span>
+            <span class="font-mono text-xs text-[#9AA391]">06 / 14</span>
           </div>
-          <h2 class="font-head text-2xl font-bold text-[#F2F5EC] mb-3">Analytics & Attribution</h2>
-          <p class="text-sm text-[#9AA391] mb-6">Tracked promo codes, custom UTM links, and client dashboard providing undisputed balance sheet proof.</p>
-          <ul class="space-y-2 text-xs font-mono text-[#F2F5EC] mb-8">
-            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Real-time e-commerce revenue attribution</li>
-            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Cost-per-acquisition (CPA) & ROAS accounting</li>
-            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Comprehensive post-campaign teardown decks</li>
+          <h2 class="font-head text-2xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-2">
+            Product Promotion
+          </h2>
+          <p class="text-sm text-[#9AA391] leading-relaxed mb-6">
+            Awareness campaigns for AI, SaaS and tech products.
+          </p>
+          <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Hands-on workflow screen demos</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Conversion-focused CTA links</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Continuous buyer acquisition</li>
           </ul>
         </div>
-        <a href="analytics-reporting.html" class="btn-swap glass glass--lime px-6 py-3 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210] self-start">
-          Explore Analytics →
-        </a>
+        <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
+          <a href="../contact.html?service=product-promotion" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+            <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
+          </a>
+          <a href="product-promotion.html" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
+            Details <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 07: Multi-Creator Campaigns (Campaigns) -->
+      <div class="service-card glass glass--lift p-7 flex flex-col justify-between group transition-all" data-category="campaigns">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold border border-[#7CB83A]/40 bg-[#7CB83A]/10 text-[#F0FFB0]">
+              Campaigns
+            </span>
+            <span class="font-mono text-xs text-[#9AA391]">07 / 14</span>
+          </div>
+          <h2 class="font-head text-2xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-2">
+            Multi-Creator Campaigns
+          </h2>
+          <p class="text-sm text-[#9AA391] leading-relaxed mb-6">
+            10 to 100+ creators working under one campaign.
+          </p>
+          <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Complete category feed omnipresence</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Turnkey cohort administration</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Aggregate performance reporting</li>
+          </ul>
+        </div>
+        <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
+          <a href="../contact.html?service=multi-creator-campaigns" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+            <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
+          </a>
+          <a href="multi-creator-campaigns.html" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
+            Details <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 08: Founder/CEO Campaigns (Campaigns) -->
+      <div class="service-card glass glass--lift p-7 flex flex-col justify-between group transition-all" data-category="campaigns">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold border border-[#7CB83A]/40 bg-[#7CB83A]/10 text-[#F0FFB0]">
+              Campaigns
+            </span>
+            <span class="font-mono text-xs text-[#9AA391]">08 / 14</span>
+          </div>
+          <h2 class="font-head text-2xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-2">
+            Founder/CEO Campaigns
+          </h2>
+          <p class="text-sm text-[#9AA391] leading-relaxed mb-6">
+            Creator campaigns aimed at builders, founders and decision-makers.
+          </p>
+          <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> B2B enterprise & dev infra reach</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> High-credibility peer endorsement</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Inbound demo pipeline generation</li>
+          </ul>
+        </div>
+        <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
+          <a href="../contact.html?service=founder-ceo-campaigns" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+            <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
+          </a>
+          <a href="founder-ceo-campaigns.html" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
+            Details <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 09: Trend & Narrative Campaigns (Campaigns) -->
+      <div class="service-card glass glass--lift p-7 flex flex-col justify-between group transition-all" data-category="campaigns">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold border border-[#7CB83A]/40 bg-[#7CB83A]/10 text-[#F0FFB0]">
+              Campaigns
+            </span>
+            <span class="font-mono text-xs text-[#9AA391]">09 / 14</span>
+          </div>
+          <h2 class="font-head text-2xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-2">
+            Trend & Narrative Campaigns
+          </h2>
+          <p class="text-sm text-[#9AA391] leading-relaxed mb-6">
+            Many creators talking about one product, feature or topic at once.
+          </p>
+          <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Industry category definition</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Synchronized debate sparks</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Viral feed narrative control</li>
+          </ul>
+        </div>
+        <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
+          <a href="../contact.html?service=trend-narrative-campaigns" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+            <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
+          </a>
+          <a href="trend-narrative-campaigns.html" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
+            Details <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 10: Performance Campaigns (Campaigns) -->
+      <div class="service-card glass glass--lift p-7 flex flex-col justify-between group transition-all" data-category="campaigns">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold border border-[#7CB83A]/40 bg-[#7CB83A]/10 text-[#F0FFB0]">
+              Campaigns
+            </span>
+            <span class="font-mono text-xs text-[#9AA391]">10 / 14</span>
+          </div>
+          <h2 class="font-head text-2xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-2">
+            Performance Campaigns
+          </h2>
+          <p class="text-sm text-[#9AA391] leading-relaxed mb-6">
+            Built to hit agreed KPIs for reach, impressions or engagement.
+          </p>
+          <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Pre-agreed KPI milestone targets</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Dynamic budget re-routing</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Complete CPM, CPC & CPA audit</li>
+          </ul>
+        </div>
+        <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
+          <a href="../contact.html?service=performance-campaigns" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+            <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
+          </a>
+          <a href="performance-campaigns.html" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
+            Details <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 11: Creator Seeding (Partnerships & Growth) -->
+      <div class="service-card glass glass--lift p-7 flex flex-col justify-between group transition-all" data-category="partnerships">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold border border-[#9AA391]/30 bg-white/[0.04] text-[#F2F5EC]">
+              Partnerships & Growth
+            </span>
+            <span class="font-mono text-xs text-[#9AA391]">11 / 14</span>
+          </div>
+          <h2 class="font-head text-2xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-2">
+            Creator Seeding
+          </h2>
+          <p class="text-sm text-[#9AA391] leading-relaxed mb-6">
+            Your product or early access, sent to the right AI and tech creators.
+          </p>
+          <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> VIP beta access distribution</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> High-authority power user adoption</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Spontaneous post tracking & alerts</li>
+          </ul>
+        </div>
+        <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
+          <a href="../contact.html?service=creator-seeding" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+            <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
+          </a>
+          <a href="creator-seeding.html" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
+            Details <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 12: Influencer Outreach (Partnerships & Growth) -->
+      <div class="service-card glass glass--lift p-7 flex flex-col justify-between group transition-all" data-category="partnerships">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold border border-[#9AA391]/30 bg-white/[0.04] text-[#F2F5EC]">
+              Partnerships & Growth
+            </span>
+            <span class="font-mono text-xs text-[#9AA391]">12 / 14</span>
+          </div>
+          <h2 class="font-head text-2xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-2">
+            Influencer Outreach
+          </h2>
+          <p class="text-sm text-[#9AA391] leading-relaxed mb-6">
+            Finding creators, negotiating terms and onboarding them.
+          </p>
+          <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Direct relationships & 85%+ response</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Fair-market rate negotiations</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Legal contracts & escrow payouts</li>
+          </ul>
+        </div>
+        <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
+          <a href="../contact.html?service=influencer-outreach" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+            <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
+          </a>
+          <a href="influencer-outreach.html" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
+            Details <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 13: Long-Term Creator Partnerships (Partnerships & Growth) -->
+      <div class="service-card glass glass--lift p-7 flex flex-col justify-between group transition-all" data-category="partnerships">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold border border-[#9AA391]/30 bg-white/[0.04] text-[#F2F5EC]">
+              Partnerships & Growth
+            </span>
+            <span class="font-mono text-xs text-[#9AA391]">13 / 14</span>
+          </div>
+          <h2 class="font-head text-2xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-2">
+            Long-Term Creator Partnerships
+          </h2>
+          <p class="text-sm text-[#9AA391] leading-relaxed mb-6">
+            Ongoing work with creators, monthly or in batches.
+          </p>
+          <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Dedicated brand ambassador roster</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Strict competitor category lockout</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Compounding trust & retention</li>
+          </ul>
+        </div>
+        <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
+          <a href="../contact.html?service=long-term-creator-partnerships" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+            <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
+          </a>
+          <a href="long-term-creator-partnerships.html" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
+            Details <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 14: Custom X Campaigns (Partnerships & Growth) -->
+      <div class="service-card glass glass--lift p-7 flex flex-col justify-between group transition-all" data-category="partnerships">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold border border-[#9AA391]/30 bg-white/[0.04] text-[#F2F5EC]">
+              Partnerships & Growth
+            </span>
+            <span class="font-mono text-xs text-[#9AA391]">14 / 14</span>
+          </div>
+          <h2 class="font-head text-2xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-2">
+            Custom X Campaigns
+          </h2>
+          <p class="text-sm text-[#9AA391] leading-relaxed mb-6">
+            A creator plan designed around your goals and budget.
+          </p>
+          <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Bespoke cross-format architecture</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Engineered to exact budget parameters</li>
+            <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Strategic roadmap delivered in 48h</li>
+          </ul>
+        </div>
+        <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
+          <a href="../contact.html?service=custom-x-campaigns" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+            <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
+          </a>
+          <a href="custom-x-campaigns.html" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
+            Details <span>→</span>
+          </a>
+        </div>
       </div>
 
     </div>
@@ -235,7 +568,7 @@
       <h2 class="font-head text-3xl sm:text-5xl font-bold text-[#101210] mb-3">Ready to build your campaign?</h2>
       <p class="text-sm sm:text-base text-[#101210]/80 mb-6 max-w-lg mx-auto">Get a full creative strategy and creator shortlist proposal within 48 hours.</p>
       <a href="../contact.html" class="btn-swap inline-flex px-8 py-3.5 bg-[#101210] text-[#F2F5EC] rounded-full text-xs font-mono font-bold uppercase tracking-wider">
-        <span class="btn-text-wrap"><span class="btn-text-primary">Book a strategy call</span><span class="btn-text-clone">Book a strategy call</span></span>
+        <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
       </a>
     </div>
   </main>
@@ -247,5 +580,40 @@
   <script src="../js/bg.js"></script>
   <script src="../js/header.js"></script>
   <script src="../js/scroll.js"></script>
+  
+  <!-- Interactive Category Filtering Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabs = document.querySelectorAll('.filter-tab');
+      const cards = document.querySelectorAll('.service-card');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const filter = tab.getAttribute('data-filter');
+
+          // Update active tab styles
+          tabs.forEach(t => {
+            t.classList.remove('bg-[#D4F54F]', 'text-[#101210]', 'shadow-lg', 'shadow-[#D4F54F]/10');
+            t.classList.add('glass', 'text-[#9AA391]', 'border', 'border-white/10');
+          });
+          tab.classList.remove('glass', 'text-[#9AA391]', 'border', 'border-white/10');
+          tab.classList.add('bg-[#D4F54F]', 'text-[#101210]', 'shadow-lg', 'shadow-[#D4F54F]/10');
+
+          // Filter cards
+          cards.forEach(card => {
+            const cardCat = card.getAttribute('data-category');
+            if (filter === 'all' || cardCat === filter) {
+              card.style.display = 'flex';
+              if (window.gsap) {
+                gsap.fromTo(card, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
+              }
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
 </body>
 </html>
