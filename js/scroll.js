@@ -23,34 +23,57 @@ document.addEventListener('DOMContentLoaded', function () {
   const cursorRing = document.getElementById('custom-cursor-ring');
 
   if (cursorDot && cursorRing && !isTouch && !reduceMotion && typeof gsap !== 'undefined') {
-    const xToDot = gsap.quickTo(cursorDot, 'x', { duration: 0.1, ease: 'power2.out' });
-    const yToDot = gsap.quickTo(cursorDot, 'y', { duration: 0.1, ease: 'power2.out' });
-    const xToRing = gsap.quickTo(cursorRing, 'x', { duration: 0.28, ease: 'power2.out' });
-    const yToRing = gsap.quickTo(cursorRing, 'y', { duration: 0.28, ease: 'power2.out' });
+    document.documentElement.classList.add('has-custom-cursor');
+    gsap.set([cursorDot, cursorRing], { xPercent: -50, yPercent: -50, opacity: 0 });
+
+    const xToDot = gsap.quickTo(cursorDot, 'x', { duration: 0.08, ease: 'power2.out' });
+    const yToDot = gsap.quickTo(cursorDot, 'y', { duration: 0.08, ease: 'power2.out' });
+    const xToRing = gsap.quickTo(cursorRing, 'x', { duration: 0.25, ease: 'power2.out' });
+    const yToRing = gsap.quickTo(cursorRing, 'y', { duration: 0.25, ease: 'power2.out' });
+
+    let hasMoved = false;
 
     window.addEventListener('pointermove', e => {
+      if (!hasMoved) {
+        hasMoved = true;
+        gsap.to([cursorDot, cursorRing], { opacity: 1, duration: 0.25 });
+      }
       xToDot(e.clientX);
       yToDot(e.clientY);
       xToRing(e.clientX);
       yToRing(e.clientY);
     });
 
-    // Enlarge ring and display "View" text over interactive case study elements
-    document.querySelectorAll('a, button, .interactive-card, .case-study-card').forEach(el => {
+    document.addEventListener('mouseenter', () => {
+      if (hasMoved) {
+        gsap.to([cursorDot, cursorRing], { opacity: 1, duration: 0.2 });
+      }
+    });
+
+    document.addEventListener('mouseleave', () => {
+      gsap.to([cursorDot, cursorRing], { opacity: 0, duration: 0.2 });
+    });
+
+    // Enlarge ring and display "View" text over interactive elements
+    document.querySelectorAll('a, button, .interactive-card, .case-study-card, input, textarea, select, [role="button"]').forEach(el => {
       el.addEventListener('mouseenter', () => {
         if (el.classList.contains('case-study-card') || el.hasAttribute('data-cursor-view')) {
           cursorRing.classList.add('cursor-view');
           cursorRing.textContent = 'View';
+          gsap.to(cursorDot, { scale: 0.5, opacity: 0, duration: 0.2 });
+          gsap.to(cursorRing, { scale: 1, duration: 0.25 });
         } else {
           cursorRing.style.borderColor = 'rgba(212, 245, 79, 0.8)';
-          cursorRing.style.transform = 'translate(-50%, -50%) scale(1.35)';
+          gsap.to(cursorRing, { scale: 1.25, duration: 0.25 });
+          gsap.to(cursorDot, { scale: 1.15, rotation: 6, duration: 0.25 });
         }
       });
       el.addEventListener('mouseleave', () => {
         cursorRing.classList.remove('cursor-view');
         cursorRing.textContent = '';
-        cursorRing.style.borderColor = 'rgba(212, 245, 79, 0.45)';
-        cursorRing.style.transform = 'translate(-50%, -50%) scale(1)';
+        cursorRing.style.borderColor = 'rgba(212, 245, 79, 0.4)';
+        gsap.to(cursorRing, { scale: 1, duration: 0.25 });
+        gsap.to(cursorDot, { scale: 1, opacity: 1, rotation: 0, duration: 0.25 });
       });
     });
   } else if (isTouch) {
@@ -58,15 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (cursorRing) cursorRing.style.display = 'none';
   }
 
-  // 3. Scroll Progress Indicator (Section 9.4)
-  const progressBar = document.getElementById('scroll-progress');
-  if (progressBar) {
-    window.addEventListener('scroll', () => {
-      const h = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = h > 0 ? (window.scrollY / h) : 0;
-      progressBar.style.transform = `scaleX(${progress})`;
-    }, { passive: true });
-  }
+
 
   // 4. GSAP ScrollTrigger Animations
   if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && !reduceMotion) {
@@ -334,30 +349,31 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // 9. Page Transition Internal Link Wipe (Section 7.2)
-  const curtain = document.getElementById('page-transition-curtain');
-  if (curtain && !reduceMotion && typeof gsap !== 'undefined') {
-    document.querySelectorAll('a[href]:not([target="_blank"]):not([href^="#"]):not([href^="mailto:"]):not([href^="tel:"])').forEach(link => {
-      link.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (!href) return;
-        
-        // Skip if modifier key pressed
-        if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+  // 10. Trust Strip Infinite Marquee Dynamic Generator (Section 10.2)
+  function initTrustMarquee() {
+    const trustMarqueeTrack = document.getElementById('trust-marquee-track');
+    if (!trustMarqueeTrack) return;
+    const TRUST_BRANDS = [
+      'AURA COLLECTIVE',
+      'VELOCITY D2C',
+      'LUMINA APPAREL',
+      'KAZI GOURMET',
+      'BYTESTACK TECH',
+      'NORTHSTAR LABS',
+      'CRAVEBOX FOODS',
+      'APEX DIGITAL'
+    ];
+    window.TRUST_BRANDS = TRUST_BRANDS;
 
-        e.preventDefault();
-        gsap.to(curtain, {
-          yPercent: 0,
-          duration: 0.55,
-          ease: 'expo.inOut',
-          onComplete: () => {
-            window.location.href = href;
-          }
-        });
-      });
-    });
-
-    // Wipe down curtain on new page arrival
-    gsap.fromTo(curtain, { yPercent: 0 }, { yPercent: -100, duration: 0.65, ease: 'expo.inOut', delay: 0.05 });
+    // Generate seamless dual sequence for infinite translation
+    trustMarqueeTrack.innerHTML = [...TRUST_BRANDS, ...TRUST_BRANDS].map(brand => `
+      <span>${brand}</span>
+      <span class="text-[#D4F54F]/40 font-mono text-sm select-none" aria-hidden="true">/</span>
+    `).join('');
   }
+
+  initTrustMarquee();
 });
+
+
+

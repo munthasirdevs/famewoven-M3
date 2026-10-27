@@ -30,7 +30,6 @@
 </head>
 <body class="bg-[#080A07] text-[#F2F5EC] relative overflow-x-hidden selection:bg-[#D4F54F] selection:text-[#101210]">
 
-  <div id="scroll-progress"></div>
   <div class="grain-overlay"></div>
   <div id="custom-cursor-dot"></div>
   <div id="custom-cursor-ring"></div>
@@ -38,11 +37,11 @@
 
   <header id="main-header" class="fixed top-4 inset-x-0 z-50 px-4 transition-transform duration-300 pointer-events-none flex justify-center">
     <div id="header-pill" class="glass glass--pill max-w-[1100px] w-full px-5 py-3 flex items-center justify-between pointer-events-auto">
-      <a href="../index.html" class="flex items-center gap-3 group">
-        <svg viewBox="0 0 400 400" class="w-7 h-7" fill="#D4F54F"><path d="M 90 120 L 200 310 L 245 235 L 180 120 L 290 120 L 310 90 L 130 90 Z"/><polygon points="260,85 295,140 225,140"/></svg>
-        <span class="font-head text-xl font-bold tracking-tight text-[#F2F5EC]">Famewoven</span>
+      <a href="../index.html" class="flex items-center group focus:outline-none" aria-label="Famewoven Home">
+        <img src="../css/namelogo.png" alt="Famewoven" class="h-7 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
       </a>
       <nav class="hidden md:flex items-center gap-1">
+        <a href="../index.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#D4F54F]">Home</a>
         <a href="../services/index.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC]">Services</a>
         <a href="index.html" class="nav-link is-current text-sm font-medium px-4 py-2 text-[#D4F54F]">Work</a>
         <a href="../creators.html" class="nav-link text-sm font-medium px-4 py-2 text-[#9AA391] hover:text-[#F2F5EC]">Creators</a>
@@ -201,7 +200,7 @@
   </main>
 
   <footer class="pt-16 pb-12 border-t border-white/[0.08] bg-[#080A07] text-center text-xs font-mono text-[#9AA391]">
-    © 2026 Famewoven. Influence, Engineered.
+    © 2026 Famewoven. Where Influence Is Woven.
   </footer>
 
   <script src="../js/bg.js"></script>

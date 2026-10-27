@@ -49,19 +49,6 @@ body {
   text-transform: uppercase;
 }
 
-/* Scroll Progress Bar at very top */
-#scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: #D4F54F;
-  transform-origin: left;
-  transform: scaleX(0);
-  z-index: 1000;
-  pointer-events: none;
-}
 
 /* Noise Grain Overlay (3-4% subtle anti-banding) */
 .grain-overlay {
@@ -201,10 +188,20 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 
 /* Marquee for Trust Strip (Section 10.2) */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
 .marquee-track {
   display: flex;
   width: max-content;
   will-change: transform;
+  animation: marquee 35s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
 }
 
 .marquee-mask {
@@ -213,49 +210,61 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 
 /* Custom Cursor (Section 9.3) */
+html.has-custom-cursor,
+html.has-custom-cursor body,
+html.has-custom-cursor a,
+html.has-custom-cursor button,
+html.has-custom-cursor [role="button"],
+html.has-custom-cursor input,
+html.has-custom-cursor textarea,
+html.has-custom-cursor select {
+  cursor: none !important;
+}
+
 #custom-cursor-dot {
   position: fixed;
   top: 0;
   left: 0;
-  width: 8px;
-  height: 8px;
-  background-color: #D4F54F;
-  border-radius: 9999px;
+  width: 26px;
+  height: 26px;
+  background: url('iconnn.png') no-repeat center center / contain;
   pointer-events: none;
   z-index: 99999;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.2s ease;
+  opacity: 0;
+  filter: drop-shadow(0 0 6px rgba(212, 245, 79, 0.45));
+  will-change: transform;
 }
 
 #custom-cursor-ring {
   position: fixed;
   top: 0;
   left: 0;
-  width: 36px;
-  height: 36px;
-  border: 1px solid rgba(212, 245, 79, 0.45);
-  background: rgba(212, 245, 79, 0.05);
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(212, 245, 79, 0.4);
+  background: rgba(212, 245, 79, 0.04);
   border-radius: 9999px;
   pointer-events: none;
   z-index: 99998;
-  transform: translate(-50%, -50%);
+  opacity: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   color: #101210;
   transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
               height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
               background 0.3s ease,
-              border-color 0.3s ease,
-              opacity 0.2s ease;
+              border-color 0.3s ease;
+  will-change: transform;
 }
 
 #custom-cursor-ring.cursor-view {
-  width: 68px;
-  height: 68px;
+  width: 72px;
+  height: 72px;
   background: #D4F54F;
   border-color: #D4F54F;
   color: #101210;
@@ -281,10 +290,91 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   display: block;
 }
 
-/* Accordion GSAP state */
+/* Redesigned FAQ Accordion Styling */
+.faq-accordion-item {
+  position: relative;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.035) 0%, rgba(255, 255, 255, 0.008) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.faq-accordion-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #F0FFB0 0%, #D4F54F 50%, #7CB83A 100%);
+  opacity: 0;
+  transform: scaleY(0.3);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.faq-accordion-item:hover {
+  border-color: rgba(212, 245, 79, 0.3);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(212, 245, 79, 0.02) 100%);
+  box-shadow: 0 16px 40px -15px rgba(0, 0, 0, 0.6);
+}
+
+.faq-accordion-item.is-open {
+  border-color: rgba(212, 245, 79, 0.45);
+  background: linear-gradient(135deg, rgba(212, 245, 79, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+  box-shadow: 0 20px 50px -15px rgba(212, 245, 79, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.faq-accordion-item.is-open::before {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.faq-accordion-item .faq-trigger {
+  cursor: pointer;
+  outline: none;
+}
+
+.faq-accordion-item .faq-index {
+  transition: all 0.3s ease;
+}
+
+.faq-accordion-item:hover .faq-index {
+  color: #D4F54F;
+  border-color: rgba(212, 245, 79, 0.35);
+}
+
+.faq-accordion-item.is-open .faq-index {
+  color: #101210;
+  background-color: #D4F54F;
+  border-color: #D4F54F;
+}
+
+.faq-accordion-item .faq-icon-wrapper {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-accordion-item:hover .faq-icon-wrapper {
+  border-color: rgba(212, 245, 79, 0.4);
+  background: rgba(212, 245, 79, 0.08);
+}
+
+.faq-accordion-item.is-open .faq-icon-wrapper {
+  background: #D4F54F;
+  border-color: #D4F54F;
+  box-shadow: 0 0 16px rgba(212, 245, 79, 0.4);
+}
+
+.faq-accordion-item.is-open .faq-icon {
+  color: #101210 !important;
+}
+
 .faq-answer-inner {
   overflow: hidden;
   height: 0;
+  transition: height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Mega menu panel clipping */

@@ -9,7 +9,17 @@ window.initHero = function () {
   const heroSection = document.getElementById('hero');
   if (!heroSection) return;
 
-  const WORDS = ['fashion brands', 'food brands', 'tech startups', 'founders', 'local shops'];
+  const WORDS = [
+    'AI Tools',
+    'Automation',
+    'SaaS Product',
+    'Creators',
+    'Conglomerates',
+    'Industries',
+    'AI Agents',
+    'Tech Products',
+    'Tech Startups'
+  ];
   const CH = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const board = document.getElementById('flap-board');
   const boardContainer = document.getElementById('flap-container');
@@ -90,16 +100,10 @@ window.initHero = function () {
 
     const heroTl = gsap.timeline({ delay: 0.2 });
 
-    // Label slides in
-    heroTl.fromTo('#hero-badge', 
-      { y: 20, opacity: 0 }, 
-      { y: 0, opacity: 1, duration: 0.6, ease: 'expo.out' }
-    )
     // H1 lines rise from mask
-    .fromTo('.hero-h1-line',
+    heroTl.fromTo('.hero-h1-line',
       { yPercent: 105, opacity: 0 },
-      { yPercent: 0, opacity: 1, duration: 1.1, stagger: 0.12, ease: 'expo.out' },
-      '-=0.3'
+      { yPercent: 0, opacity: 1, duration: 1.1, stagger: 0.12, ease: 'expo.out' }
     )
     // Flap board first roll
     .add(() => {
@@ -117,17 +121,11 @@ window.initHero = function () {
       { y: 0, opacity: 1, duration: 0.6, stagger: 0.12, ease: 'power2.out' },
       '-=0.4'
     )
-    // Founding sticker pops in with elastic bounce
-    .fromTo('#founding-sticker',
-      { scale: 0, rotation: -12, opacity: 0 },
-      { scale: 1, rotation: -4, opacity: 1, duration: 1.0, ease: 'elastic.out(1, 0.5)' },
-      '-=0.3'
-    )
     // Mini campaign tracker glass card
     .fromTo('#hero-tracker-card',
       { y: 30, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' },
-      '-=0.6'
+      '-=0.4'
     );
 
     // Continuous split-flap rolling every 3.2s
