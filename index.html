@@ -277,106 +277,62 @@
 
     <!-- 10.1 Hero Section -->
     <section id="hero"
-      class="min-h-screen relative flex items-center pt-28 pb-16 px-6 sm:px-10 lg:px-16 overflow-hidden">
-      <div class="max-w-[1280px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      class="min-h-screen relative flex items-center justify-center pt-28 pb-16 px-6 sm:px-10 lg:px-16 overflow-hidden bg-[#080A07]">
 
-        <!-- Left Column: Copy & Mechanical Split-Flap Engine -->
-        <div class="lg:col-span-8 flex flex-col items-start z-10">
-          <!-- Main H1 with masked line reveal -->
-          <h1 class="font-head text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-[#F2F5EC] mb-4">
-            <span class="line-mask"><span class="hero-h1-line">Where influence</span></span>
-            <span class="line-mask"><span class="hero-h1-line text-[#D4F54F]">is woven.</span></span>
-          </h1>
+      <!-- Hero Visual Backdrop: Neon Lime Planetary Horizon -->
+      <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        <img id="hero-bg-img" src="css/Neon_Lime_Planetary_Horizon.png" alt=""
+          class="w-full h-full object-cover object-center select-none opacity-85"
+          loading="eager" fetchpriority="high">
+        <!-- Top gradient to protect header/navbar contrast -->
+        <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#080A07] via-[#080A07]/70 to-transparent"></div>
+        <!-- Bottom gradient to seamlessly blend into Trust Strip and page body -->
+        <div class="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#080A07] via-[#080A07]/80 to-transparent"></div>
+        <!-- Soft radial vignette to keep text centered in focus -->
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(8,10,7,0.35)_0%,rgba(8,10,7,0.7)_100%)]"></div>
+      </div>
 
-          <!-- Split-Flap Airport Roller Board (Section 10.1) -->
-          <div id="hero-audience-line"
-            class="flex flex-wrap items-center gap-2 sm:gap-3 text-lg sm:text-2xl font-mono text-[#F2F5EC] my-4"
-            aria-live="polite">
-            <span class="text-[#9AA391]">Built for</span>
-            <div id="flap-container" class="inline-flex items-center" aria-label="Built for AI Tools">
-              <span id="flap-board" class="flap-board"></span>
-            </div>
+      <div class="max-w-4xl w-full mx-auto flex flex-col items-center text-center z-10 relative">
+
+        <!-- Main H1 with masked line reveal -->
+        <h1 class="font-head text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-[#F2F5EC] mb-4 text-center">
+          <span class="line-mask"><span class="hero-h1-line text-[#D4F54F]">Where influence</span></span>
+          <span class="line-mask"><span class="hero-h1-line">is woven.</span></span>
+        </h1>
+
+        <!-- Split-Flap Airport Roller Board (Section 10.1) -->
+        <div id="hero-audience-line"
+          class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-lg sm:text-2xl font-mono text-[#F2F5EC] my-4 text-center"
+          aria-live="polite">
+          <span class="text-[#9AA391]">Built for</span>
+          <div id="flap-container" class="inline-flex items-center" aria-label="Built for AI Tools">
+            <span id="flap-board" class="flap-board"></span>
           </div>
-          <!-- Subtitle (max 52ch) -->
-          <p id="hero-sub" class="text-lg sm:text-xl text-[#9AA391] max-w-[52ch] mt-4 mb-8 leading-relaxed font-normal">
-            We put your AI, SaaS, or tech product in front of the creators your buyers already follow. That can be one
-            sponsored post or a launch campaign with 100+ creators.
-          </p>
-
-          <!-- CTAs -->
-          <div id="hero-ctas" class="flex flex-wrap items-center gap-4">
-            <a href="contact.html"
-              class="btn-swap glass glass--lime glass--pill px-8 py-4 text-xs font-mono font-bold uppercase tracking-wider text-[#101210] shadow-xl">
-              <span class="btn-text-wrap">
-                <span class="btn-text-primary">Book a strategy call</span>
-                <span class="btn-text-clone">Book a strategy call</span>
-              </span>
-              <svg class="btn-icon w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
-
-            <a href="services/index.html"
-              class="glass glass--pill px-7 py-4 text-xs font-mono uppercase tracking-wider text-[#F2F5EC] hover:text-[#D4F54F] transition-colors border border-white/10 hover:border-[#D4F54F]/40">
-              See services
-            </a>
-          </div>
-
-          <!-- Hero Micro Proof Strip -->
-          <div class="mt-7 flex flex-wrap items-center gap-4 sm:gap-6 text-xs font-mono text-[#9AA391]">
-            <div class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-[#D4F54F]"></span>
-              <span><span class="text-[#F2F5EC] font-semibold">500+</span> Vetted Creators</span>
-            </div>
-            <span class="text-white/20 hidden sm:inline">•</span>
-            <div class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-[#D4F54F]"></span>
-              <span><span class="text-[#F2F5EC] font-semibold">30+</span> Campaigns Executed</span>
-            </div>
-          </div>
-
         </div>
 
-        <!-- Right Column: Live Campaign Tracker Card Overlapping Helix -->
-        <div class="lg:col-span-4 flex justify-end">
-          <div id="hero-tracker-card" class="glass glass--lift p-6 w-full max-w-sm">
-            <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
-              <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-[#D4F54F]"></span>
-                <span class="label-caps text-[#F2F5EC]">Active Pipeline</span>
-              </div>
-              <span class="font-mono text-xs text-[#9AA391]">Q4 Verified</span>
-            </div>
+        <!-- Subtitle (max 52ch) -->
+        <p id="hero-sub" class="text-base sm:text-lg text-[#9AA391] max-w-xl mx-auto mt-4 mb-8 leading-relaxed font-normal text-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)]">
+          We put your AI, SaaS, or tech product in front of the creators your buyers already follow. That can be one
+          sponsored post or a launch campaign with 100+ creators.
+        </p>
 
-            <div class="space-y-4">
-              <div>
-                <div class="flex justify-between text-xs font-mono mb-1">
-                  <span class="text-[#9AA391]">Campaign Target ROAS</span>
-                  <span class="text-[#D4F54F] font-semibold" id="hero-tracker-num">0%</span>
-                </div>
-                <div class="h-2 w-full bg-white/10 rounded-full overflow-hidden">
-                  <div id="hero-tracker-fill"
-                    class="h-full bg-gradient-to-r from-[#D4F54F] to-[#7CB83A] w-0 rounded-full"></div>
-                </div>
-              </div>
+        <!-- CTAs -->
+        <div id="hero-ctas" class="flex flex-wrap items-center justify-center gap-4">
+          <a href="contact.html"
+            class="btn-swap glass glass--lime glass--pill px-8 py-4 text-xs font-mono font-bold uppercase tracking-wider text-[#101210] shadow-[0_4px_24px_rgba(212,245,79,0.3)]">
+            <span class="btn-text-wrap">
+              <span class="btn-text-primary">Book a strategy call</span>
+              <span class="btn-text-clone">Book a strategy call</span>
+            </span>
+            <svg class="btn-icon w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
 
-              <div class="grid grid-cols-2 gap-3 pt-2">
-                <div class="glass glass--sub p-3">
-                  <span class="block label-caps text-[#9AA391] text-[10px]">Tracked Clicks</span>
-                  <span class="font-mono text-sm font-semibold text-[#F2F5EC] mt-0.5 block">142,850</span>
-                </div>
-                <div class="glass glass--sub p-3">
-                  <span class="block label-caps text-[#9AA391] text-[10px]">Attrib. Revenue</span>
-                  <span class="font-mono text-sm font-semibold text-[#D4F54F] mt-0.5 block">৳4,820,000</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="mt-4 pt-3 text-[11px] font-mono text-[#9AA391] flex items-center justify-between">
-              <span>Audience Authenticity: 98.4%</span>
-              <span class="text-[#D4F54F]">Live Tracking</span>
-            </div>
-          </div>
+          <a href="services/index.html"
+            class="glass glass--pill px-7 py-4 text-xs font-mono uppercase tracking-wider text-[#F2F5EC] hover:text-[#D4F54F] transition-colors border border-white/10 hover:border-[#D4F54F]/40 backdrop-blur-md">
+            See services
+          </a>
         </div>
 
       </div>

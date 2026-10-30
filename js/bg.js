@@ -68,9 +68,8 @@
     const Z = -x * sn + z * cs;
     const s = 1 / (1.6 - Z * 0.6); // perspective scale
     
-    // Shift slightly to the right on desktop to leave breathing room for hero text,
-    // and shift right as user scrolls down
-    const xOffsetRatio = (window.innerWidth >= 1024 ? 0.62 : 0.5) + (scrollProgress * 0.15);
+    // Center helix to frame the minimal hero content
+    const xOffsetRatio = 0.5 + (scrollProgress * 0.1);
     return {
       x: W * xOffsetRatio + X * s * H * 0.48,
       y: H * 0.5 + y * s * H * 0.48,

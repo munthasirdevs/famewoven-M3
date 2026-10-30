@@ -100,6 +100,16 @@ window.initHero = function () {
 
     const heroTl = gsap.timeline({ delay: 0.2 });
 
+    // Planetary Horizon backdrop entrance
+    const heroBgImg = document.getElementById('hero-bg-img');
+    if (heroBgImg) {
+      heroTl.fromTo(heroBgImg,
+        { scale: 1.06, opacity: 0 },
+        { scale: 1.0, opacity: 0.85, duration: 1.4, ease: 'power2.out' },
+        0
+      );
+    }
+
     // H1 lines rise from mask
     heroTl.fromTo('.hero-h1-line',
       { yPercent: 105, opacity: 0 },
@@ -121,12 +131,20 @@ window.initHero = function () {
       { y: 0, opacity: 1, duration: 0.6, stagger: 0.12, ease: 'power2.out' },
       '-=0.4'
     )
-    // Mini campaign tracker glass card
-    .fromTo('#hero-tracker-card',
-      { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' },
-      '-=0.4'
-    );
+    // Micro proof strip rise
+    if (document.getElementById('hero-proof')) {
+      heroTl.fromTo('#hero-proof',
+        { y: 15, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' },
+        '-=0.3'
+      );
+    } else if (document.getElementById('hero-tracker-card')) {
+      heroTl.fromTo('#hero-tracker-card',
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' },
+        '-=0.4'
+      );
+    }
 
     // Continuous split-flap rolling every 3.2s
     if (!reduce) {
