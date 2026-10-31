@@ -1,5 +1,5 @@
 /**
- * Famewoven Geometric SVG Loader & Session Architecture
+ * Famewoven Brand Name Loader & Session Architecture
  * Spec: Section 7.1 of Blueprint (New Text Document.md)
  */
 
@@ -17,15 +17,6 @@ window.playLoader = function (done) {
     return;
   }
 
-  const paths = document.querySelectorAll('#loader-mark path, #loader-mark polygon');
-  paths.forEach(function (p) {
-    if (typeof p.getTotalLength === 'function') {
-      const L = p.getTotalLength();
-      p.style.strokeDasharray = L;
-      p.style.strokeDashoffset = L;
-    }
-  });
-
   // Check GSAP availability
   if (typeof gsap === 'undefined') {
     setTimeout(function () {
@@ -39,6 +30,20 @@ window.playLoader = function (done) {
     return;
   }
 
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) {
+    loader.remove();
+    sessionStorage.setItem('fw_seen', '1');
+    if (typeof done === 'function') done();
+    return;
+  }
+
+  const letters = document.querySelectorAll('.loader-letter');
+  const bar = document.getElementById('loader-bar');
+  const word = document.getElementById('loader-word');
+  const barWrap = document.getElementById('loader-bar-wrap');
+  const limeLetters = document.querySelectorAll('.loader-lime');
+
   const tl = gsap.timeline({
     onComplete: function () {
       sessionStorage.setItem('fw_seen', '1');
@@ -46,39 +51,52 @@ window.playLoader = function (done) {
     }
   });
 
-  tl.to(paths, {
-    strokeDashoffset: 0,
-    duration: 1.1,
-    ease: 'power2.inOut',
-    stagger: 0.15
-  })
-  .to(paths, {
-    fill: '#D4F54F',
-    stroke: 'transparent',
-    duration: 0.45
-  }, '-=0.2')
-  .from('#loader-word span', {
-    yPercent: 110,
-    duration: 0.7,
-    ease: 'expo.out'
-  }, '-=0.3')
-  .to('#loader-bar', {
-    scaleX: 1,
-    duration: 0.9,
-    ease: 'power1.inOut'
-  }, '<')
-  .to('#loader-mark, #loader-word, #loader-bar-wrap', {
-    opacity: 0,
-    y: -14,
-    duration: 0.4,
-    stagger: 0.04
-  }, '+=0.2')
-  .to(loader, {
-    yPercent: -100,
-    duration: 0.85,
-    ease: 'expo.inOut'
-  })
-  .set(loader, {
-    display: 'none'
-  });
+  // Staggered masked reveal of each letter with smooth upward snap
+  tl.set(loader, { opacity: 1 })
+    .fromTo(letters,
+      {
+        yPercent: 125,
+        opacity: 0,
+        rotateX: -40,
+        transformOrigin: '50% 100%'
+      },
+      {
+        yPercent: 0,
+        opacity: 1,
+        rotateX: 0,
+        duration: 0.85,
+        stagger: 0.045,
+        ease: 'power3.out'
+      }
+    )
+    // Progress bar fills across smoothly
+    .to(bar, {
+      scaleX: 1,
+      duration: 1.1,
+      ease: 'power2.inOut'
+    }, '-=0.55')
+    // Subtle lime accent glow breath across "woven"
+    .to(limeLetters, {
+      textShadow: '0 0 24px rgba(212, 245, 79, 0.75)',
+      duration: 0.35,
+      yoyo: true,
+      repeat: 1,
+      ease: 'sine.inOut'
+    }, '-=0.45')
+    // Clean exit of word and bar upward
+    .to([word, barWrap], {
+      y: -18,
+      opacity: 0,
+      duration: 0.4,
+      ease: 'power2.in'
+    }, '+=0.15')
+    // Curtain lifts
+    .to(loader, {
+      yPercent: -100,
+      duration: 0.8,
+      ease: 'expo.inOut'
+    })
+    .set(loader, {
+      display: 'none'
+    });
 };
