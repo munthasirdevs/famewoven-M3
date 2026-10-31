@@ -354,20 +354,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const trustMarqueeTrack = document.getElementById('trust-marquee-track');
     if (!trustMarqueeTrack) return;
     const TRUST_BRANDS = [
-      'AURA COLLECTIVE',
-      'VELOCITY D2C',
-      'LUMINA APPAREL',
-      'KAZI GOURMET',
-      'BYTESTACK TECH',
-      'NORTHSTAR LABS',
-      'CRAVEBOX FOODS',
-      'APEX DIGITAL'
+      'HeyGen',
+      'higgsfield',
+      'omneky',
+      'imagineart',
+      'flot.ai',
+      'skywork',
+      'Sintra.ai'
     ];
     window.TRUST_BRANDS = TRUST_BRANDS;
 
     // Generate seamless dual sequence for infinite translation
-    trustMarqueeTrack.innerHTML = [...TRUST_BRANDS, ...TRUST_BRANDS].map(brand => `
-      <span>${brand}</span>
+    const items = [...TRUST_BRANDS, ...TRUST_BRANDS, ...TRUST_BRANDS, ...TRUST_BRANDS];
+    trustMarqueeTrack.innerHTML = items.map(brand => `
+      <span class="whitespace-nowrap transition-colors hover:text-[#D4F54F] cursor-default">${brand}</span>
       <span class="text-[#D4F54F]/40 font-mono text-sm select-none" aria-hidden="true">/</span>
     `).join('');
   }
