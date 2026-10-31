@@ -63,133 +63,191 @@
       <p class="text-xl text-[#9AA391]">We judge campaigns by what hits the balance sheet. Browse case studies filtered by industry sector.</p>
     </div>
 
-    <!-- Filter Chips (Section 11.4: All, Fashion, Tech, F&B, Services) -->
+    <!-- Filter Chips (AI Tools & Platforms) -->
     <div class="flex flex-wrap items-center gap-2 mb-16" id="work-filters">
-      <button class="px-5 py-2 rounded-full text-xs font-mono font-semibold bg-[#D4F54F] text-[#101210] border border-[#D4F54F]">All Work</button>
-      <button class="px-5 py-2 rounded-full text-xs font-mono font-semibold glass text-[#9AA391] hover:text-[#F2F5EC] border border-white/10">Fashion</button>
-      <button class="px-5 py-2 rounded-full text-xs font-mono font-semibold glass text-[#9AA391] hover:text-[#F2F5EC] border border-white/10">Tech & Apps</button>
-      <button class="px-5 py-2 rounded-full text-xs font-mono font-semibold glass text-[#9AA391] hover:text-[#F2F5EC] border border-white/10">F&B</button>
-      <button class="px-5 py-2 rounded-full text-xs font-mono font-semibold glass text-[#9AA391] hover:text-[#F2F5EC] border border-white/10">D2C Goods</button>
+      <button data-filter="all" class="filter-btn px-5 py-2 rounded-full text-xs font-mono font-semibold bg-[#D4F54F] text-[#101210] border border-[#D4F54F] transition-all">All Companies</button>
+      <button data-filter="video" class="filter-btn px-5 py-2 rounded-full text-xs font-mono font-semibold glass text-[#9AA391] hover:text-[#F2F5EC] border border-white/10 transition-all">AI Video</button>
+      <button data-filter="adtech" class="filter-btn px-5 py-2 rounded-full text-xs font-mono font-semibold glass text-[#9AA391] hover:text-[#F2F5EC] border border-white/10 transition-all">Automation & AdTech</button>
+      <button data-filter="creative" class="filter-btn px-5 py-2 rounded-full text-xs font-mono font-semibold glass text-[#9AA391] hover:text-[#F2F5EC] border border-white/10 transition-all">Creative AI</button>
+      <button data-filter="productivity" class="filter-btn px-5 py-2 rounded-full text-xs font-mono font-semibold glass text-[#9AA391] hover:text-[#F2F5EC] border border-white/10 transition-all">Productivity & Search</button>
     </div>
 
-    <!-- Grid of Metric Cards (Masonry-less grid per Blueprint) -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+    <!-- Grid of Metric Cards: Exclusively the 7 Featured AI Companies -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24" id="case-studies-grid">
       
-      <!-- Study 1 -->
-      <a href="case-study.html" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group" data-cursor-view="true">
+      <!-- Company 1: HeyGen -->
+      <a href="case-study.html" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group transition-all" data-category="video" data-cursor-view="true">
         <div>
           <div class="flex items-center justify-between mb-8">
-            <span class="label-caps text-[#D4F54F]">Fashion & D2C</span>
-            <span class="font-mono text-xs text-[#9AA391]">6 Weeks</span>
+            <span class="label-caps text-[#D4F54F]">Generative AI Video</span>
+            <span class="font-mono text-xs text-[#9AA391]">4-Week Sprint</span>
           </div>
           <div class="font-head text-4xl sm:text-5xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-4">
-            3.4x ROAS
+            4.6x ROAS
           </div>
           <p class="text-sm text-[#9AA391] leading-relaxed">
-            Scaled seasonal collection launch for Velocity Apparel. 18 vetted creators with whitelisted Meta partnership ads.
+            Multi-creator product demo campaign across 24 AI educators & tech founders demonstrating real-time avatar translation and workflow automation.
           </p>
         </div>
         <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs text-[#9AA391]">
-          <span>Velocity Apparel</span>
+          <span class="font-bold text-[#F2F5EC]">HeyGen</span>
           <span class="text-[#D4F54F] group-hover:translate-x-1 transition-transform">Read breakdown →</span>
         </div>
       </a>
 
-      <!-- Study 2 -->
-      <a href="case-study.html" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group" data-cursor-view="true">
+      <!-- Company 2: higgsfield -->
+      <a href="case-study.html" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group transition-all" data-category="video" data-cursor-view="true">
         <div>
           <div class="flex items-center justify-between mb-8">
-            <span class="label-caps text-[#D4F54F]">F&B Delivery</span>
-            <span class="font-mono text-xs text-[#9AA391]">30 Days</span>
+            <span class="label-caps text-[#D4F54F]">Cinematic AI Video</span>
+            <span class="font-mono text-xs text-[#9AA391]">Global Launch</span>
           </div>
           <div class="font-head text-4xl sm:text-5xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-4">
-            $4.2M Rev
+            -48% CAC
           </div>
           <p class="text-sm text-[#9AA391] leading-relaxed">
-            Direct revenue tracking via personalized creator promo codes for gourmet cloud kitchen rollout across Dhaka.
+            Coordinated viral creator challenge showcasing cinematic camera control and character animation hooks, driving 420k+ qualified mobile app installs.
           </p>
         </div>
         <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs text-[#9AA391]">
-          <span>Kazi Gourmet Foods</span>
+          <span class="font-bold text-[#F2F5EC]">higgsfield</span>
           <span class="text-[#D4F54F] group-hover:translate-x-1 transition-transform">Read breakdown →</span>
         </div>
       </a>
 
-      <!-- Study 3 -->
-      <a href="case-study.html" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group" data-cursor-view="true">
+      <!-- Company 3: omneky -->
+      <a href="case-study.html" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group transition-all" data-category="adtech" data-cursor-view="true">
         <div>
           <div class="flex items-center justify-between mb-8">
-            <span class="label-caps text-[#D4F54F]">SaaS & Consumer App</span>
-            <span class="font-mono text-xs text-[#9AA391]">Sprint Cohort</span>
+            <span class="label-caps text-[#D4F54F]">AI Ad Generation</span>
+            <span class="font-mono text-xs text-[#9AA391]">B2B Pipeline</span>
           </div>
           <div class="font-head text-4xl sm:text-5xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-4">
-            -42% CAC
+            +240% Demos
           </div>
           <p class="text-sm text-[#9AA391] leading-relaxed">
-            Replaced generic graphic studio ads with authentic creator UGC testing 12 hook variations across TikTok.
+            High-signal founder breakdowns and performance marketing threads on X driving enterprise inbound demo bookings and qualified signups.
           </p>
         </div>
         <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs text-[#9AA391]">
-          <span>ByteStack Tech</span>
+          <span class="font-bold text-[#F2F5EC]">omneky</span>
           <span class="text-[#D4F54F] group-hover:translate-x-1 transition-transform">Read breakdown →</span>
         </div>
       </a>
 
-      <!-- Study 4 -->
-      <a href="case-study.html" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group" data-cursor-view="true">
+      <!-- Company 4: imagineart -->
+      <a href="case-study.html" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group transition-all" data-category="creative" data-cursor-view="true">
         <div>
           <div class="flex items-center justify-between mb-8">
-            <span class="label-caps text-[#D4F54F]">Lifestyle & Skincare</span>
-            <span class="font-mono text-xs text-[#9AA391]">Q3 Campaign</span>
+            <span class="label-caps text-[#D4F54F]">Creative AI & Art</span>
+            <span class="font-mono text-xs text-[#9AA391]">Feature Rollout</span>
           </div>
           <div class="font-head text-4xl sm:text-5xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-4">
-            2.8x ROAS
+            2.4M Views
           </div>
           <p class="text-sm text-[#9AA391] leading-relaxed">
-            Organic storytelling and routine integration across 14 beauty micro-creators with tracked discount bundles.
+            Graphic designers and digital artists sharing prompt engineering workflows and comparative render tests across YouTube shorts and X.
           </p>
         </div>
         <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs text-[#9AA391]">
-          <span>Aura Collective</span>
+          <span class="font-bold text-[#F2F5EC]">imagineart</span>
           <span class="text-[#D4F54F] group-hover:translate-x-1 transition-transform">Read breakdown →</span>
         </div>
       </a>
 
-      <!-- Study 5 -->
-      <a href="case-study.html" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group" data-cursor-view="true">
+      <!-- Company 5: flot.ai -->
+      <a href="case-study.html" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group transition-all" data-category="productivity" data-cursor-view="true">
         <div>
           <div class="flex items-center justify-between mb-8">
-            <span class="label-caps text-[#D4F54F]">Consumer Tech</span>
-            <span class="font-mono text-xs text-[#9AA391]">Holiday Blitz</span>
+            <span class="label-caps text-[#D4F54F]">AI Copilot & Desktop</span>
+            <span class="font-mono text-xs text-[#9AA391]">30-Day Blitz</span>
           </div>
           <div class="font-head text-4xl sm:text-5xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-4">
-            180k Clicks
+            68k Signups
           </div>
           <p class="text-sm text-[#9AA391] leading-relaxed">
-            YouTube desk setup integrations and unboxings with top tech reviewers driving record direct web traffic.
+            Targeted workflow integration videos with productivity curators demonstrating seamless cross-app writing and context reading on macOS and Windows.
           </p>
         </div>
         <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs text-[#9AA391]">
-          <span>NorthStar Goods</span>
+          <span class="font-bold text-[#F2F5EC]">flot.ai</span>
           <span class="text-[#D4F54F] group-hover:translate-x-1 transition-transform">Read breakdown →</span>
         </div>
       </a>
 
-      <!-- Study 6 (Pilot Program Callout) -->
-      <div class="glass glass--sub p-8 flex flex-col justify-between border-dashed border-[#D4F54F]/30 bg-[#D4F54F]/[0.02]">
+      <!-- Company 6: skywork -->
+      <a href="case-study.html" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group transition-all" data-category="productivity" data-cursor-view="true">
         <div>
-          <div class="label-caps text-[#D4F54F] mb-4">Join The Roster</div>
-          <h3 class="font-head text-2xl font-bold text-[#F2F5EC] mb-3">Your Case Study Here</h3>
+          <div class="flex items-center justify-between mb-8">
+            <span class="label-caps text-[#D4F54F]">Deep Research AI</span>
+            <span class="font-mono text-xs text-[#9AA391]">Beta Expansion</span>
+          </div>
+          <div class="font-head text-4xl sm:text-5xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-4">
+            340k Queries
+          </div>
           <p class="text-sm text-[#9AA391] leading-relaxed">
-            We are onboarding 5 founding brands for our next sprint at preferred commercial terms. We run the strategy, you get the proof.
+            Developer and researcher seeding demonstrating multi-step document synthesis and factual citation parsing against legacy search engines.
           </p>
         </div>
-        <a href="../contact.html" class="mt-8 btn-swap glass glass--lime w-full py-3.5 rounded-full text-center text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
-          Apply for Pilot Cohort
-        </a>
-      </div>
+        <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs text-[#9AA391]">
+          <span class="font-bold text-[#F2F5EC]">skywork</span>
+          <span class="text-[#D4F54F] group-hover:translate-x-1 transition-transform">Read breakdown →</span>
+        </div>
+      </a>
+
+      <!-- Company 7: Sintra.ai -->
+      <a href="case-study.html" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group transition-all" data-category="adtech" data-cursor-view="true">
+        <div>
+          <div class="flex items-center justify-between mb-8">
+            <span class="label-caps text-[#D4F54F]">AI Automation Bots</span>
+            <span class="font-mono text-xs text-[#9AA391]">Performance Push</span>
+          </div>
+          <div class="font-head text-4xl sm:text-5xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-4">
+            5.2x ROAS
+          </div>
+          <p class="text-sm text-[#9AA391] leading-relaxed">
+            Solo founder and agency operator breakdown videos demonstrating pre-built AI assistants replacing 20+ hours of repetitive manual admin work weekly.
+          </p>
+        </div>
+        <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs text-[#9AA391]">
+          <span class="font-bold text-[#F2F5EC]">Sintra.ai</span>
+          <span class="text-[#D4F54F] group-hover:translate-x-1 transition-transform">Read breakdown →</span>
+        </div>
+      </a>
 
     </div>
+
+    <!-- Client-side filter script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const filterBtns = document.querySelectorAll('#work-filters .filter-btn');
+        const cards = document.querySelectorAll('#case-studies-grid .case-study-card');
+
+        filterBtns.forEach(btn => {
+          btn.addEventListener('click', function () {
+            const filter = this.getAttribute('data-filter');
+
+            // Active button styles
+            filterBtns.forEach(b => {
+              b.className = 'filter-btn px-5 py-2 rounded-full text-xs font-mono font-semibold glass text-[#9AA391] hover:text-[#F2F5EC] border border-white/10 transition-all';
+            });
+            this.className = 'filter-btn px-5 py-2 rounded-full text-xs font-mono font-semibold bg-[#D4F54F] text-[#101210] border border-[#D4F54F] transition-all';
+
+            // Filter cards
+            cards.forEach(card => {
+              const cat = card.getAttribute('data-category');
+              if (filter === 'all' || cat === filter) {
+                card.style.display = 'flex';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+              } else {
+                card.style.display = 'none';
+              }
+            });
+          });
+        });
+      });
+    </script>
 
     <!-- Final CTA -->
     <div class="glass glass--lime p-10 sm:p-14 rounded-3xl text-center">
