@@ -468,6 +468,90 @@
       </div>
     </section>
 
+    <!-- 10.2.5 Brand Showcase Video (Autoplay on Scroll, Sound Enabled, Click to Redirect) -->
+    <section id="brand-video-section" class="py-16 sm:py-24 px-4 sm:px-8 lg:px-12 max-w-[1240px] mx-auto relative z-10" aria-label="Famewoven Brand Showcase Film">
+      <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass glass--sub border border-[#D4F54F]/30 text-[#D4F54F] font-mono text-xs uppercase tracking-wider mb-4">
+          <span class="w-2 h-2 rounded-full bg-[#D4F54F] animate-pulse"></span>
+          <span>Brand Film · The Weave In Motion</span>
+        </div>
+        <h2 class="font-head text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#F2F5EC] mb-3">
+          Where Influence Is Woven
+        </h2>
+        <p class="text-xs sm:text-sm md:text-base text-[#9AA391] max-w-xl mx-auto leading-relaxed">
+          See how our creator marketing architecture transforms algorithmic reach into verified pipeline revenue across X.
+        </p>
+      </div>
+
+      <!-- Outer Glass Card with Lime Sheen -->
+      <div class="relative group rounded-2xl sm:rounded-3xl p-2 sm:p-3.5 glass border border-white/10 hover:border-[#D4F54F]/40 shadow-[0_20px_80px_-20px_rgba(0,0,0,0.8),0_0_50px_-20px_rgba(212,245,79,0.18)] transition-all duration-500">
+        
+        <!-- Clickable Video Link Wrapper -->
+        <a href="https://x.com/famewoven" target="_blank" rel="noopener noreferrer"
+          id="brand-video-wrapper"
+          class="block relative aspect-video w-full rounded-xl sm:rounded-2xl overflow-hidden bg-[#080A07] cursor-pointer select-none"
+          data-cursor-view
+          aria-label="Watch Famewoven brand film on X (@famewoven)">
+          
+          <!-- Native Video Element -->
+          <video id="brand-showcase-video"
+            class="w-full h-full object-cover rounded-xl sm:rounded-2xl transition-transform duration-700 group-hover:scale-[1.01]"
+            playsinline
+            webkit-playsinline
+            loop
+            preload="metadata">
+            <source src="videos/famewoven.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+
+          <!-- Subtle Cinema Vignette Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30 pointer-events-none transition-opacity duration-300 group-hover:opacity-40"></div>
+
+          <!-- Top Control Strip -->
+          <div class="absolute top-3 sm:top-5 inset-x-3 sm:inset-x-5 flex items-center justify-between z-20 pointer-events-none">
+            <!-- X Handle Badge -->
+            <div class="glass glass--pill px-3.5 py-1.5 flex items-center gap-2 text-xs font-mono text-[#F2F5EC] border border-white/15 backdrop-blur-md shadow-lg transition-transform duration-300 group-hover:scale-105 pointer-events-auto">
+              <svg class="w-3.5 h-3.5 text-[#D4F54F]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+              <span class="font-semibold">@famewoven</span>
+              <span class="text-[#D4F54F] font-bold">↗</span>
+            </div>
+
+            <!-- Sound Toggle Button -->
+            <button id="brand-video-sound-btn" type="button" aria-label="Toggle Sound"
+              class="glass glass--pill px-3.5 py-1.5 flex items-center gap-2 text-xs font-mono text-[#F2F5EC] hover:text-[#D4F54F] border border-white/15 hover:border-[#D4F54F]/50 backdrop-blur-md shadow-lg transition-all duration-300 pointer-events-auto z-30">
+              <span id="sound-dot" class="w-2 h-2 rounded-full bg-[#9AA391] transition-colors"></span>
+              <svg id="sound-icon-unmuted" class="w-4 h-4 hidden text-[#D4F54F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+              </svg>
+              <svg id="sound-icon-muted" class="w-4 h-4 text-[#9AA391]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+              </svg>
+              <span id="sound-text">Sound: Muted</span>
+            </button>
+          </div>
+
+          <!-- Bottom Action Strip -->
+          <div class="absolute bottom-3 sm:bottom-5 inset-x-3 sm:inset-x-5 flex items-center justify-between z-20 pointer-events-none">
+            <div class="glass glass--pill px-3 py-1 text-[11px] font-mono text-[#9AA391] border border-white/10 backdrop-blur-md hidden sm:flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#D4F54F] animate-pulse"></span>
+              <span>Click video to redirect to https://x.com/famewoven</span>
+            </div>
+
+            <div class="glass glass--lime glass--pill px-4 py-1.5 text-xs font-mono font-bold text-[#101210] flex items-center gap-1.5 shadow-lg group-hover:scale-105 transition-transform duration-300 ml-auto pointer-events-auto">
+              <span>Redirect to X</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </div>
+          </div>
+
+        </a>
+      </div>
+    </section>
+
     <!-- 10.3 The Problem (Positioning) -->
     <section class="py-24 sm:py-32 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
       <div class="max-w-3xl mb-16">
@@ -1535,6 +1619,7 @@
   <script src="js/header.js"></script>
   <script src="js/hero.js"></script>
   <script src="js/scroll.js"></script>
+  <script src="js/brand-video.js"></script>
   <script src="js/main.js"></script>
 </body>
 
