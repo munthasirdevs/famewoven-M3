@@ -92,6 +92,16 @@ class User extends Authenticatable
         return in_array($this->role, [self::ROLE_SUPER_ADMIN, self::ROLE_ADMIN], true);
     }
 
+    public function isEditor(): bool
+    {
+        return $this->role === self::ROLE_EDITOR;
+    }
+
+    public function isViewer(): bool
+    {
+        return $this->role === self::ROLE_VIEWER;
+    }
+
     public function canManageUsers(): bool
     {
         return $this->isAdmin();
