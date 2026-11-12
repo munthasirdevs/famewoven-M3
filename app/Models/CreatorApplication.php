@@ -17,6 +17,6 @@ class CreatorApplication extends Model
         'audience_size',
         'email',
         'status',
+        'notes',
     ];
 }
-

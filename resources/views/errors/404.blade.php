@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', '404 — Page Not Found | Famewoven')
 @section('description', 'The page you are looking for does not exist on Famewoven. Return to homepage.')

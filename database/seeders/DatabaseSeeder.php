@@ -3,23 +3,50 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
     /**
      * Seed the application's database.
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // 1. Super Admin User
+        User::updateOrCreate(
+            ['email' => 'admin@famewoven.com'],
+            [
+                'name' => 'Munthasir Rahman',
+                'password' => Hash::make('Famewoven2026!'),
+                'role' => User::ROLE_SUPER_ADMIN,
+                'status' => 'active',
+                'email_verified_at' => now(),
+            ]
+        );
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // 2. Editor User
+        User::updateOrCreate(
+            ['email' => 'editor@famewoven.com'],
+            [
+                'name' => 'Editorial Lead',
+                'password' => Hash::make('Famewoven2026!'),
+                'role' => User::ROLE_EDITOR,
+                'status' => 'active',
+                'email_verified_at' => now(),
+            ]
+        );
+
+        // 3. Viewer User
+        User::updateOrCreate(
+            ['email' => 'viewer@famewoven.com'],
+            [
+                'name' => 'Analytics Viewer',
+                'password' => Hash::make('Famewoven2026!'),
+                'role' => User::ROLE_VIEWER,
+                'status' => 'active',
+                'email_verified_at' => now(),
+            ]
+        );
     }
 }

@@ -18,6 +18,6 @@ class StrategyCall extends Model
         'budget',
         'details',
         'status',
+        'notes',
     ];
 }
-
