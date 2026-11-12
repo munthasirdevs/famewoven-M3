@@ -113,6 +113,9 @@
   <!-- Global Footer -->
   @include('components.footer')
 
+  <!-- Cookie Consent & Privacy Transparency Modal -->
+  @include('components.cookie-banner')
+
   <!-- Scripts -->
   <script src="{{ asset('js/bg.js') }}"></script>
   <script src="{{ asset('js/loader.js') }}"></script>

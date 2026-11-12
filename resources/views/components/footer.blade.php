@@ -62,7 +62,13 @@
     <!-- Bottom Bar -->
     <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#9AA391]">
       <div>© 2026 Famewoven. Where Influence Is Woven.</div>
-      <div class="flex items-center gap-6">
+      <div class="flex flex-wrap items-center gap-6">
+        <button type="button" id="open-cookie-modal-btn" class="hover:text-[#D4F54F] transition-colors flex items-center gap-1.5 focus:outline-none">
+          <svg class="w-3.5 h-3.5 text-[#D4F54F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+          </svg>
+          <span>Cookie Preferences</span>
+        </button>
         <a href="#" class="hover:text-[#F2F5EC]">Privacy Policy</a>
         <a href="#" class="hover:text-[#F2F5EC]">Terms of Service</a>
         <a href="{{ url('sitemap.xml') }}" class="hover:text-[#F2F5EC]">Sitemap</a>
