@@ -191,19 +191,21 @@
       </article>
 
       <!-- Article 6: Newsletter Callout -->
-      <div class="glass glass--sub p-8 flex flex-col justify-between border-dashed border-[#D4F54F]/30 bg-[#D4F54F]/[0.02]">
+      <form action="{{ route('newsletter.store') }}" method="POST" class="glass glass--sub p-8 flex flex-col justify-between border-dashed border-[#D4F54F]/30 bg-[#D4F54F]/[0.02] newsletter-form">
+        @csrf
         <div>
           <div class="label-caps text-[#D4F54F] mb-3">Bi-Weekly Briefing</div>
           <h3 class="font-head text-2xl font-bold text-[#F2F5EC] mb-2">Subscribe to Field Notes</h3>
           <p class="text-xs text-[#9AA391] leading-relaxed mb-6">
             Raw teardowns of creator marketing campaigns, CPM changes, and algorithmic ad strategies delivered every other Tuesday.
           </p>
-          <input type="email" placeholder="work@brand.com" class="w-full px-4 py-2.5 bg-white/[0.04] border border-white/10 rounded-xl text-xs text-[#F2F5EC] focus:border-[#D4F54F] outline-none mb-3">
+          <input type="email" name="email" required placeholder="work@brand.com" class="w-full px-4 py-2.5 bg-white/[0.04] border border-white/10 rounded-xl text-xs text-[#F2F5EC] focus:border-[#D4F54F] outline-none mb-3">
+          <div class="newsletter-status text-xs font-mono hidden pb-3"></div>
         </div>
-        <button onclick="alert('Subscribed to Famewoven Insights.');" class="btn-swap glass glass--lime w-full py-3 rounded-full text-center text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+        <button type="submit" class="btn-swap glass glass--lime w-full py-3 rounded-full text-center text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
           Join 1,200+ Growth Leads
         </button>
-      </div>
+      </form>
 
     </div>
 

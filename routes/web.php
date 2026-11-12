@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InquiryController;
+use App\Http\Controllers\NewsletterController;
 
 // Core Public Pages
 Route::get('/', function () {
@@ -17,6 +18,8 @@ Route::post('/contact', [InquiryController::class, 'storeStrategyCall'])->name('
 
 Route::get('/creators', [InquiryController::class, 'showCreators'])->name('creators');
 Route::post('/creators', [InquiryController::class, 'storeCreatorApplication'])->name('creators.store');
+
+Route::post('/subscribe', [NewsletterController::class, 'store'])->name('newsletter.store');
 
 // Services Catalog & Subpages
 Route::prefix('services')->name('services.')->group(function () {

@@ -47,11 +47,13 @@
       <div class="lg:col-span-1">
         <h4 class="label-caps text-[#F2F5EC] mb-4">Stay Ahead</h4>
         <p class="text-xs text-[#9AA391] mb-3">Bi-weekly teardowns of high-converting creator campaigns.</p>
-        <form class="space-y-2" onsubmit="event.preventDefault(); alert('Subscribed to Famewoven Insights.');">
-          <input type="email" placeholder="work@brand.com" required class="w-full px-3.5 py-2 bg-white/[0.04] border border-white/10 rounded-lg text-xs text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
-          <button type="submit" class="w-full py-2 bg-[#D4F54F] text-[#101210] rounded-lg text-xs font-mono font-bold uppercase tracking-wider hover:bg-[#F0FFB0] transition-colors">
-            Subscribe
+        <form action="{{ route('newsletter.store') }}" method="POST" class="space-y-2 newsletter-form" id="footer-newsletter-form">
+          @csrf
+          <input type="email" name="email" placeholder="work@brand.com" required class="w-full px-3.5 py-2 bg-white/[0.04] border border-white/10 rounded-lg text-xs text-[#F2F5EC] focus:border-[#D4F54F] outline-none transition-colors">
+          <button type="submit" class="w-full py-2 bg-[#D4F54F] text-[#101210] rounded-lg text-xs font-mono font-bold uppercase tracking-wider hover:bg-[#F0FFB0] transition-colors flex items-center justify-center gap-1.5">
+            <span>Subscribe</span>
           </button>
+          <div class="newsletter-status text-xs font-mono hidden pt-1"></div>
         </form>
       </div>
 

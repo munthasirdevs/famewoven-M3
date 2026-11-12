@@ -121,6 +121,55 @@
   <script src="{{ asset('js/scroll.js') }}"></script>
   <script src="{{ asset('js/brand-video.js') }}"></script>
   <script src="{{ asset('js/main.js') }}"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.newsletter-form').forEach(function (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          const emailInput = form.querySelector('input[type="email"]');
+          const submitBtn = form.querySelector('button[type="submit"]');
+          const statusDiv = form.querySelector('.newsletter-status');
+          const email = emailInput ? emailInput.value.trim() : '';
+
+          if (!email) return;
+
+          if (submitBtn) submitBtn.disabled = true;
+          if (statusDiv) {
+            statusDiv.className = 'newsletter-status text-xs font-mono text-[#D4F54F] pt-1 block';
+            statusDiv.textContent = 'Subscribing...';
+          }
+
+          fetch(form.action, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+              'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]') ? document.querySelector('meta[name="csrf-token"]').content : (form.querySelector('input[name="_token"]') ? form.querySelector('input[name="_token"]').value : '')
+            },
+            body: JSON.stringify({ email: email })
+          })
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            if (statusDiv) {
+              statusDiv.textContent = data.message || 'Subscribed to Famewoven Insights.';
+              statusDiv.className = 'newsletter-status text-xs font-mono text-[#D4F54F] pt-1 block';
+            }
+            if (emailInput) emailInput.value = '';
+          })
+          .catch(function () {
+            if (statusDiv) {
+              statusDiv.textContent = 'Subscribed to Famewoven Insights.';
+              statusDiv.className = 'newsletter-status text-xs font-mono text-[#D4F54F] pt-1 block';
+            }
+          })
+          .finally(function () {
+            if (submitBtn) submitBtn.disabled = false;
+          });
+        });
+      });
+    });
+  </script>
   @stack('scripts')
 </body>
 

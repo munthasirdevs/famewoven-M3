@@ -4,6 +4,8 @@ namespace Tests\Feature;
 
 use App\Models\StrategyCall;
 use App\Models\CreatorApplication;
+use App\Models\NewsletterSubscription;
+use App\Models\ActivityLog;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -48,6 +50,10 @@ class InquiryTest extends TestCase
             'email' => 'safwan@auragoods.com',
             'company_name' => 'Aura Goods Ltd',
         ]);
+
+        $this->assertDatabaseHas('activity_logs', [
+            'event' => 'inquiry.strategy_call',
+        ]);
     }
 
     public function test_creators_page_renders_successfully(): void
@@ -86,6 +92,39 @@ class InquiryTest extends TestCase
         $this->assertDatabaseHas('creator_applications', [
             'email' => 'nabila@creators.com',
             'handle' => '@nabilatech',
+        ]);
+
+        $this->assertDatabaseHas('activity_logs', [
+            'event' => 'inquiry.creator_application',
+        ]);
+    }
+
+    public function test_newsletter_subscription_validates_email(): void
+    {
+        $response = $this->postJson('/subscribe', []);
+        $response->assertStatus(422);
+        $response->assertJsonValidationErrors(['email']);
+    }
+
+    public function test_newsletter_subscription_saves_to_database(): void
+    {
+        $response = $this->postJson('/subscribe', [
+            'email' => 'growth@startup.io',
+        ]);
+
+        $response->assertStatus(200);
+        $response->assertJson([
+            'success' => true,
+            'message' => 'Successfully subscribed to Famewoven Insights.',
+        ]);
+
+        $this->assertDatabaseHas('newsletter_subscriptions', [
+            'email' => 'growth@startup.io',
+            'status' => 'subscribed',
+        ]);
+
+        $this->assertDatabaseHas('activity_logs', [
+            'event' => 'inquiry.newsletter',
         ]);
     }
 }
