@@ -1,11 +1,11 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Performance Campaigns — Famewoven')
 @section('description', 'Built to hit agreed KPIs for reach, impressions or engagements. Performance-focused creator marketing on X with measurable outcomes.')
 
 @section('schema')
 <script type="application/ld+json">
-  {
+{
     "@@context": "https://schema.org",
     "@graph": [
       {
@@ -16,11 +16,11 @@
         "logo": {
           "@type": "ImageObject",
           "@id": "https://famewoven.com/#logo",
-          "url": "https://famewoven.com/css/namelogo.png",
-          "contentUrl": "https://famewoven.com/css/namelogo.png",
+          "url": "{{ asset('css/namelogo.png') }}",
+          "contentUrl": "{{ asset('css/namelogo.png') }}",
           "caption": "Famewoven Logo"
         },
-        "image": "https://famewoven.com/css/namelogo.png",
+        "image": "{{ asset('css/namelogo.png') }}",
         "description": "Famewoven is an elite creator marketing infrastructure agency that weaves AI, SaaS, and tech brands into creator culture with verifiable balance-sheet proof.",
         "founder": {
           "@id": "https://famewoven.com/#person"
@@ -48,26 +48,26 @@
             "@type": "ListItem",
             "position": 2,
             "name": "Services",
-            "item": "https://famewoven.com/services/index.html"
+            "item": "{{ route('services.index') }}"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Performance Campaigns",
-            "item": "https://famewoven.com/services/performance-campaigns.html"
+            "item": "{{ route('services.show', 'performance-campaigns') }}"
           }
         ]
       },
       {
         "@type": "Service",
-        "@id": "https://famewoven.com/services/performance-campaigns.html#service",
+        "@id": "{{ route('services.show', 'performance-campaigns') }}#service",
         "name": "Performance Campaigns",
         "serviceType": "Creator Marketing",
         "description": "Built to hit agreed KPIs for reach, impressions or engagements. Performance-focused creator marketing on X with measurable outcomes.",
         "provider": {
           "@id": "https://famewoven.com/#organization"
         },
-        "url": "https://famewoven.com/services/performance-campaigns.html",
+        "url": "{{ route('services.show', 'performance-campaigns') }}",
         "areaServed": "Global",
         "audience": {
           "@type": "Audience",
@@ -76,26 +76,26 @@
       },
       {
         "@type": "WebPage",
-        "@id": "https://famewoven.com/services/performance-campaigns.html#webpage",
-        "url": "https://famewoven.com/services/performance-campaigns.html",
+        "@id": "{{ route('services.show', 'performance-campaigns') }}#webpage",
+        "url": "{{ route('services.show', 'performance-campaigns') }}",
         "name": "Performance Campaigns — Famewoven",
         "isPartOf": {
           "@id": "https://famewoven.com/#website"
         },
         "about": {
-          "@id": "https://famewoven.com/services/performance-campaigns.html#service"
+          "@id": "{{ route('services.show', 'performance-campaigns') }}#service"
         },
         "description": "Built to hit agreed KPIs for reach, impressions or engagements. Performance-focused creator marketing on X with measurable outcomes."
       }
     ]
   }
-  </script>
+</script>
 @endsection
 
 @section('content')
-
-    <div class="mb-6 flex items-center gap-2 text-xs font-mono text-[#9AA391]">
-      <a href="{{ route('home') }}" class="hover:text-[#D4F54F] transition-colors">Services</a>
+<div class="pt-36 pb-24 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+<div class="mb-6 flex items-center gap-2 text-xs font-mono text-[#9AA391]">
+      <a href="{{ route('services.index') }}" class="hover:text-[#D4F54F] transition-colors">Services</a>
       <span>/</span>
       <span class="text-[#D4F54F]">Campaigns</span>
     </div>
@@ -110,10 +110,10 @@
         Built to hit agreed KPIs for reach, impressions or engagement. Ditch vanity screenshots for hard metrics, guaranteed deliverables, and clear balance sheet attribution.
       </p>
       <div class="flex flex-wrap items-center gap-4">
-        <a href="../contact.html?service=performance-campaigns" class="btn-swap glass glass--lime glass--pill px-8 py-4 text-xs font-mono font-bold uppercase tracking-wider text-[#101210] shadow-xl">
+        <a href="{{ route('contact', ['service' => 'performance-campaigns']) }}" class="btn-swap glass glass--lime glass--pill px-8 py-4 text-xs font-mono font-bold uppercase tracking-wider text-[#101210] shadow-xl">
           <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
         </a>
-        <a href="{{ route('home') }}" class="glass glass--pill px-6 py-4 text-xs font-mono uppercase tracking-wider text-[#F2F5EC] hover:text-[#D4F54F] transition-colors">
+        <a href="{{ route('services.index') }}" class="glass glass--pill px-6 py-4 text-xs font-mono uppercase tracking-wider text-[#F2F5EC] hover:text-[#D4F54F] transition-colors">
           ← All Services
         </a>
       </div>
@@ -188,9 +188,9 @@
     <div class="glass glass--lime p-10 sm:p-14 rounded-3xl text-center">
       <h2 class="font-head text-3xl sm:text-5xl font-bold text-[#101210] mb-3">Launch an outcome-driven campaign</h2>
       <p class="text-sm sm:text-base text-[#101210]/80 mb-6 max-w-lg mx-auto">Agree on KPIs upfront and let our creator network hit your targets.</p>
-      <a href="../contact.html?service=performance-campaigns" class="btn-swap inline-flex px-8 py-3.5 bg-[#101210] text-[#F2F5EC] rounded-full text-xs font-mono font-bold uppercase tracking-wider">
+      <a href="{{ route('contact', ['service' => 'performance-campaigns']) }}" class="btn-swap inline-flex px-8 py-3.5 bg-[#101210] text-[#F2F5EC] rounded-full text-xs font-mono font-bold uppercase tracking-wider">
         <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
       </a>
     </div>
-  
+</div>
 @endsection

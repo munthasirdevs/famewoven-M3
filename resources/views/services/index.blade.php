@@ -1,11 +1,11 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
-@section('title', 'Services — Famewoven | Creator Marketing Infrastructure')
-@section('description', '14 specialized creator marketing formats on X. From sponsored posts and viral threads to coordinated launch blitzes and long-term ambassador partnerships.')
+@section('title', 'Creator Marketing Services — 14 Specialized Formats on X | Famewoven')
+@section('description', "Explore Famewoven's 14 specialized creator marketing formats on X. From Sponsored Posts and Threads to Launch Campaigns and Performance Retainers.")
 
 @section('schema')
 <script type="application/ld+json">
-  {
+{
     "@@context": "https://schema.org",
     "@graph": [
       {
@@ -16,11 +16,11 @@
         "logo": {
           "@type": "ImageObject",
           "@id": "https://famewoven.com/#logo",
-          "url": "https://famewoven.com/css/namelogo.png",
-          "contentUrl": "https://famewoven.com/css/namelogo.png",
+          "url": "{{ asset('css/namelogo.png') }}",
+          "contentUrl": "{{ asset('css/namelogo.png') }}",
           "caption": "Famewoven Logo"
         },
-        "image": "https://famewoven.com/css/namelogo.png",
+        "image": "{{ asset('css/namelogo.png') }}",
         "description": "Famewoven is an elite creator marketing infrastructure agency that weaves AI, SaaS, and tech brands into creator culture with verifiable balance-sheet proof.",
         "founder": {
           "@id": "https://famewoven.com/#person"
@@ -48,14 +48,14 @@
             "@type": "ListItem",
             "position": 2,
             "name": "Services",
-            "item": "https://famewoven.com/services/index.html"
+            "item": "{{ route('services.index') }}"
           }
         ]
       },
       {
         "@type": "CollectionPage",
-        "@id": "https://famewoven.com/services/index.html#webpage",
-        "url": "https://famewoven.com/services/index.html",
+        "@id": "{{ route('services.index') }}#webpage",
+        "url": "{{ route('services.index') }}",
         "name": "Services — Famewoven | Creator Marketing Infrastructure",
         "isPartOf": {
           "@id": "https://famewoven.com/#website"
@@ -67,12 +67,12 @@
       }
     ]
   }
-  </script>
+</script>
 @endsection
 
 @section('content')
-
-    <!-- Header Hero -->
+<div class="pt-36 pb-24 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+<!-- Header Hero -->
     <div class="max-w-3xl mb-12">
       <div class="label-caps text-[#D4F54F] mb-3">Service Architecture</div>
       <h1 class="font-head text-5xl sm:text-7xl font-bold tracking-tight text-[#F2F5EC] mb-4">Services</h1>
@@ -122,7 +122,7 @@
           </ul>
         </div>
         <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
-          <a href="../contact.html?service=sponsored-x-posts" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+          <a href="{{ route('contact', ['service' => 'sponsored-x-posts']) }}" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
             <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
           </a>
           <a href="{{ route('services.show', 'sponsored-x-posts') }}" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
@@ -153,7 +153,7 @@
           </ul>
         </div>
         <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
-          <a href="../contact.html?service=x-threads" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+          <a href="{{ route('contact', ['service' => 'x-threads']) }}" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
             <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
           </a>
           <a href="{{ route('services.show', 'x-threads') }}" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
@@ -184,7 +184,7 @@
           </ul>
         </div>
         <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
-          <a href="../contact.html?service=quote-reposts" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+          <a href="{{ route('contact', ['service' => 'quote-reposts']) }}" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
             <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
           </a>
           <a href="{{ route('services.show', 'quote-reposts') }}" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
@@ -215,7 +215,7 @@
           </ul>
         </div>
         <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
-          <a href="../contact.html?service=organic-amplification" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+          <a href="{{ route('contact', ['service' => 'organic-amplification']) }}" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
             <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
           </a>
           <a href="{{ route('services.show', 'organic-amplification') }}" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
@@ -246,7 +246,7 @@
           </ul>
         </div>
         <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
-          <a href="../contact.html?service=launch-campaigns" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+          <a href="{{ route('contact', ['service' => 'launch-campaigns']) }}" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
             <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
           </a>
           <a href="{{ route('services.show', 'launch-campaigns') }}" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
@@ -277,7 +277,7 @@
           </ul>
         </div>
         <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
-          <a href="../contact.html?service=product-promotion" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+          <a href="{{ route('contact', ['service' => 'product-promotion']) }}" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
             <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
           </a>
           <a href="{{ route('services.show', 'product-promotion') }}" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
@@ -308,7 +308,7 @@
           </ul>
         </div>
         <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
-          <a href="../contact.html?service=multi-creator-campaigns" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+          <a href="{{ route('contact', ['service' => 'multi-creator-campaigns']) }}" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
             <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
           </a>
           <a href="{{ route('services.show', 'multi-creator-campaigns') }}" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
@@ -339,7 +339,7 @@
           </ul>
         </div>
         <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
-          <a href="../contact.html?service=founder-ceo-campaigns" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+          <a href="{{ route('contact', ['service' => 'founder-ceo-campaigns']) }}" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
             <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
           </a>
           <a href="{{ route('services.show', 'founder-ceo-campaigns') }}" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
@@ -370,7 +370,7 @@
           </ul>
         </div>
         <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
-          <a href="../contact.html?service=trend-narrative-campaigns" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+          <a href="{{ route('contact', ['service' => 'trend-narrative-campaigns']) }}" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
             <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
           </a>
           <a href="{{ route('services.show', 'trend-narrative-campaigns') }}" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
@@ -401,7 +401,7 @@
           </ul>
         </div>
         <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
-          <a href="../contact.html?service=performance-campaigns" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+          <a href="{{ route('contact', ['service' => 'performance-campaigns']) }}" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
             <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
           </a>
           <a href="{{ route('services.show', 'performance-campaigns') }}" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
@@ -432,7 +432,7 @@
           </ul>
         </div>
         <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
-          <a href="../contact.html?service=creator-seeding" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+          <a href="{{ route('contact', ['service' => 'creator-seeding']) }}" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
             <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
           </a>
           <a href="{{ route('services.show', 'creator-seeding') }}" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
@@ -463,7 +463,7 @@
           </ul>
         </div>
         <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
-          <a href="../contact.html?service=influencer-outreach" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+          <a href="{{ route('contact', ['service' => 'influencer-outreach']) }}" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
             <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
           </a>
           <a href="{{ route('services.show', 'influencer-outreach') }}" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
@@ -494,7 +494,7 @@
           </ul>
         </div>
         <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
-          <a href="../contact.html?service=long-term-creator-partnerships" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+          <a href="{{ route('contact', ['service' => 'long-term-creator-partnerships']) }}" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
             <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
           </a>
           <a href="{{ route('services.show', 'long-term-creator-partnerships') }}" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
@@ -525,7 +525,7 @@
           </ul>
         </div>
         <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
-          <a href="../contact.html?service=custom-x-campaigns" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+          <a href="{{ route('contact', ['service' => 'custom-x-campaigns']) }}" class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
             <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
           </a>
           <a href="{{ route('services.show', 'custom-x-campaigns') }}" class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
@@ -541,7 +541,7 @@
       <div class="label-caps text-[#D4F54F] mb-2">Standardized Process</div>
       <h3 class="font-head text-3xl font-bold text-[#F2F5EC] mb-3">Powered by The Weave System</h3>
       <p class="text-sm text-[#9AA391] max-w-xl mx-auto mb-6">Every service we offer is executed under our proven 4-step framework: Map → Match → Make → Measure.</p>
-      <a href="../index.html#weave-system-section" class="inline-flex items-center gap-2 font-mono text-sm text-[#D4F54F] hover:underline font-semibold">
+      <a href="{{ route('home') }}#weave-system-section" class="inline-flex items-center gap-2 font-mono text-sm text-[#D4F54F] hover:underline font-semibold">
         View Operating Framework <span>→</span>
       </a>
     </div>
@@ -554,5 +554,41 @@
         <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
       </a>
     </div>
-  
+</div>
 @endsection
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.filter-tab');
+  const cards = document.querySelectorAll('.service-card');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const filter = tab.getAttribute('data-filter');
+
+      // Update active tab styles
+      tabs.forEach(t => {
+        t.classList.remove('bg-[#D4F54F]', 'text-[#101210]', 'shadow-lg', 'shadow-[#D4F54F]/10');
+        t.classList.add('glass', 'text-[#9AA391]', 'border', 'border-white/10');
+      });
+      tab.classList.remove('glass', 'text-[#9AA391]', 'border', 'border-white/10');
+      tab.classList.add('bg-[#D4F54F]', 'text-[#101210]', 'shadow-lg', 'shadow-[#D4F54F]/10');
+
+      // Filter cards
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (filter === 'all' || cardCat === filter) {
+          card.style.display = 'flex';
+          if (window.gsap) {
+            gsap.fromTo(card, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
+          }
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+});
+</script>
+@endpush

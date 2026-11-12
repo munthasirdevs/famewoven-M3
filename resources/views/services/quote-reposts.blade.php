@@ -1,11 +1,11 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Quote Reposts — Famewoven')
 @section('description', 'Relevant creators quote and boost your official posts. Social proof from voices your audience already respects and follows on X.')
 
 @section('schema')
 <script type="application/ld+json">
-  {
+{
     "@@context": "https://schema.org",
     "@graph": [
       {
@@ -16,11 +16,11 @@
         "logo": {
           "@type": "ImageObject",
           "@id": "https://famewoven.com/#logo",
-          "url": "https://famewoven.com/css/namelogo.png",
-          "contentUrl": "https://famewoven.com/css/namelogo.png",
+          "url": "{{ asset('css/namelogo.png') }}",
+          "contentUrl": "{{ asset('css/namelogo.png') }}",
           "caption": "Famewoven Logo"
         },
-        "image": "https://famewoven.com/css/namelogo.png",
+        "image": "{{ asset('css/namelogo.png') }}",
         "description": "Famewoven is an elite creator marketing infrastructure agency that weaves AI, SaaS, and tech brands into creator culture with verifiable balance-sheet proof.",
         "founder": {
           "@id": "https://famewoven.com/#person"
@@ -48,26 +48,26 @@
             "@type": "ListItem",
             "position": 2,
             "name": "Services",
-            "item": "https://famewoven.com/services/index.html"
+            "item": "{{ route('services.index') }}"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Quote Reposts",
-            "item": "https://famewoven.com/services/quote-reposts.html"
+            "item": "{{ route('services.show', 'quote-reposts') }}"
           }
         ]
       },
       {
         "@type": "Service",
-        "@id": "https://famewoven.com/services/quote-reposts.html#service",
+        "@id": "{{ route('services.show', 'quote-reposts') }}#service",
         "name": "Quote Reposts",
         "serviceType": "Creator Marketing",
         "description": "Relevant creators quote and boost your official posts. Social proof from voices your audience already respects and follows on X.",
         "provider": {
           "@id": "https://famewoven.com/#organization"
         },
-        "url": "https://famewoven.com/services/quote-reposts.html",
+        "url": "{{ route('services.show', 'quote-reposts') }}",
         "areaServed": "Global",
         "audience": {
           "@type": "Audience",
@@ -76,26 +76,26 @@
       },
       {
         "@type": "WebPage",
-        "@id": "https://famewoven.com/services/quote-reposts.html#webpage",
-        "url": "https://famewoven.com/services/quote-reposts.html",
+        "@id": "{{ route('services.show', 'quote-reposts') }}#webpage",
+        "url": "{{ route('services.show', 'quote-reposts') }}",
         "name": "Quote Reposts — Famewoven",
         "isPartOf": {
           "@id": "https://famewoven.com/#website"
         },
         "about": {
-          "@id": "https://famewoven.com/services/quote-reposts.html#service"
+          "@id": "{{ route('services.show', 'quote-reposts') }}#service"
         },
         "description": "Relevant creators quote and boost your official posts. Social proof from voices your audience already respects and follows on X."
       }
     ]
   }
-  </script>
+</script>
 @endsection
 
 @section('content')
-
-    <div class="mb-6 flex items-center gap-2 text-xs font-mono text-[#9AA391]">
-      <a href="{{ route('home') }}" class="hover:text-[#D4F54F] transition-colors">Services</a>
+<div class="pt-36 pb-24 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+<div class="mb-6 flex items-center gap-2 text-xs font-mono text-[#9AA391]">
+      <a href="{{ route('services.index') }}" class="hover:text-[#D4F54F] transition-colors">Services</a>
       <span>/</span>
       <span class="text-[#D4F54F]">Content</span>
     </div>
@@ -110,10 +110,10 @@
         Relevant creators quote and boost your official posts. Turn your own brand tweets into validated industry events with organic commentary from recognized community leaders.
       </p>
       <div class="flex flex-wrap items-center gap-4">
-        <a href="../contact.html?service=quote-reposts" class="btn-swap glass glass--lime glass--pill px-8 py-4 text-xs font-mono font-bold uppercase tracking-wider text-[#101210] shadow-xl">
+        <a href="{{ route('contact', ['service' => 'quote-reposts']) }}" class="btn-swap glass glass--lime glass--pill px-8 py-4 text-xs font-mono font-bold uppercase tracking-wider text-[#101210] shadow-xl">
           <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
         </a>
-        <a href="{{ route('home') }}" class="glass glass--pill px-6 py-4 text-xs font-mono uppercase tracking-wider text-[#F2F5EC] hover:text-[#D4F54F] transition-colors">
+        <a href="{{ route('services.index') }}" class="glass glass--pill px-6 py-4 text-xs font-mono uppercase tracking-wider text-[#F2F5EC] hover:text-[#D4F54F] transition-colors">
           ← All Services
         </a>
       </div>
@@ -188,9 +188,9 @@
     <div class="glass glass--lime p-10 sm:p-14 rounded-3xl text-center">
       <h2 class="font-head text-3xl sm:text-5xl font-bold text-[#101210] mb-3">Amplify your master post</h2>
       <p class="text-sm sm:text-base text-[#101210]/80 mb-6 max-w-lg mx-auto">Get respected tech voices quote-reposting your announcement today.</p>
-      <a href="../contact.html?service=quote-reposts" class="btn-swap inline-flex px-8 py-3.5 bg-[#101210] text-[#F2F5EC] rounded-full text-xs font-mono font-bold uppercase tracking-wider">
+      <a href="{{ route('contact', ['service' => 'quote-reposts']) }}" class="btn-swap inline-flex px-8 py-3.5 bg-[#101210] text-[#F2F5EC] rounded-full text-xs font-mono font-bold uppercase tracking-wider">
         <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
       </a>
     </div>
-  
+</div>
 @endsection

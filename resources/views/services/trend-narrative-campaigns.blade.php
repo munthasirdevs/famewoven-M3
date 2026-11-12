@@ -1,11 +1,11 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Trend & Narrative Campaigns — Famewoven')
 @section('description', 'Many creators talking about one product, feature or topic at once. Shape opinions, set narratives, and dominate tech conversation on X.')
 
 @section('schema')
 <script type="application/ld+json">
-  {
+{
     "@@context": "https://schema.org",
     "@graph": [
       {
@@ -16,11 +16,11 @@
         "logo": {
           "@type": "ImageObject",
           "@id": "https://famewoven.com/#logo",
-          "url": "https://famewoven.com/css/namelogo.png",
-          "contentUrl": "https://famewoven.com/css/namelogo.png",
+          "url": "{{ asset('css/namelogo.png') }}",
+          "contentUrl": "{{ asset('css/namelogo.png') }}",
           "caption": "Famewoven Logo"
         },
-        "image": "https://famewoven.com/css/namelogo.png",
+        "image": "{{ asset('css/namelogo.png') }}",
         "description": "Famewoven is an elite creator marketing infrastructure agency that weaves AI, SaaS, and tech brands into creator culture with verifiable balance-sheet proof.",
         "founder": {
           "@id": "https://famewoven.com/#person"
@@ -48,26 +48,26 @@
             "@type": "ListItem",
             "position": 2,
             "name": "Services",
-            "item": "https://famewoven.com/services/index.html"
+            "item": "{{ route('services.index') }}"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Trend & Narrative Campaigns",
-            "item": "https://famewoven.com/services/trend-narrative-campaigns.html"
+            "item": "{{ route('services.show', 'trend-narrative-campaigns') }}"
           }
         ]
       },
       {
         "@type": "Service",
-        "@id": "https://famewoven.com/services/trend-narrative-campaigns.html#service",
+        "@id": "{{ route('services.show', 'trend-narrative-campaigns') }}#service",
         "name": "Trend & Narrative Campaigns",
         "serviceType": "Creator Marketing",
         "description": "Many creators talking about one product, feature or topic at once. Shape opinions, set narratives, and dominate tech conversation on X.",
         "provider": {
           "@id": "https://famewoven.com/#organization"
         },
-        "url": "https://famewoven.com/services/trend-narrative-campaigns.html",
+        "url": "{{ route('services.show', 'trend-narrative-campaigns') }}",
         "areaServed": "Global",
         "audience": {
           "@type": "Audience",
@@ -76,26 +76,26 @@
       },
       {
         "@type": "WebPage",
-        "@id": "https://famewoven.com/services/trend-narrative-campaigns.html#webpage",
-        "url": "https://famewoven.com/services/trend-narrative-campaigns.html",
+        "@id": "{{ route('services.show', 'trend-narrative-campaigns') }}#webpage",
+        "url": "{{ route('services.show', 'trend-narrative-campaigns') }}",
         "name": "Trend & Narrative Campaigns — Famewoven",
         "isPartOf": {
           "@id": "https://famewoven.com/#website"
         },
         "about": {
-          "@id": "https://famewoven.com/services/trend-narrative-campaigns.html#service"
+          "@id": "{{ route('services.show', 'trend-narrative-campaigns') }}#service"
         },
         "description": "Many creators talking about one product, feature or topic at once. Shape opinions, set narratives, and dominate tech conversation on X."
       }
     ]
   }
-  </script>
+</script>
 @endsection
 
 @section('content')
-
-    <div class="mb-6 flex items-center gap-2 text-xs font-mono text-[#9AA391]">
-      <a href="{{ route('home') }}" class="hover:text-[#D4F54F] transition-colors">Services</a>
+<div class="pt-36 pb-24 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+<div class="mb-6 flex items-center gap-2 text-xs font-mono text-[#9AA391]">
+      <a href="{{ route('services.index') }}" class="hover:text-[#D4F54F] transition-colors">Services</a>
       <span>/</span>
       <span class="text-[#D4F54F]">Campaigns</span>
     </div>
@@ -110,10 +110,10 @@
         Many creators talking about one product, feature or topic at once. Position your company at the center of an evolving industry paradigm shift and set the narrative agenda.
       </p>
       <div class="flex flex-wrap items-center gap-4">
-        <a href="../contact.html?service=trend-narrative-campaigns" class="btn-swap glass glass--lime glass--pill px-8 py-4 text-xs font-mono font-bold uppercase tracking-wider text-[#101210] shadow-xl">
+        <a href="{{ route('contact', ['service' => 'trend-narrative-campaigns']) }}" class="btn-swap glass glass--lime glass--pill px-8 py-4 text-xs font-mono font-bold uppercase tracking-wider text-[#101210] shadow-xl">
           <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
         </a>
-        <a href="{{ route('home') }}" class="glass glass--pill px-6 py-4 text-xs font-mono uppercase tracking-wider text-[#F2F5EC] hover:text-[#D4F54F] transition-colors">
+        <a href="{{ route('services.index') }}" class="glass glass--pill px-6 py-4 text-xs font-mono uppercase tracking-wider text-[#F2F5EC] hover:text-[#D4F54F] transition-colors">
           ← All Services
         </a>
       </div>
@@ -188,9 +188,9 @@
     <div class="glass glass--lime p-10 sm:p-14 rounded-3xl text-center">
       <h2 class="font-head text-3xl sm:text-5xl font-bold text-[#101210] mb-3">Shape the industry conversation</h2>
       <p class="text-sm sm:text-base text-[#101210]/80 mb-6 max-w-lg mx-auto">Set the narrative on X and make your solution the topic everyone debates.</p>
-      <a href="../contact.html?service=trend-narrative-campaigns" class="btn-swap inline-flex px-8 py-3.5 bg-[#101210] text-[#F2F5EC] rounded-full text-xs font-mono font-bold uppercase tracking-wider">
+      <a href="{{ route('contact', ['service' => 'trend-narrative-campaigns']) }}" class="btn-swap inline-flex px-8 py-3.5 bg-[#101210] text-[#F2F5EC] rounded-full text-xs font-mono font-bold uppercase tracking-wider">
         <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span class="btn-text-clone">Start brief</span></span>
       </a>
     </div>
-  
+</div>
 @endsection
