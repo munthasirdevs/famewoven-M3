@@ -1,11 +1,11 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
-@section('title', 'Case Studies & Work — Famewoven')
-@section('description', 'Measurable creator marketing case studies. See verified ROAS, attributed revenue, and reduced CAC across AI and tech brands like HeyGen, Higgsfield, Omneky, and more.')
+@section('title', 'Case Studies & Tracked Creator Results — Famewoven')
+@section('description', 'Verified case studies and commercial performance data for high-growth AI and tech companies on X.')
 
 @section('schema')
 <script type="application/ld+json">
-  {
+{
     "@@context": "https://schema.org",
     "@graph": [
       {
@@ -16,11 +16,11 @@
         "logo": {
           "@type": "ImageObject",
           "@id": "https://famewoven.com/#logo",
-          "url": "https://famewoven.com/css/namelogo.png",
-          "contentUrl": "https://famewoven.com/css/namelogo.png",
+          "url": "{{ asset('css/namelogo.png') }}",
+          "contentUrl": "{{ asset('css/namelogo.png') }}",
           "caption": "Famewoven Logo"
         },
-        "image": "https://famewoven.com/css/namelogo.png",
+        "image": "{{ asset('css/namelogo.png') }}",
         "description": "Famewoven is an elite creator marketing infrastructure agency that weaves AI, SaaS, and tech brands into creator culture with verifiable balance-sheet proof.",
         "founder": {
           "@id": "https://famewoven.com/#person"
@@ -48,14 +48,14 @@
             "@type": "ListItem",
             "position": 2,
             "name": "Work",
-            "item": "https://famewoven.com/work/index.html"
+            "item": "{{ route('work.index') }}"
           }
         ]
       },
       {
         "@type": "CollectionPage",
-        "@id": "https://famewoven.com/work/index.html#webpage",
-        "url": "https://famewoven.com/work/index.html",
+        "@id": "{{ route('work.index') }}#webpage",
+        "url": "{{ route('work.index') }}",
         "name": "Case Studies & Work — Famewoven",
         "isPartOf": {
           "@id": "https://famewoven.com/#website"
@@ -67,13 +67,12 @@
       }
     ]
   }
-  </script>
+</script>
 @endsection
 
 @section('content')
-
-    
-    <!-- Hero Title -->
+<div class="pt-36 pb-24 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+<!-- Hero Title -->
     <div class="max-w-3xl mb-12">
       <div class="label-caps text-[#D4F54F] mb-3">Verified Results</div>
       <h1 class="font-head text-5xl sm:text-7xl font-bold tracking-tight text-[#F2F5EC] mb-4">Results, not reach.</h1>
@@ -93,7 +92,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24" id="case-studies-grid">
       
       <!-- Company 1: HeyGen -->
-      <a href="{{ route('services.show', 'case-study') }}" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group transition-all" data-category="video" data-cursor-view="true">
+      <a href="{{ route('work.case-study') }}" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group transition-all" data-category="video" data-cursor-view="true">
         <div>
           <div class="flex items-center justify-between mb-8">
             <span class="label-caps text-[#D4F54F]">Generative AI Video</span>
@@ -113,7 +112,7 @@
       </a>
 
       <!-- Company 2: higgsfield -->
-      <a href="{{ route('services.show', 'case-study') }}" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group transition-all" data-category="video" data-cursor-view="true">
+      <a href="{{ route('work.case-study') }}" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group transition-all" data-category="video" data-cursor-view="true">
         <div>
           <div class="flex items-center justify-between mb-8">
             <span class="label-caps text-[#D4F54F]">Cinematic AI Video</span>
@@ -133,7 +132,7 @@
       </a>
 
       <!-- Company 3: omneky -->
-      <a href="{{ route('services.show', 'case-study') }}" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group transition-all" data-category="adtech" data-cursor-view="true">
+      <a href="{{ route('work.case-study') }}" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group transition-all" data-category="adtech" data-cursor-view="true">
         <div>
           <div class="flex items-center justify-between mb-8">
             <span class="label-caps text-[#D4F54F]">AI Ad Generation</span>
@@ -153,7 +152,7 @@
       </a>
 
       <!-- Company 4: imagineart -->
-      <a href="{{ route('services.show', 'case-study') }}" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group transition-all" data-category="creative" data-cursor-view="true">
+      <a href="{{ route('work.case-study') }}" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group transition-all" data-category="creative" data-cursor-view="true">
         <div>
           <div class="flex items-center justify-between mb-8">
             <span class="label-caps text-[#D4F54F]">Creative AI & Art</span>
@@ -173,7 +172,7 @@
       </a>
 
       <!-- Company 5: flot.ai -->
-      <a href="{{ route('services.show', 'case-study') }}" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group transition-all" data-category="productivity" data-cursor-view="true">
+      <a href="{{ route('work.case-study') }}" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group transition-all" data-category="productivity" data-cursor-view="true">
         <div>
           <div class="flex items-center justify-between mb-8">
             <span class="label-caps text-[#D4F54F]">AI Copilot & Desktop</span>
@@ -193,7 +192,7 @@
       </a>
 
       <!-- Company 6: skywork -->
-      <a href="{{ route('services.show', 'case-study') }}" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group transition-all" data-category="productivity" data-cursor-view="true">
+      <a href="{{ route('work.case-study') }}" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group transition-all" data-category="productivity" data-cursor-view="true">
         <div>
           <div class="flex items-center justify-between mb-8">
             <span class="label-caps text-[#D4F54F]">Deep Research AI</span>
@@ -213,7 +212,7 @@
       </a>
 
       <!-- Company 7: Sintra.ai -->
-      <a href="{{ route('services.show', 'case-study') }}" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group transition-all" data-category="adtech" data-cursor-view="true">
+      <a href="{{ route('work.case-study') }}" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group transition-all" data-category="adtech" data-cursor-view="true">
         <div>
           <div class="flex items-center justify-between mb-8">
             <span class="label-caps text-[#D4F54F]">AI Automation Bots</span>
@@ -274,6 +273,5 @@
         <span class="btn-text-wrap"><span class="btn-text-primary">Book a strategy call</span><span class="btn-text-clone">Book a strategy call</span></span>
       </a>
     </div>
-
-  
+</div>
 @endsection

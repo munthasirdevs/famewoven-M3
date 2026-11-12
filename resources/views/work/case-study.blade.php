@@ -1,11 +1,11 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
-@section('title', '4.6x ROAS in 4 Weeks — HeyGen AI Case Study | Famewoven')
-@section('description', 'How HeyGen generated $3.84M in verified pipeline revenue with a 4.6x ROAS across 24 vetted AI creators and whitelisted paid social ads.')
+@section('title', 'HeyGen Case Study — 4.6x ROAS in 4 Weeks | Famewoven')
+@section('description', 'How HeyGen generated $3.84M in tracked pipeline using 24 vetted AI creators with verified attribution on X.')
 
 @section('schema')
 <script type="application/ld+json">
-  {
+{
     "@@context": "https://schema.org",
     "@graph": [
       {
@@ -16,11 +16,11 @@
         "logo": {
           "@type": "ImageObject",
           "@id": "https://famewoven.com/#logo",
-          "url": "https://famewoven.com/css/namelogo.png",
-          "contentUrl": "https://famewoven.com/css/namelogo.png",
+          "url": "{{ asset('css/namelogo.png') }}",
+          "contentUrl": "{{ asset('css/namelogo.png') }}",
           "caption": "Famewoven Logo"
         },
-        "image": "https://famewoven.com/css/namelogo.png",
+        "image": "{{ asset('css/namelogo.png') }}",
         "description": "Famewoven is an elite creator marketing infrastructure agency that weaves AI, SaaS, and tech brands into creator culture with verifiable balance-sheet proof.",
         "founder": {
           "@id": "https://famewoven.com/#person"
@@ -51,10 +51,10 @@
         "worksFor": {
           "@id": "https://famewoven.com/#organization"
         },
-        "url": "https://famewoven.com/about.html",
+        "url": "{{ route('about') }}",
         "disambiguatingDescription": "Founder and Systems Architect of Famewoven, specializing in quantitative creator distribution networks and AI marketing systems. Frequently transliterated or searched as Muntasir Rahman.",
         "sameAs": [
-          "https://famewoven.com/about.html",
+          "{{ route('about') }}",
           "https://github.com/munthasir"
         ]
       },
@@ -71,21 +71,21 @@
             "@type": "ListItem",
             "position": 2,
             "name": "Work",
-            "item": "https://famewoven.com/work/index.html"
+            "item": "{{ route('work.index') }}"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "HeyGen AI Case Study",
-            "item": "https://famewoven.com/work/case-study.html"
+            "item": "{{ route('work.case-study') }}"
           }
         ]
       },
       {
         "@type": "Article",
-        "@id": "https://famewoven.com/work/case-study.html#article",
+        "@id": "{{ route('work.case-study') }}#article",
         "headline": "4.6x ROAS in 4 Weeks — HeyGen AI Case Study",
-        "url": "https://famewoven.com/work/case-study.html",
+        "url": "{{ route('work.case-study') }}",
         "description": "How HeyGen generated $3.84M in verified pipeline revenue with a 4.6x ROAS across 24 vetted AI creators and whitelisted paid social ads.",
         "author": {
           "@id": "https://famewoven.com/#person"
@@ -95,20 +95,19 @@
         },
         "datePublished": "2026-10-15T00:00:00+06:00",
         "dateModified": "2026-11-01T00:00:00+06:00",
-        "mainEntityOfPage": "https://famewoven.com/work/case-study.html",
-        "image": "https://famewoven.com/css/namelogo.png"
+        "mainEntityOfPage": "{{ route('work.case-study') }}",
+        "image": "{{ asset('css/namelogo.png') }}"
       }
     ]
   }
-  </script>
+</script>
 @endsection
 
 @section('content')
-
-    
-    <!-- Breadcrumb -->
+<div class="pt-36 pb-24 px-6 sm:px-10 lg:px-16 max-w-[1000px] mx-auto">
+<!-- Breadcrumb -->
     <div class="mb-8 font-mono text-xs text-[#9AA391]">
-      <a href="{{ route('home') }}" class="hover:text-[#F2F5EC]">Case Studies</a> / <span class="text-[#D4F54F]">HeyGen</span>
+      <a href="{{ route('work.index') }}" class="hover:text-[#F2F5EC]">Case Studies</a> / <span class="text-[#D4F54F]">HeyGen</span>
     </div>
 
     <!-- H1 = The Result (Blueprint spec 11.4) -->
@@ -246,6 +245,5 @@
         <span class="btn-text-wrap"><span class="btn-text-primary">Book a strategy call</span><span class="btn-text-clone">Book a strategy call</span></span>
       </a>
     </div>
-
-  
+</div>
 @endsection

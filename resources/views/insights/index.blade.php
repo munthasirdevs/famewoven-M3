@@ -1,11 +1,11 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
-@section('title', 'Insights & Research — Famewoven')
-@section('description', 'Strategic research and teardowns on creator marketing, multi-touch attribution, whitelisting economics, and performance scaling.')
+@section('title', 'Insights & Playbooks — Famewoven | Creator Marketing')
+@section('description', 'Data-driven guides, campaign blueprints, and creator economy teardowns for AI and tech brands.')
 
 @section('schema')
 <script type="application/ld+json">
-  {
+{
     "@@context": "https://schema.org",
     "@graph": [
       {
@@ -16,11 +16,11 @@
         "logo": {
           "@type": "ImageObject",
           "@id": "https://famewoven.com/#logo",
-          "url": "https://famewoven.com/css/namelogo.png",
-          "contentUrl": "https://famewoven.com/css/namelogo.png",
+          "url": "{{ asset('css/namelogo.png') }}",
+          "contentUrl": "{{ asset('css/namelogo.png') }}",
           "caption": "Famewoven Logo"
         },
-        "image": "https://famewoven.com/css/namelogo.png",
+        "image": "{{ asset('css/namelogo.png') }}",
         "description": "Famewoven is an elite creator marketing infrastructure agency that weaves AI, SaaS, and tech brands into creator culture with verifiable balance-sheet proof.",
         "founder": {
           "@id": "https://famewoven.com/#person"
@@ -48,14 +48,14 @@
             "@type": "ListItem",
             "position": 2,
             "name": "Insights",
-            "item": "https://famewoven.com/insights/index.html"
+            "item": "{{ route('insights') }}"
           }
         ]
       },
       {
         "@type": "CollectionPage",
-        "@id": "https://famewoven.com/insights/index.html#webpage",
-        "url": "https://famewoven.com/insights/index.html",
+        "@id": "{{ route('insights') }}#webpage",
+        "url": "{{ route('insights') }}",
         "name": "Insights & Research — Famewoven",
         "isPartOf": {
           "@id": "https://famewoven.com/#website"
@@ -67,13 +67,12 @@
       }
     ]
   }
-  </script>
+</script>
 @endsection
 
 @section('content')
-
-    
-    <!-- Title -->
+<div class="pt-36 pb-24 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+<!-- Title -->
     <div class="max-w-3xl mb-12">
       <div class="label-caps text-[#D4F54F] mb-3">Field Notes & Methodologies</div>
       <h1 class="font-head text-5xl sm:text-7xl font-bold tracking-tight text-[#F2F5EC] mb-4">Insights</h1>
@@ -216,6 +215,5 @@
         <span class="btn-text-wrap"><span class="btn-text-primary">Book a strategy call</span><span class="btn-text-clone">Book a strategy call</span></span>
       </a>
     </div>
-
-  
+</div>
 @endsection

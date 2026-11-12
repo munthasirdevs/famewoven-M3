@@ -85,7 +85,7 @@
   <!-- Background Weave Helix Canvas -->
   <canvas id="bg" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
 
-  @if(!isset($hideLoader) || !$hideLoader)
+  @if(request()->is('/') && (!isset($hideLoader) || !$hideLoader))
   <!-- Loading Screen (Session controlled) -->
   <div id="loader" class="fixed inset-0 z-[999] bg-[#080A07] grid place-items-center">
     <div class="text-center px-4 max-w-lg w-full">
@@ -125,3 +125,4 @@
 </body>
 
 </html>
+

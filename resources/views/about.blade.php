@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'About Us — Famewoven | The Infrastructure Behind Influence')
+@section('title', 'About Us â€” Famewoven | The Infrastructure Behind Influence')
 @section('description', 'We build the infrastructure behind influence. Learn about our operating principles, origin story, and founder Munthasir Rahman (transliterated as Muntasir Rahman).')
 
 @section('schema')
 <script type="application/ld+json">
-  {
+{
     "@@context": "https://schema.org",
     "@graph": [
       {
@@ -16,11 +16,11 @@
         "logo": {
           "@type": "ImageObject",
           "@id": "https://famewoven.com/#logo",
-          "url": "https://famewoven.com/css/namelogo.png",
-          "contentUrl": "https://famewoven.com/css/namelogo.png",
+          "url": "{{ asset('css/namelogo.png') }}",
+          "contentUrl": "{{ asset('css/namelogo.png') }}",
           "caption": "Famewoven Logo"
         },
-        "image": "https://famewoven.com/css/namelogo.png",
+        "image": "{{ asset('css/namelogo.png') }}",
         "description": "Famewoven is an elite creator marketing infrastructure agency that weaves AI, SaaS, and tech brands into creator culture with verifiable balance-sheet proof.",
         "founder": {
           "@id": "https://famewoven.com/#person"
@@ -51,10 +51,10 @@
         "worksFor": {
           "@id": "https://famewoven.com/#organization"
         },
-        "url": "https://famewoven.com/about.html",
+        "url": "{{ route('about') }}",
         "disambiguatingDescription": "Founder and Systems Architect of Famewoven, specializing in quantitative creator distribution networks and AI marketing systems. Frequently transliterated or searched as Muntasir Rahman.",
         "sameAs": [
-          "https://famewoven.com/about.html",
+          "{{ route('about') }}",
           "https://github.com/munthasir"
         ]
       },
@@ -63,7 +63,7 @@
         "@id": "https://famewoven.com/#website",
         "url": "https://famewoven.com/",
         "name": "Famewoven",
-        "description": "Where Influence Is Woven — Creator Marketing Agency",
+        "description": "Where Influence Is Woven â€” Creator Marketing Agency",
         "publisher": {
           "@id": "https://famewoven.com/#organization"
         },
@@ -82,15 +82,15 @@
             "@type": "ListItem",
             "position": 2,
             "name": "About",
-            "item": "https://famewoven.com/about.html"
+            "item": "{{ route('about') }}"
           }
         ]
       },
       {
         "@type": "AboutPage",
-        "@id": "https://famewoven.com/about.html#webpage",
-        "url": "https://famewoven.com/about.html",
-        "name": "About Us — Famewoven | The Infrastructure Behind Influence",
+        "@id": "{{ route('about') }}#webpage",
+        "url": "{{ route('about') }}",
+        "name": "About Us â€” Famewoven | The Infrastructure Behind Influence",
         "isPartOf": {
           "@id": "https://famewoven.com/#website"
         },
@@ -106,13 +106,12 @@
       }
     ]
   }
-  </script>
+</script>
 @endsection
 
 @section('content')
-
-    
-    <!-- Hero (Blueprint spec 11.5) -->
+<div class="pt-36 pb-24 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+<!-- Hero (Blueprint spec 11.5) -->
     <div class="max-w-4xl mb-24">
       <div class="label-caps text-[#D4F54F] mb-3">Our Mandate</div>
       <h1 class="font-head text-4xl sm:text-7xl font-bold tracking-tight text-[#F2F5EC] mb-8 leading-[1.05]">
@@ -128,7 +127,7 @@
           Famewoven was built to replace that chaos with software-like precision. We engineer campaigns around real financial attribution: multi-layer fraud vetting, direct response creative hooks, whitelisted social ad rights, and tracked e-commerce promo codes.
         </p>
         <p>
-          Headquartered in Dhaka with global operating standards, we weave growth brands into authentic creator culture—and track every single dollar earned along the way.
+          Headquartered in Dhaka with global operating standards, we weave growth brands into authentic creator cultureâ€”and track every single dollar earned along the way.
         </p>
       </div>
     </div>
@@ -232,7 +231,5 @@
         <span class="btn-text-wrap"><span class="btn-text-primary">Book a strategy call</span><span class="btn-text-clone">Book a strategy call</span></span>
       </a>
     </div>
-
-  
+</div>
 @endsection
-
