@@ -20,3 +20,4 @@ class StrategyCall extends Model
         'status',
     ];
 }
+

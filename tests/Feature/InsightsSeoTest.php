@@ -28,3 +28,4 @@ class InsightsSeoTest extends TestCase
         $response->assertSee('https://famewoven.com', false);
     }
 }
+
