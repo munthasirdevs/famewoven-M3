@@ -20,6 +20,7 @@
 /storage/pail
 /vendor
 /legacy_static
+/scratch
 Homestead.json
 Homestead.yaml
 Thumbs.db
