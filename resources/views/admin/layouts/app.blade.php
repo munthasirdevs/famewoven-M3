@@ -139,6 +139,23 @@
           Logs & Intelligence
         </div>
 
+        <!-- Traffic & Visitor Analytics -->
+        <a href="{{ route('admin.traffic.index') }}"
+          class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-mono font-medium transition-colors {{ request()->routeIs('admin.traffic.*') ? 'bg-[#D4F54F] text-[#101210] font-bold shadow-lg shadow-[#D4F54F]/10' : 'text-[#9AA391] hover:text-[#F2F5EC] hover:bg-white/[0.04]' }}">
+          <div class="flex items-center gap-3">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+            <span>Traffic &amp; Visitors</span>
+          </div>
+          @php $todayHits = \App\Models\VisitorTraffic::whereDate('created_at', today())->count(); @endphp
+          @if($todayHits > 0)
+          <span class="px-2 py-0.5 rounded-full text-[10px] font-bold {{ request()->routeIs('admin.traffic.*') ? 'bg-[#101210] text-[#D4F54F]' : 'bg-[#D4F54F]/20 text-[#D4F54F]' }}">
+            {{ $todayHits }}
+          </span>
+          @endif
+        </a>
+
         <!-- Activity Logs -->
         <a href="{{ route('admin.logs.activity') }}"
           class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-mono font-medium transition-colors {{ request()->routeIs('admin.logs.activity') ? 'bg-[#D4F54F] text-[#101210] font-bold shadow-lg shadow-[#D4F54F]/10' : 'text-[#9AA391] hover:text-[#F2F5EC] hover:bg-white/[0.04]' }}">

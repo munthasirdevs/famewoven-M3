@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\LogController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\TrafficController;
 
 // Admin Authentication Routes (Guest accessible)
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -47,6 +48,12 @@ Route::middleware(['role'])->prefix('admin')->name('admin.')->group(function () 
     Route::get('/subscribers/export', [SubscriberController::class, 'export'])->name('subscribers.export')->middleware('role:super_admin,admin');
     Route::patch('/subscribers/{subscriber}/toggle', [SubscriberController::class, 'toggle'])->name('subscribers.toggle')->middleware('role:super_admin,admin,editor');
     Route::delete('/subscribers/{subscriber}', [SubscriberController::class, 'destroy'])->name('subscribers.destroy')->middleware('role:super_admin,admin');
+
+    // Traffic & Visitor Intelligence
+    Route::get('/traffic', [TrafficController::class, 'index'])->name('traffic.index');
+    Route::get('/traffic/visitors', [TrafficController::class, 'visitors'])->name('traffic.visitors');
+    Route::get('/traffic/export', [TrafficController::class, 'export'])->name('traffic.export')->middleware('role:super_admin,admin');
+    Route::post('/traffic/purge', [TrafficController::class, 'purge'])->name('traffic.purge')->middleware('role:super_admin,admin');
 
     // Activity Logs & Audit Trail
     Route::get('/logs/activity', [LogController::class, 'activityLogs'])->name('logs.activity');
