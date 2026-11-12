@@ -51,7 +51,7 @@
           if (!video.muted) {
             video.muted = true;
             updateSoundUI(false);
-            video.play().catch(function () {});
+            video.play().catch(function () { });
           }
         });
       }
@@ -72,7 +72,7 @@
         }).catch(function () {
           video.muted = true;
           updateSoundUI(false);
-          video.play().catch(function () {});
+          video.play().catch(function () { });
         });
       }
     }
