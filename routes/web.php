@@ -53,6 +53,15 @@ Route::get('/insights', function () {
     return view('insights.index');
 })->name('insights');
 
+// SEO Endpoints
+Route::get('/robots.txt', function () {
+    return response(file_get_contents(public_path('robots.txt')), 200, ['Content-Type' => 'text/plain']);
+});
+
+Route::get('/sitemap.xml', function () {
+    return response(file_get_contents(public_path('sitemap.xml')), 200, ['Content-Type' => 'application/xml']);
+});
+
 // Fallback Route (404 Page)
 Route::fallback(function () {
     return response()->view('errors.404', [], 404);
