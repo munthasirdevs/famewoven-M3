@@ -1,29 +1,29 @@
 @extends('layouts.app')
 
-@section('title', 'Famewoven � Where Influence Is Woven | Creator Marketing Agency')
+@section('title', 'Famewoven — Where Influence Is Woven | Creator Marketing Agency')
 @section('description', 'Famewoven weaves brands into creator culture, and tracks every dollar of it. Creator marketing, influencer campaigns, UGC production, and paid amplification for high-growth AI and tech companies.')
 
 @section('schema')
 <script type="application/ld+json">
-  {
+{
     "@@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
-        "@id": "https://famewoven.com/#organization",
+        "@id": "{{ route('home') }}#organization",
         "name": "Famewoven",
-        "url": "https://famewoven.com/",
+        "url": "{{ route('home') }}",
         "logo": {
           "@type": "ImageObject",
-          "@id": "https://famewoven.com/#logo",
-          "url": "https://famewoven.com/css/namelogo.png",
-          "contentUrl": "https://famewoven.com/css/namelogo.png",
+          "@id": "{{ route('home') }}#logo",
+          "url": "{{ asset('css/namelogo.png') }}",
+          "contentUrl": "{{ asset('css/namelogo.png') }}",
           "caption": "Famewoven Logo"
         },
-        "image": "https://famewoven.com/css/namelogo.png",
+        "image": "{{ asset('css/namelogo.png') }}",
         "description": "Famewoven is an elite creator marketing infrastructure agency that weaves AI, SaaS, and tech brands into creator culture with verifiable balance-sheet proof.",
         "founder": {
-          "@id": "https://famewoven.com/#person"
+          "@id": "{{ route('home') }}#person"
         },
         "address": {
           "@type": "PostalAddress",
@@ -37,7 +37,7 @@
       },
       {
         "@type": "Person",
-        "@id": "https://famewoven.com/#person",
+        "@id": "{{ route('home') }}#person",
         "name": "Munthasir Rahman",
         "alternateName": [
           "Munthasir",
@@ -49,48 +49,46 @@
         ],
         "jobTitle": "Managing Partner & Systems Architect",
         "worksFor": {
-          "@id": "https://famewoven.com/#organization"
+          "@id": "{{ route('home') }}#organization"
         },
-        "url": "https://famewoven.com/about.html",
+        "url": "{{ route('home') }}about.html",
         "disambiguatingDescription": "Founder and Systems Architect of Famewoven, specializing in quantitative creator distribution networks and AI marketing systems. Frequently transliterated or searched as Muntasir Rahman.",
         "sameAs": [
-          "https://famewoven.com/about.html",
+          "{{ route('home') }}about.html",
           "https://github.com/munthasir"
         ]
       },
       {
         "@type": "WebSite",
-        "@id": "https://famewoven.com/#website",
-        "url": "https://famewoven.com/",
+        "@id": "{{ route('home') }}#website",
+        "url": "{{ route('home') }}",
         "name": "Famewoven",
-        "description": "Where Influence Is Woven � Creator Marketing Agency",
+        "description": "Where Influence Is Woven — Creator Marketing Agency",
         "publisher": {
-          "@id": "https://famewoven.com/#organization"
+          "@id": "{{ route('home') }}#organization"
         },
         "inLanguage": "en-US"
       },
       {
         "@type": "WebPage",
-        "@id": "https://famewoven.com/#webpage",
-        "url": "https://famewoven.com/",
-        "name": "Famewoven � Where Influence Is Woven | Creator Marketing Agency",
+        "@id": "{{ route('home') }}#webpage",
+        "url": "{{ route('home') }}",
+        "name": "Famewoven — Where Influence Is Woven | Creator Marketing Agency",
         "isPartOf": {
-          "@id": "https://famewoven.com/#website"
+          "@id": "{{ route('home') }}#website"
         },
         "about": {
-          "@id": "https://famewoven.com/#organization"
+          "@id": "{{ route('home') }}#organization"
         },
         "description": "Famewoven weaves brands into creator culture, and tracks every dollar of it. Creator marketing, influencer campaigns, UGC production, and paid amplification."
       }
     ]
   }
-  </script>
+</script>
 @endsection
 
 @section('content')
-
-
-    <!-- 10.1 Hero Section -->
+<!-- 10.1 Hero Section -->
     <section id="hero"
       class="min-h-screen relative flex items-center justify-center pt-28 pb-16 px-6 sm:px-10 lg:px-16 overflow-hidden bg-[#080A07]">
 
@@ -200,7 +198,7 @@
       <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
         <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass glass--sub border border-[#D4F54F]/30 text-[#D4F54F] font-mono text-xs uppercase tracking-wider mb-4">
           <span class="w-2 h-2 rounded-full bg-[#D4F54F] animate-pulse"></span>
-          <span>Brand Film � The Weave In Motion</span>
+          <span>Brand Film · The Weave In Motion</span>
         </div>
         <h2 class="font-head text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#F2F5EC] mb-3">
           Where Influence Is Woven
@@ -218,7 +216,7 @@
           id="brand-video-wrapper"
           class="block relative aspect-video w-full rounded-xl sm:rounded-2xl overflow-hidden bg-[#080A07] cursor-pointer select-none"
           data-cursor-view
-          aria-label="Watch Famewoven brand film on X (@@famewoven)">
+          aria-label="Watch Famewoven brand film on X (@famewoven)">
           
           <!-- Native Video Element -->
           <video id="brand-showcase-video"
@@ -241,8 +239,8 @@
               <svg class="w-3.5 h-3.5 text-[#D4F54F]" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
               </svg>
-              <span class="font-semibold">@@famewoven</span>
-              <span class="text-[#D4F54F] font-bold">?</span>
+              <span class="font-semibold">@famewoven</span>
+              <span class="text-[#D4F54F] font-bold">↗</span>
             </div>
 
             <!-- Sound Toggle Button -->
@@ -404,7 +402,7 @@
         </div>
         <a href="{{ route('services.index') }}"
           class="mt-4 md:mt-0 text-sm font-mono text-[#D4F54F] hover:underline flex items-center gap-1">
-          Explore all 14 services <span>?</span>
+          Explore all 14 services <span>→</span>
         </a>
       </div>
 
@@ -433,23 +431,23 @@
               Single posts built around your brand or product.
             </p>
             <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
-              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Native creator voice integration
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Native creator voice integration
               </li>
-              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Draft review before publishing
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Draft review before publishing
               </li>
-              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Direct link & tracking setup
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Direct link & tracking setup
               </li>
             </ul>
           </div>
           <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
-            <a href="contact.html?service=sponsored-x-posts"
+            <a href="{{ route('contact', ['service' => 'sponsored-x-posts']) }}"
               class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
               <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span
                   class="btn-text-clone">Start brief</span></span>
             </a>
             <a href="{{ route('services.show', 'sponsored-x-posts') }}"
               class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
-              Details <span>?</span>
+              Details <span>→</span>
             </a>
           </div>
         </div>
@@ -477,22 +475,22 @@
               Educational, storytelling, product-led or launch threads.
             </p>
             <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
-              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Viral hook & frame structure
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Viral hook & frame structure
               </li>
-              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Workflow & code breakdowns</li>
-              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> High bookmark velocity design
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Workflow & code breakdowns</li>
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> High bookmark velocity design
               </li>
             </ul>
           </div>
           <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
-            <a href="contact.html?service=x-threads"
+            <a href="{{ route('contact', ['service' => 'x-threads']) }}"
               class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
               <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span
                   class="btn-text-clone">Start brief</span></span>
             </a>
             <a href="{{ route('services.show', 'x-threads') }}"
               class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
-              Details <span>?</span>
+              Details <span>→</span>
             </a>
           </div>
         </div>
@@ -520,23 +518,23 @@
               Relevant creators quote and boost your official posts.
             </p>
             <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
-              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Instant social proof & authority
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Instant social proof & authority
               </li>
-              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Staggered timing for momentum
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Staggered timing for momentum
               </li>
-              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Traffic directed to main handle
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Traffic directed to main handle
               </li>
             </ul>
           </div>
           <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
-            <a href="contact.html?service=quote-reposts"
+            <a href="{{ route('contact', ['service' => 'quote-reposts']) }}"
               class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
               <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span
                   class="btn-text-clone">Start brief</span></span>
             </a>
             <a href="{{ route('services.show', 'quote-reposts') }}"
               class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
-              Details <span>?</span>
+              Details <span>→</span>
             </a>
           </div>
         </div>
@@ -564,23 +562,23 @@
               Real likes, reposts, replies and bookmarks from engaged accounts.
             </p>
             <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
-              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> High bookmark velocity triggers
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> High bookmark velocity triggers
               </li>
-              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Real human builder interactions
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Real human builder interactions
               </li>
-              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Zero bot penalty or shadowban
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Zero bot penalty or shadowban
                 risk</li>
             </ul>
           </div>
           <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
-            <a href="contact.html?service=organic-amplification"
+            <a href="{{ route('contact', ['service' => 'organic-amplification']) }}"
               class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
               <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span
                   class="btn-text-clone">Start brief</span></span>
             </a>
             <a href="{{ route('services.show', 'organic-amplification') }}"
               class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
-              Details <span>?</span>
+              Details <span>→</span>
             </a>
           </div>
         </div>
@@ -608,23 +606,23 @@
               Creator posts timed together around your product launch.
             </p>
             <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
-              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Coordinated launch-day surge
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Coordinated launch-day surge
               </li>
-              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Targeted launch-window
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Targeted launch-window
                 scheduling</li>
-              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Product demo & screenshot
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Product demo & screenshot
                 priority</li>
             </ul>
           </div>
           <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
-            <a href="contact.html?service=launch-campaigns"
+            <a href="{{ route('contact', ['service' => 'launch-campaigns']) }}"
               class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
               <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span
                   class="btn-text-clone">Start brief</span></span>
             </a>
             <a href="{{ route('services.show', 'launch-campaigns') }}"
               class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
-              Details <span>?</span>
+              Details <span>→</span>
             </a>
           </div>
         </div>
@@ -652,22 +650,22 @@
               Awareness campaigns for AI, SaaS and tech products.
             </p>
             <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
-              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Contextual pain-point
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Contextual pain-point
                 positioning</li>
-              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Targeted tech & founder niches
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Targeted tech & founder niches
               </li>
-              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Continuous awareness runway</li>
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">✓</span> Continuous awareness runway</li>
             </ul>
           </div>
           <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
-            <a href="contact.html?service=product-promotion"
+            <a href="{{ route('contact', ['service' => 'product-promotion']) }}"
               class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
               <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span
                   class="btn-text-clone">Start brief</span></span>
             </a>
             <a href="{{ route('services.show', 'product-promotion') }}"
               class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
-              Details <span>?</span>
+              Details <span>→</span>
             </a>
           </div>
         </div>
@@ -726,7 +724,7 @@
             <span
               class="px-2 py-0.5 rounded bg-[#D4F54F] text-[#101210] font-mono text-[10px] font-bold uppercase">Pilot
               Program</span>
-            <span class="text-xs font-mono text-[#9AA391]">Limited Cohort � Q4 & Q1</span>
+            <span class="text-xs font-mono text-[#9AA391]">Limited Cohort · Q4 & Q1</span>
           </div>
           <h3 class="font-head text-2xl font-bold text-[#F2F5EC]">We're taking 5 founding brands.</h3>
           <p class="text-sm text-[#9AA391] max-w-2xl mt-1">
@@ -735,7 +733,7 @@
         </div>
         <a href="{{ route('contact') }}"
           class="btn-swap glass glass--lime px-6 py-3 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210] whitespace-nowrap">
-          Apply for Pilot ?
+          Apply for Pilot →
         </a>
       </div>
 
@@ -760,7 +758,7 @@
           <div
             class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs text-[#9AA391]">
             <span class="font-bold text-[#F2F5EC]">HeyGen</span>
-            <span class="text-[#D4F54F] group-hover:translate-x-1 transition-transform">Read breakdown ?</span>
+            <span class="text-[#D4F54F] group-hover:translate-x-1 transition-transform">Read breakdown →</span>
           </div>
         </a>
 
@@ -783,7 +781,7 @@
           <div
             class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs text-[#9AA391]">
             <span class="font-bold text-[#F2F5EC]">higgsfield</span>
-            <span class="text-[#D4F54F] group-hover:translate-x-1 transition-transform">Read breakdown ?</span>
+            <span class="text-[#D4F54F] group-hover:translate-x-1 transition-transform">Read breakdown →</span>
           </div>
         </a>
 
@@ -806,7 +804,7 @@
           <div
             class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs text-[#9AA391]">
             <span class="font-bold text-[#F2F5EC]">Sintra.ai</span>
-            <span class="text-[#D4F54F] group-hover:translate-x-1 transition-transform">Read breakdown ?</span>
+            <span class="text-[#D4F54F] group-hover:translate-x-1 transition-transform">Read breakdown →</span>
           </div>
         </a>
       </div>
@@ -830,7 +828,7 @@
             <div class="flex items-start gap-4">
               <div
                 class="w-6 h-6 rounded-full bg-[#D4F54F]/20 text-[#D4F54F] flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">
-                ?</div>
+                ✓</div>
               <div>
                 <h4 class="text-sm font-semibold text-[#F2F5EC]">Audience Authenticity</h4>
                 <p class="text-xs text-[#9AA391] mt-0.5">Deep inspection of follower geographic clusters, comment depth,
@@ -841,7 +839,7 @@
             <div class="flex items-start gap-4">
               <div
                 class="w-6 h-6 rounded-full bg-[#D4F54F]/20 text-[#D4F54F] flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">
-                ?</div>
+                ✓</div>
               <div>
                 <h4 class="text-sm font-semibold text-[#F2F5EC]">Engagement Quality</h4>
                 <p class="text-xs text-[#9AA391] mt-0.5">Sustained organic watch-through rates and high saves/shares on
@@ -852,7 +850,7 @@
             <div class="flex items-start gap-4">
               <div
                 class="w-6 h-6 rounded-full bg-[#D4F54F]/20 text-[#D4F54F] flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">
-                ?</div>
+                ✓</div>
               <div>
                 <h4 class="text-sm font-semibold text-[#F2F5EC]">Brand Safety Guarantee</h4>
                 <p class="text-xs text-[#9AA391] mt-0.5">Zero toxic controversy history and strict adherence to creative
@@ -863,7 +861,7 @@
 
           <a href="{{ route('creators') }}"
             class="inline-flex items-center gap-2 text-sm font-mono text-[#D4F54F] hover:underline font-semibold">
-            Explore the creator network <span>?</span>
+            Explore the creator network <span>→</span>
           </a>
         </div>
 
@@ -915,35 +913,35 @@
               <td class="py-5 px-6 font-semibold text-[#F2F5EC]">Attribution & Reporting</td>
               <td class="py-5 px-6 text-[#9AA391]">PDF screenshots of views 3 weeks later</td>
               <td class="py-5 px-6 text-[#F2F5EC] bg-[#D4F54F]/[0.05] font-medium flex items-center gap-2">
-                <span class="text-[#D4F54F]">?</span> Real-time UTM dashboard & revenue tracking
+                <span class="text-[#D4F54F]">✓</span> Real-time UTM dashboard & revenue tracking
               </td>
             </tr>
             <tr>
               <td class="py-5 px-6 font-semibold text-[#F2F5EC]">Creator Selection</td>
               <td class="py-5 px-6 text-[#9AA391]">Whoever replies first on WhatsApp</td>
               <td class="py-5 px-6 text-[#F2F5EC] bg-[#D4F54F]/[0.05] font-medium">
-                <span class="text-[#D4F54F]">?</span> Multi-layer bot fraud check & brand fit score
+                <span class="text-[#D4F54F]">✓</span> Multi-layer bot fraud check & brand fit score
               </td>
             </tr>
             <tr>
               <td class="py-5 px-6 font-semibold text-[#F2F5EC]">Turnaround Speed</td>
               <td class="py-5 px-6 text-[#9AA391]">3-4 weeks to review a single draft</td>
               <td class="py-5 px-6 text-[#F2F5EC] bg-[#D4F54F]/[0.05] font-medium">
-                <span class="text-[#D4F54F]">?</span> 7-day turnaround from brief to shoot
+                <span class="text-[#D4F54F]">✓</span> 7-day turnaround from brief to shoot
               </td>
             </tr>
             <tr>
               <td class="py-5 px-6 font-semibold text-[#F2F5EC]">Pricing Clarity</td>
               <td class="py-5 px-6 text-[#9AA391]">Opaque agency markups on talent fees</td>
               <td class="py-5 px-6 text-[#F2F5EC] bg-[#D4F54F]/[0.05] font-medium">
-                <span class="text-[#D4F54F]">?</span> 100% transparent creator fees + flat management
+                <span class="text-[#D4F54F]">✓</span> 100% transparent creator fees + flat management
               </td>
             </tr>
             <tr>
               <td class="py-5 px-6 font-semibold text-[#F2F5EC]">Asset Ownership & Ads</td>
               <td class="py-5 px-6 text-[#9AA391]">Organic only; rights expire in 30 days</td>
               <td class="py-5 px-6 text-[#F2F5EC] bg-[#D4F54F]/[0.05] font-medium">
-                <span class="text-[#D4F54F]">?</span> Full whitelisting rights & reusable raw UGC
+                <span class="text-[#D4F54F]">✓</span> Full whitelisting rights & reusable raw UGC
               </td>
             </tr>
           </tbody>
@@ -970,7 +968,7 @@
                 TR</div>
               <div>
                 <div class="font-mono text-sm font-semibold text-[#F2F5EC]">Tanvir Rahman</div>
-                <div class="text-xs text-[#9AA391]">Head of Growth � HeyGen</div>
+                <div class="text-xs text-[#9AA391]">Head of Growth · HeyGen</div>
               </div>
             </div>
           </div>
@@ -987,7 +985,7 @@
                 SA</div>
               <div>
                 <div class="font-mono text-sm font-semibold text-[#F2F5EC]">Samira Ahmed</div>
-                <div class="text-xs text-[#9AA391]">Growth Lead � Sintra.ai</div>
+                <div class="text-xs text-[#9AA391]">Growth Lead · Sintra.ai</div>
               </div>
             </div>
           </div>
@@ -1016,7 +1014,7 @@
           <a href="{{ route('contact') }}"
             class="inline-flex items-center gap-1.5 text-xs font-mono text-[#D4F54F] hover:underline mt-2">
             <span>Have a unique question? Talk to us</span>
-            <span>?</span>
+            <span>→</span>
           </a>
         </div>
       </div>
@@ -1260,7 +1258,4 @@
         </div>
       </div>
     </section>
-
-  
 @endsection
-
