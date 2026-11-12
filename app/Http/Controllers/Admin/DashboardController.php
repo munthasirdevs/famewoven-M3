@@ -8,6 +8,7 @@ use App\Models\CreatorApplication;
 use App\Models\NewsletterSubscription;
 use App\Models\StrategyCall;
 use App\Models\User;
+use App\Models\VisitorTraffic;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
@@ -39,6 +40,11 @@ class DashboardController extends Controller
             'users' => [
                 'total' => User::count(),
                 'active' => User::where('status', 'active')->count(),
+            ],
+            'traffic' => [
+                'total' => VisitorTraffic::count(),
+                'today' => VisitorTraffic::whereDate('created_at', today())->count(),
+                'uniques' => VisitorTraffic::distinct('visitor_id')->count('visitor_id'),
             ],
         ];
 

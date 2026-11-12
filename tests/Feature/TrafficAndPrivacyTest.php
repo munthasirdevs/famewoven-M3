@@ -202,3 +202,4 @@ class TrafficAndPrivacyTest extends TestCase
         $response->assertSee('Anonymized Analytics Telemetry', false);
     }
 }
+

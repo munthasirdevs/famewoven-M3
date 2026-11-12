@@ -250,6 +250,22 @@
         });
       }
 
+      // Close on backdrop click
+      if (modal) {
+        modal.addEventListener('click', function (e) {
+          if (e.target === modal) {
+            hideModal();
+          }
+        });
+      }
+
+      // Close on Escape key
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+          hideModal();
+        }
+      });
+
       // Global footer trigger button
       const footerCookieBtn = document.getElementById('open-cookie-modal-btn');
       if (footerCookieBtn) {
@@ -261,3 +277,4 @@
     });
   })();
 </script>
+

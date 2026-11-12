@@ -130,7 +130,7 @@
               <!-- Path with status badge -->
               <td class="py-3.5 px-4 max-w-[220px]">
                 <div class="flex items-center gap-1.5 truncate">
-                  <span class="px-1.5 py-0.2 rounded text-[9px] font-bold {{ $hit->status_code === 200 ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-amber-500/10 text-amber-400 border border-amber-500/20' }}">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold {{ $hit->status_code === 200 ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-amber-500/10 text-amber-400 border border-amber-500/20' }}">
                     {{ $hit->method }} {{ $hit->status_code }}
                   </span>
                   <span class="font-medium truncate text-white" title="{{ $hit->path }}">{{ $hit->path }}</span>
@@ -285,4 +285,25 @@
   @endif
 
 </div>
+
+<!-- Modal Esc & Backdrop handler -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('[id^="hit-modal-"]').forEach(function (modal) {
+          modal.classList.add('hidden');
+        });
+      }
+    });
+    document.querySelectorAll('[id^="hit-modal-"]').forEach(function (modal) {
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) {
+          modal.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>
 @endsection
+

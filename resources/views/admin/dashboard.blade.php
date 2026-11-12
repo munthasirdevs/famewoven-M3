@@ -71,6 +71,34 @@
 
   </div>
 
+  <!-- Live Traffic Velocity Quickstrip -->
+  <div class="glass p-5 rounded-2xl border border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-white/[0.02] via-[#D4F54F]/[0.03] to-white/[0.02]">
+    <div class="flex items-center gap-4">
+      <div class="w-10 h-10 rounded-xl bg-[#D4F54F]/10 border border-[#D4F54F]/20 grid place-items-center text-[#D4F54F]">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <h3 class="font-head text-base font-bold text-white">Live Traffic Velocity</h3>
+          <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-[#D4F54F]/10 text-[#D4F54F] border border-[#D4F54F]/20">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#D4F54F] animate-pulse"></span>
+            Real-time Telemetry
+          </span>
+        </div>
+        <p class="text-xs text-[#9AA391] mt-0.5 font-mono">
+          {{ number_format($metrics['traffic']['total']) }} total pageviews · {{ number_format($metrics['traffic']['uniques']) }} unique visitor devices · {{ number_format($metrics['traffic']['today']) }} hits logged today
+        </p>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="{{ route('admin.traffic.index') }}"
+         class="px-4 py-2 rounded-xl bg-[#D4F54F] text-[#101210] font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#F0FFB0] transition-colors flex items-center gap-1.5 shadow-lg shadow-[#D4F54F]/10">
+        <span>Open Line Chart Dashboard</span>
+        <span>→</span>
+      </a>
+    </div>
+  </div>
+
   <!-- 2. Dual Submissions Grid -->
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
     

@@ -279,3 +279,4 @@ class VisitorTraffic extends Model
         return $host;
     }
 }
+

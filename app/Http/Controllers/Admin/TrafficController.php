@@ -118,6 +118,103 @@ class TrafficController extends Controller
         // Recent 10 Live Visitor Hits
         $recentHits = VisitorTraffic::latest()->limit(10)->get();
 
+        // -------------------------------------------------------------
+        // SVG Smooth Line Graph Coordinates Calculation
+        // -------------------------------------------------------------
+        $svgWidth = 1000;
+        $svgHeight = 260;
+        $padLeft = 48;
+        $padRight = 32;
+        $padTop = 24;
+        $padBottom = 48;
+        $plotW = $svgWidth - $padLeft - $padRight;
+        $plotH = $svgHeight - $padTop - $padBottom;
+        $zeroY = $padTop + $plotH; // 212
+
+        $pointCount = count($chartData);
+        $viewsPoints = [];
+        $uniquesPoints = [];
+
+        foreach ($chartData as $index => $item) {
+            $x = $pointCount > 1
+                ? $padLeft + ($index / ($pointCount - 1)) * $plotW
+                : $padLeft + ($plotW / 2);
+
+            $vRatio = $maxDailyViews > 0 ? ($item['views'] / $maxDailyViews) : 0;
+            $uRatio = $maxDailyViews > 0 ? ($item['uniques'] / $maxDailyViews) : 0;
+
+            $yV = $zeroY - ($vRatio * $plotH);
+            $yU = $zeroY - ($uRatio * $plotH);
+
+            $viewsPoints[] = [
+                'x' => round($x, 1),
+                'y' => round($yV, 1),
+                'val' => $item['views'],
+                'label' => $item['label'],
+                'date' => $item['date'],
+            ];
+
+            $uniquesPoints[] = [
+                'x' => round($x, 1),
+                'y' => round($yU, 1),
+                'val' => $item['uniques'],
+                'label' => $item['label'],
+                'date' => $item['date'],
+            ];
+        }
+
+        $buildSmoothPaths = function (array $points) use ($zeroY) {
+            if (empty($points)) {
+                return ['line' => '', 'area' => ''];
+            }
+
+            $n = count($points);
+            if ($n === 1) {
+                $p = $points[0];
+                return [
+                    'line' => "M {$p['x']},{$p['y']} L {$p['x']},{$p['y']}",
+                    'area' => "M {$p['x']},{$zeroY} L {$p['x']},{$p['y']} L {$p['x']},{$zeroY} Z",
+                ];
+            }
+
+            $linePath = "M {$points[0]['x']},{$points[0]['y']}";
+            for ($i = 0; $i < $n - 1; $i++) {
+                $curr = $points[$i];
+                $next = $points[$i + 1];
+                $cp1x = round($curr['x'] + ($next['x'] - $curr['x']) * 0.5, 1);
+                $cp1y = $curr['y'];
+                $cp2x = round($curr['x'] + ($next['x'] - $curr['x']) * 0.5, 1);
+                $cp2y = $next['y'];
+                $linePath .= " C {$cp1x},{$cp1y} {$cp2x},{$cp2y} {$next['x']},{$next['y']}";
+            }
+
+            $firstX = $points[0]['x'];
+            $lastX = $points[$n - 1]['x'];
+            $areaPath = "M {$firstX},{$zeroY} L {$points[0]['x']},{$points[0]['y']}";
+            for ($i = 0; $i < $n - 1; $i++) {
+                $curr = $points[$i];
+                $next = $points[$i + 1];
+                $cp1x = round($curr['x'] + ($next['x'] - $curr['x']) * 0.5, 1);
+                $cp1y = $curr['y'];
+                $cp2x = round($curr['x'] + ($next['x'] - $curr['x']) * 0.5, 1);
+                $cp2y = $next['y'];
+                $areaPath .= " C {$cp1x},{$cp1y} {$cp2x},{$cp2y} {$next['x']},{$next['y']}";
+            }
+            $areaPath .= " L {$lastX},{$zeroY} Z";
+
+            return ['line' => $linePath, 'area' => $areaPath];
+        };
+
+        $viewsSvg = $buildSmoothPaths($viewsPoints);
+        $uniquesSvg = $buildSmoothPaths($uniquesPoints);
+
+        $yTicks = [
+            ['y' => $padTop, 'val' => number_format($maxDailyViews)],
+            ['y' => round($padTop + $plotH * 0.33), 'val' => number_format(round($maxDailyViews * 0.67))],
+            ['y' => round($padTop + $plotH * 0.66), 'val' => number_format(round($maxDailyViews * 0.33))],
+            ['y' => $zeroY, 'val' => '0'],
+        ];
+
         return view('admin.traffic.index', compact(
             'period',
             'filterBot',
@@ -135,7 +232,15 @@ class TrafficController extends Controller
             'operatingSystems',
             'chartData',
             'maxDailyViews',
-            'recentHits'
+            'recentHits',
+            'viewsSvg',
+            'uniquesSvg',
+            'viewsPoints',
+            'uniquesPoints',
+            'yTicks',
+            'svgWidth',
+            'svgHeight',
+            'zeroY'
         ));
     }
 
@@ -285,3 +390,4 @@ class TrafficController extends Controller
         return back()->with('success', "Purged {$deletedCount} visitor records older than {$days} days.");
     }
 }
+

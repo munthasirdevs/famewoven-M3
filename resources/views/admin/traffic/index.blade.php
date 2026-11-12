@@ -121,59 +121,109 @@
     </div>
   </div>
 
-  <!-- Interactive Daily Traffic Chart (Pure Responsive Tailwind/CSS) -->
-  <div class="glass p-6 sm:p-8 rounded-3xl border border-white/10">
+  <!-- Interactive Daily Traffic Line Graph (SVG Vector Curve) -->
+  <div class="glass p-6 sm:p-8 rounded-3xl border border-white/10 relative overflow-hidden">
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-white/[0.08]">
       <div>
         <div class="label-caps text-[#D4F54F] mb-1">Volume Velocity</div>
-        <h3 class="font-head text-lg font-bold text-[#F2F5EC]">Traffic Timeline & Daily Velocity</h3>
+        <h3 class="font-head text-lg font-bold text-[#F2F5EC]">Traffic Timeline &amp; Velocity Curves</h3>
+        <p class="text-xs text-[#9AA391] mt-0.5 font-mono">Continuous bezier telemetry of daily pageviews vs unique devices</p>
       </div>
-      <div class="flex items-center gap-4 text-xs font-mono">
+      <div class="flex items-center gap-5 text-xs font-mono">
         <div class="flex items-center gap-2">
-          <span class="w-3 h-3 rounded bg-[#D4F54F]"></span>
-          <span class="text-[#F2F5EC]">Pageviews</span>
+          <span class="w-3.5 h-1.5 rounded-full bg-[#D4F54F] shadow-sm shadow-[#D4F54F]/50"></span>
+          <span class="text-[#F2F5EC] font-medium">Pageviews</span>
         </div>
         <div class="flex items-center gap-2">
-          <span class="w-3 h-3 rounded bg-cyan-400"></span>
-          <span class="text-[#F2F5EC]">Unique Visitors</span>
+          <span class="w-3.5 h-1.5 rounded-full bg-cyan-400 shadow-sm shadow-cyan-400/50"></span>
+          <span class="text-[#F2F5EC] font-medium">Unique Visitors</span>
         </div>
       </div>
     </div>
 
-    <!-- Bars Container -->
+    <!-- SVG Line Graph Container -->
     @if(count($chartData) > 0)
-    <div class="h-56 flex items-end gap-2 sm:gap-3 pt-6 pb-2 px-2 border-b border-white/10 overflow-x-auto">
-      @foreach($chartData as $bar)
-        @php
-          $viewHeight = $maxDailyViews > 0 ? max(8, round(($bar['views'] / $maxDailyViews) * 100)) : 8;
-          $uniqueHeight = $maxDailyViews > 0 ? max(6, round(($bar['uniques'] / $maxDailyViews) * 100)) : 6;
-        @endphp
-        <div class="flex-1 min-w-[28px] max-w-[64px] h-full flex flex-col justify-end items-center group relative cursor-pointer">
-          <!-- Tooltip on hover -->
-          <div class="absolute -top-14 bg-[#101210] border border-white/20 px-2.5 py-1.5 rounded-lg text-[10px] font-mono text-white opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl z-20 whitespace-nowrap">
-            <div class="font-bold text-[#D4F54F]">{{ $bar['label'] }}</div>
-            <div>{{ number_format($bar['views']) }} views · {{ number_format($bar['uniques']) }} uniques</div>
-          </div>
+    <div class="w-full overflow-x-auto pb-2">
+      <div class="min-w-[640px]">
+        <svg viewBox="0 0 {{ $svgWidth }} {{ $svgHeight }}" class="w-full h-auto overflow-visible select-none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <!-- Pageviews Area Gradient (Lime) -->
+            <linearGradient id="viewsGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#D4F54F" stop-opacity="0.25" />
+              <stop offset="100%" stop-color="#D4F54F" stop-opacity="0.0" />
+            </linearGradient>
 
-          <!-- Dual bars -->
-          <div class="w-full flex items-end justify-center gap-1 h-full">
-            <!-- Pageviews bar -->
-            <div style="height: {{ $viewHeight }}%;"
-                 class="w-1/2 bg-[#D4F54F] rounded-t transition-all duration-300 group-hover:bg-[#F0FFB0]"></div>
-            <!-- Unique visitors bar -->
-            <div style="height: {{ $uniqueHeight }}%;"
-                 class="w-1/2 bg-cyan-400 rounded-t transition-all duration-300 group-hover:bg-cyan-300"></div>
-          </div>
+            <!-- Unique Visitors Area Gradient (Cyan) -->
+            <linearGradient id="uniquesGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.18" />
+              <stop offset="100%" stop-color="#22D3EE" stop-opacity="0.0" />
+            </linearGradient>
 
-          <!-- Day label -->
-          <span class="text-[9px] font-mono text-[#9AA391] mt-2 group-hover:text-white transition-colors truncate w-full text-center">
-            {{ $bar['label'] }}
-          </span>
-        </div>
-      @endforeach
+            <!-- Line Glow Filter -->
+            <filter id="glowLime" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#D4F54F" flood-opacity="0.35" />
+            </filter>
+          </defs>
+
+          <!-- Horizontal Grid Lines & Y-Axis Labels -->
+          @foreach($yTicks as $tick)
+            <line x1="48" y1="{{ $tick['y'] }}" x2="968" y2="{{ $tick['y'] }}" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3 4" stroke-width="1" />
+            <text x="40" y="{{ $tick['y'] + 4 }}" text-anchor="end" fill="#9AA391" font-size="10" font-family="'JetBrains Mono', monospace">
+              {{ $tick['val'] }}
+            </text>
+          @endforeach
+
+          <!-- Base Axis Line -->
+          <line x1="48" y1="{{ $zeroY }}" x2="968" y2="{{ $zeroY }}" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" />
+
+          <!-- Gradient Area Fills -->
+          @if(!empty($viewsSvg['area']))
+            <path d="{{ $viewsSvg['area'] }}" fill="url(#viewsGradient)" />
+          @endif
+          @if(!empty($uniquesSvg['area']))
+            <path d="{{ $uniquesSvg['area'] }}" fill="url(#uniquesGradient)" />
+          @endif
+
+          <!-- Unique Visitors Line (Cyan) -->
+          @if(!empty($uniquesSvg['line']))
+            <path d="{{ $uniquesSvg['line'] }}" fill="none" stroke="#22D3EE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+          @endif
+
+          <!-- Pageviews Line (Lime with glow) -->
+          @if(!empty($viewsSvg['line']))
+            <path d="{{ $viewsSvg['line'] }}" fill="none" stroke="#D4F54F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" filter="url(#glowLime)" />
+          @endif
+
+          <!-- Nodes & Tooltips: Pageviews -->
+          @foreach($viewsPoints as $pt)
+            <g class="group cursor-pointer">
+              <circle cx="{{ $pt['x'] }}" cy="{{ $pt['y'] }}" r="4" fill="#080A07" stroke="#D4F54F" stroke-width="2.5" class="transition-all group-hover:r-6" />
+              <!-- X Axis Label -->
+              <text x="{{ $pt['x'] }}" y="235" text-anchor="middle" fill="#9AA391" font-size="9" font-family="'JetBrains Mono', monospace" class="group-hover:fill-white font-medium">
+                {{ $pt['label'] }}
+              </text>
+              <!-- Hover Pill -->
+              <g class="opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                <rect x="{{ $pt['x'] - 55 }}" y="{{ max(4, $pt['y'] - 38) }}" width="110" height="28" rx="6" fill="#101210" stroke="rgba(212,245,79,0.4)" stroke-width="1" />
+                <text x="{{ $pt['x'] }}" y="{{ max(4, $pt['y'] - 38) + 18 }}" text-anchor="middle" fill="#D4F54F" font-size="10" font-family="'JetBrains Mono', monospace" font-weight="bold">
+                  {{ number_format($pt['val']) }} views
+                </text>
+              </g>
+            </g>
+          @endforeach
+
+          <!-- Nodes & Tooltips: Unique Visitors -->
+          @foreach($uniquesPoints as $pt)
+            <g class="group cursor-pointer">
+              <circle cx="{{ $pt['x'] }}" cy="{{ $pt['y'] }}" r="3" fill="#080A07" stroke="#22D3EE" stroke-width="2" class="transition-all group-hover:r-5" />
+            </g>
+          @endforeach
+
+        </svg>
+      </div>
     </div>
     @else
-    <div class="h-32 grid place-items-center text-xs font-mono text-[#9AA391]">
+    <div class="h-44 grid place-items-center text-xs font-mono text-[#9AA391]">
       No traffic data points recorded for this timeframe yet.
     </div>
     @endif
@@ -416,3 +466,4 @@
 
 </div>
 @endsection
+

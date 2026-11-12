@@ -159,3 +159,4 @@ class TrackVisitorTraffic
         return 'Global';
     }
 }
+
