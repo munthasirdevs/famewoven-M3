@@ -4,6 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\StrategyCallController;
+use App\Http\Controllers\Admin\CreatorApplicationController;
+use App\Http\Controllers\Admin\SubscriberController;
+use App\Http\Controllers\Admin\LogController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ProfileController;
 
 // Admin Authentication Routes (Guest accessible)
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -20,9 +27,50 @@ Route::middleware(['role'])->prefix('admin')->name('admin.')->group(function () 
         return redirect()->route('admin.dashboard');
     });
 
-    Route::get('/dashboard', function () {
-        return 'Admin Dashboard';
-    })->name('dashboard');
+    // Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // Strategy Inquiries
+    Route::get('/strategy-calls', [StrategyCallController::class, 'index'])->name('strategy-calls.index');
+    Route::get('/strategy-calls/export', [StrategyCallController::class, 'export'])->name('strategy-calls.export')->middleware('role:super_admin,admin');
+    Route::get('/strategy-calls/{strategyCall}', [StrategyCallController::class, 'show'])->name('strategy-calls.show');
+    Route::patch('/strategy-calls/{strategyCall}', [StrategyCallController::class, 'update'])->name('strategy-calls.update')->middleware('role:super_admin,admin,editor');
+
+    // Creator Applications
+    Route::get('/creators', [CreatorApplicationController::class, 'index'])->name('creators.index');
+    Route::get('/creators/export', [CreatorApplicationController::class, 'export'])->name('creators.export')->middleware('role:super_admin,admin');
+    Route::get('/creators/{creator}', [CreatorApplicationController::class, 'show'])->name('creators.show');
+    Route::patch('/creators/{creator}', [CreatorApplicationController::class, 'update'])->name('creators.update')->middleware('role:super_admin,admin,editor');
+
+    // Newsletter Subscribers
+    Route::get('/subscribers', [SubscriberController::class, 'index'])->name('subscribers.index');
+    Route::get('/subscribers/export', [SubscriberController::class, 'export'])->name('subscribers.export')->middleware('role:super_admin,admin');
+    Route::patch('/subscribers/{subscriber}/toggle', [SubscriberController::class, 'toggle'])->name('subscribers.toggle')->middleware('role:super_admin,admin,editor');
+    Route::delete('/subscribers/{subscriber}', [SubscriberController::class, 'destroy'])->name('subscribers.destroy')->middleware('role:super_admin,admin');
+
+    // Activity Logs & Audit Trail
+    Route::get('/logs/activity', [LogController::class, 'activityLogs'])->name('logs.activity');
+    Route::get('/logs/activity/export', [LogController::class, 'exportActivityLogs'])->name('logs.activity.export')->middleware('role:super_admin,admin');
+
+    // System Logs (Laravel Log Viewer)
+    Route::middleware(['role:super_admin,admin'])->group(function () {
+        Route::get('/logs/system', [LogController::class, 'systemLogs'])->name('logs.system');
+        Route::get('/logs/system/download', [LogController::class, 'downloadSystemLog'])->name('logs.system.download');
+        Route::post('/logs/system/clear', [LogController::class, 'clearSystemLog'])->name('logs.system.clear');
+    });
+
+    // User Governance & RBAC (Admin / Super Admin only)
+    Route::middleware(['role:super_admin,admin'])->group(function () {
+        Route::get('/users', [UserController::class, 'index'])->name('users.index');
+        Route::post('/users', [UserController::class, 'store'])->name('users.store');
+        Route::patch('/users/{user}', [UserController::class, 'update'])->name('users.update');
+        Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    });
+
+    // Staff Profile & Password
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+    Route::patch('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
+    Route::patch('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
 });
 
 // Core Public Pages
