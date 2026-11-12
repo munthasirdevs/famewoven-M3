@@ -1,0 +1,1266 @@
+@extends('layouts.app')
+
+@section('title', 'Famewoven — Where Influence Is Woven | Creator Marketing Agency')
+@section('description', 'Famewoven weaves brands into creator culture, and tracks every dollar of it. Creator marketing, influencer campaigns, UGC production, and paid amplification for high-growth AI and tech companies.')
+
+@section('schema')
+<script type="application/ld+json">
+  {
+    "@@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://famewoven.com/#organization",
+        "name": "Famewoven",
+        "url": "https://famewoven.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://famewoven.com/#logo",
+          "url": "https://famewoven.com/css/namelogo.png",
+          "contentUrl": "https://famewoven.com/css/namelogo.png",
+          "caption": "Famewoven Logo"
+        },
+        "image": "https://famewoven.com/css/namelogo.png",
+        "description": "Famewoven is an elite creator marketing infrastructure agency that weaves AI, SaaS, and tech brands into creator culture with verifiable balance-sheet proof.",
+        "founder": {
+          "@id": "https://famewoven.com/#person"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Dhaka",
+          "addressCountry": "BD"
+        },
+        "sameAs": [
+          "https://x.com/famewoven",
+          "https://www.linkedin.com/company/famewoven"
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://famewoven.com/#person",
+        "name": "Munthasir Rahman",
+        "alternateName": [
+          "Munthasir",
+          "Muntasir",
+          "Muntasir Rahman",
+          "Md Munthasir",
+          "Md Muntasir",
+          "Montasir"
+        ],
+        "jobTitle": "Managing Partner & Systems Architect",
+        "worksFor": {
+          "@id": "https://famewoven.com/#organization"
+        },
+        "url": "https://famewoven.com/about.html",
+        "disambiguatingDescription": "Founder and Systems Architect of Famewoven, specializing in quantitative creator distribution networks and AI marketing systems. Frequently transliterated or searched as Muntasir Rahman.",
+        "sameAs": [
+          "https://famewoven.com/about.html",
+          "https://github.com/munthasir"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://famewoven.com/#website",
+        "url": "https://famewoven.com/",
+        "name": "Famewoven",
+        "description": "Where Influence Is Woven — Creator Marketing Agency",
+        "publisher": {
+          "@id": "https://famewoven.com/#organization"
+        },
+        "inLanguage": "en-US"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://famewoven.com/#webpage",
+        "url": "https://famewoven.com/",
+        "name": "Famewoven — Where Influence Is Woven | Creator Marketing Agency",
+        "isPartOf": {
+          "@id": "https://famewoven.com/#website"
+        },
+        "about": {
+          "@id": "https://famewoven.com/#organization"
+        },
+        "description": "Famewoven weaves brands into creator culture, and tracks every dollar of it. Creator marketing, influencer campaigns, UGC production, and paid amplification."
+      }
+    ]
+  }
+  </script>
+@endsection
+
+@section('content')
+
+
+    <!-- 10.1 Hero Section -->
+    <section id="hero"
+      class="min-h-screen relative flex items-center justify-center pt-28 pb-16 px-6 sm:px-10 lg:px-16 overflow-hidden bg-[#080A07]">
+
+      <!-- Hero Visual Backdrop: Neon Lime Planetary Horizon -->
+      <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        <img id="hero-bg-img" src="{{ asset('css/Neon_Lime_Planetary_Horizon.png') }}" alt=""
+          class="w-full h-full object-cover object-center select-none opacity-85"
+          loading="eager" fetchpriority="high">
+        <!-- Top gradient to protect header/navbar contrast -->
+        <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#080A07] via-[#080A07]/70 to-transparent"></div>
+        <!-- Bottom gradient to seamlessly blend into Trust Strip and page body -->
+        <div class="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#080A07] via-[#080A07]/80 to-transparent"></div>
+        <!-- Soft radial vignette to keep text centered in focus -->
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(8,10,7,0.35)_0%,rgba(8,10,7,0.7)_100%)]"></div>
+      </div>
+
+      <div class="max-w-4xl w-full mx-auto flex flex-col items-center text-center z-10 relative">
+
+        <!-- Main H1 with masked line reveal -->
+        <h1 class="font-head text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-[#F2F5EC] mb-4 text-center">
+          <span class="line-mask"><span class="hero-h1-line text-[#D4F54F]">Where influence</span></span>
+          <span class="line-mask"><span class="hero-h1-line">is woven.</span></span>
+        </h1>
+
+        <!-- Split-Flap Airport Roller Board (Section 10.1) -->
+        <div id="hero-audience-line"
+          class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-lg sm:text-2xl font-mono text-[#F2F5EC] my-4 text-center"
+          aria-live="polite">
+          <span class="text-[#9AA391]">Built for</span>
+          <div id="flap-container" class="inline-flex items-center" aria-label="Built for AI Tools">
+            <span id="flap-board" class="flap-board"></span>
+          </div>
+        </div>
+
+        <!-- Subtitle (max 52ch) -->
+        <p id="hero-sub" class="text-base sm:text-lg text-[#9AA391] max-w-xl mx-auto mt-4 mb-8 leading-relaxed font-normal text-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)]">
+          We put your AI, SaaS, or tech product in front of the creators your buyers already follow. That can be one
+          sponsored post or a launch campaign with 100+ creators.
+        </p>
+
+        <!-- CTAs -->
+        <div id="hero-ctas" class="flex flex-wrap items-center justify-center gap-4">
+          <a href="{{ route('contact') }}"
+            class="btn-swap glass glass--lime glass--pill px-8 py-4 text-xs font-mono font-bold uppercase tracking-wider text-[#101210] shadow-[0_4px_24px_rgba(212,245,79,0.3)]">
+            <span class="btn-text-wrap">
+              <span class="btn-text-primary">Book a strategy call</span>
+              <span class="btn-text-clone">Book a strategy call</span>
+            </span>
+            <svg class="btn-icon w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+
+          <a href="{{ route('services.index') }}"
+            class="glass glass--pill px-7 py-4 text-xs font-mono uppercase tracking-wider text-[#F2F5EC] hover:text-[#D4F54F] transition-colors border border-white/10 hover:border-[#D4F54F]/40 backdrop-blur-md">
+            See services
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 10.2 Trust Strip (Infinite Marquee) -->
+    <section class="py-12 border-y border-white/[0.06] bg-[#0E120C]/40 backdrop-blur-md overflow-hidden"
+      aria-label="Brands and Partners">
+      <div class="max-w-[1280px] mx-auto px-6 mb-4 text-center">
+        <h2 class="label-caps text-[#9AA391]">Trusted by brands that track their results</h2>
+      </div>
+
+      <div class="marquee-mask w-full overflow-hidden py-3">
+        <div id="trust-marquee-track"
+          class="marquee-track flex items-center gap-16 text-lg sm:text-xl font-head font-medium text-[#9AA391]/70 select-none animate-[marquee_35s_linear_infinite] hover:[animation-play-state:paused]">
+          <span class="whitespace-nowrap transition-colors hover:text-[#D4F54F] cursor-default">HeyGen</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm select-none" aria-hidden="true">/</span>
+          <span class="whitespace-nowrap transition-colors hover:text-[#D4F54F] cursor-default">higgsfield</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm select-none" aria-hidden="true">/</span>
+          <span class="whitespace-nowrap transition-colors hover:text-[#D4F54F] cursor-default">omneky</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm select-none" aria-hidden="true">/</span>
+          <span class="whitespace-nowrap transition-colors hover:text-[#D4F54F] cursor-default">imagineart</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm select-none" aria-hidden="true">/</span>
+          <span class="whitespace-nowrap transition-colors hover:text-[#D4F54F] cursor-default">flot.ai</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm select-none" aria-hidden="true">/</span>
+          <span class="whitespace-nowrap transition-colors hover:text-[#D4F54F] cursor-default">skywork</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm select-none" aria-hidden="true">/</span>
+          <span class="whitespace-nowrap transition-colors hover:text-[#D4F54F] cursor-default">Sintra.ai</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm select-none" aria-hidden="true">/</span>
+          <span class="whitespace-nowrap transition-colors hover:text-[#D4F54F] cursor-default">HeyGen</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm select-none" aria-hidden="true">/</span>
+          <span class="whitespace-nowrap transition-colors hover:text-[#D4F54F] cursor-default">higgsfield</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm select-none" aria-hidden="true">/</span>
+          <span class="whitespace-nowrap transition-colors hover:text-[#D4F54F] cursor-default">omneky</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm select-none" aria-hidden="true">/</span>
+          <span class="whitespace-nowrap transition-colors hover:text-[#D4F54F] cursor-default">imagineart</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm select-none" aria-hidden="true">/</span>
+          <span class="whitespace-nowrap transition-colors hover:text-[#D4F54F] cursor-default">flot.ai</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm select-none" aria-hidden="true">/</span>
+          <span class="whitespace-nowrap transition-colors hover:text-[#D4F54F] cursor-default">skywork</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm select-none" aria-hidden="true">/</span>
+          <span class="whitespace-nowrap transition-colors hover:text-[#D4F54F] cursor-default">Sintra.ai</span>
+          <span class="text-[#D4F54F]/40 font-mono text-sm select-none" aria-hidden="true">/</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10.2.5 Brand Showcase Video (Autoplay on Scroll, Sound Enabled, Click to Redirect) -->
+    <section id="brand-video-section" class="py-16 sm:py-24 px-4 sm:px-8 lg:px-12 max-w-[1240px] mx-auto relative z-10" aria-label="Famewoven Brand Showcase Film">
+      <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass glass--sub border border-[#D4F54F]/30 text-[#D4F54F] font-mono text-xs uppercase tracking-wider mb-4">
+          <span class="w-2 h-2 rounded-full bg-[#D4F54F] animate-pulse"></span>
+          <span>Brand Film · The Weave In Motion</span>
+        </div>
+        <h2 class="font-head text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#F2F5EC] mb-3">
+          Where Influence Is Woven
+        </h2>
+        <p class="text-xs sm:text-sm md:text-base text-[#9AA391] max-w-xl mx-auto leading-relaxed">
+          See how our creator marketing architecture transforms algorithmic reach into verified pipeline revenue across X.
+        </p>
+      </div>
+
+      <!-- Outer Glass Card with Lime Sheen -->
+      <div class="relative group rounded-2xl sm:rounded-3xl p-2 sm:p-3.5 glass border border-white/10 hover:border-[#D4F54F]/40 shadow-[0_20px_80px_-20px_rgba(0,0,0,0.8),0_0_50px_-20px_rgba(212,245,79,0.18)] transition-all duration-500">
+        
+        <!-- Clickable Video Link Wrapper -->
+        <a href="https://x.com/famewoven" target="_blank" rel="noopener noreferrer"
+          id="brand-video-wrapper"
+          class="block relative aspect-video w-full rounded-xl sm:rounded-2xl overflow-hidden bg-[#080A07] cursor-pointer select-none"
+          data-cursor-view
+          aria-label="Watch Famewoven brand film on X (@@famewoven)">
+          
+          <!-- Native Video Element -->
+          <video id="brand-showcase-video"
+            class="w-full h-full object-cover rounded-xl sm:rounded-2xl transition-transform duration-700 group-hover:scale-[1.01]"
+            playsinline
+            webkit-playsinline
+            loop
+            preload="metadata">
+            <source src="{{ asset('videos/famewoven.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+
+          <!-- Subtle Cinema Vignette Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30 pointer-events-none transition-opacity duration-300 group-hover:opacity-40"></div>
+
+          <!-- Top Control Strip -->
+          <div class="absolute top-3 sm:top-5 inset-x-3 sm:inset-x-5 flex items-center justify-between z-20 pointer-events-none">
+            <!-- X Handle Badge -->
+            <div class="glass glass--pill px-3.5 py-1.5 flex items-center gap-2 text-xs font-mono text-[#F2F5EC] border border-white/15 backdrop-blur-md shadow-lg transition-transform duration-300 group-hover:scale-105 pointer-events-auto">
+              <svg class="w-3.5 h-3.5 text-[#D4F54F]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+              <span class="font-semibold">@@famewoven</span>
+              <span class="text-[#D4F54F] font-bold">?</span>
+            </div>
+
+            <!-- Sound Toggle Button -->
+            <button id="brand-video-sound-btn" type="button" aria-label="Toggle Sound"
+              class="glass glass--pill px-3.5 py-1.5 flex items-center gap-2 text-xs font-mono text-[#F2F5EC] hover:text-[#D4F54F] border border-white/15 hover:border-[#D4F54F]/50 backdrop-blur-md shadow-lg transition-all duration-300 pointer-events-auto z-30">
+              <span id="sound-dot" class="w-2 h-2 rounded-full bg-[#9AA391] transition-colors"></span>
+              <svg id="sound-icon-unmuted" class="w-4 h-4 hidden text-[#D4F54F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+              </svg>
+              <svg id="sound-icon-muted" class="w-4 h-4 text-[#9AA391]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+              </svg>
+              <span id="sound-text">Sound: Muted</span>
+            </button>
+          </div>
+
+          <!-- Bottom Action Strip -->
+          <div class="absolute bottom-3 sm:bottom-5 inset-x-3 sm:inset-x-5 flex items-center justify-between z-20 pointer-events-none">
+            <div class="glass glass--pill px-3 py-1 text-[11px] font-mono text-[#9AA391] border border-white/10 backdrop-blur-md hidden sm:flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#D4F54F] animate-pulse"></span>
+              <span>Click video to redirect to https://x.com/famewoven</span>
+            </div>
+
+            <div class="glass glass--lime glass--pill px-4 py-1.5 text-xs font-mono font-bold text-[#101210] flex items-center gap-1.5 shadow-lg group-hover:scale-105 transition-transform duration-300 ml-auto pointer-events-auto">
+              <span>Redirect to X</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </div>
+          </div>
+
+        </a>
+      </div>
+    </section>
+
+    <!-- 10.3 The Problem (Positioning) -->
+    <section class="py-24 sm:py-32 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+      <div class="max-w-3xl mb-16">
+        <div class="label-caps text-[#D4F54F] mb-3">The Industry Flaw</div>
+        <h2 class="font-head text-3xl sm:text-5xl font-bold tracking-tight text-[#F2F5EC]">
+          Most influencer campaigns are guesswork with a invoice.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Problem Card 1 -->
+        <div class="problem-card glass p-8 flex flex-col justify-between">
+          <div>
+            <span class="font-mono text-xs text-[#D4F54F] mb-4 block">01 / MISALIGNED TALENT</span>
+            <h3 class="font-head text-xl font-semibold text-[#F2F5EC] mb-3">Wrong creators, right follower counts.</h3>
+            <p class="text-sm text-[#9AA391] leading-relaxed">
+              Agencies book who is available on WhatsApp instead of checking audience authenticity. You pay for bot
+              comments and teenagers who never buy.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-white/10 font-mono text-xs text-[#9AA391]">
+            Impact: <span class="text-rose-400">Burned ad spend</span>
+          </div>
+        </div>
+
+        <!-- Problem Card 2 -->
+        <div class="problem-card glass p-8 flex flex-col justify-between">
+          <div>
+            <span class="font-mono text-xs text-[#D4F54F] mb-4 block">02 / ZERO ATTRIBUTION</span>
+            <h3 class="font-head text-xl font-semibold text-[#F2F5EC] mb-3">Posts go live. Nobody knows what they
+              earned.</h3>
+            <p class="text-sm text-[#9AA391] leading-relaxed">
+              Vanity views and screenshot decks delivered weeks later. When leadership asks "what did this campaign make
+              us?", the room goes silent.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-white/10 font-mono text-xs text-[#9AA391]">
+            Impact: <span class="text-rose-400">Zero ROI visibility</span>
+          </div>
+        </div>
+
+        <!-- Problem Card 3 -->
+        <div class="problem-card glass p-8 flex flex-col justify-between">
+          <div>
+            <span class="font-mono text-xs text-[#D4F54F] mb-4 block">03 / NO COMPOUNDING ASSETS</span>
+            <h3 class="font-head text-xl font-semibold text-[#F2F5EC] mb-3">Every campaign starts from zero.</h3>
+            <p class="text-sm text-[#9AA391] leading-relaxed">
+              Creator posts expire after 24 hours. No whitelisting rights, no retained UGC raw files, and no performance
+              data carried over to the next sprint.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-white/10 font-mono text-xs text-[#9AA391]">
+            Impact: <span class="text-rose-400">Ephemeral waste</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10.4 The System (The Weave System) -->
+    <section id="weave-system-section" class="py-24 sm:py-32 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto relative">
+      <div class="text-center max-w-2xl mx-auto mb-20">
+        <div class="label-caps text-[#D4F54F] mb-3">The Named Operating Model</div>
+        <h2 class="font-head text-3xl sm:text-5xl font-bold tracking-tight text-[#F2F5EC] mb-4">The Weave System</h2>
+        <p class="text-base text-[#9AA391]">Four steps. Every campaign. No improvisation.</p>
+      </div>
+
+      <!-- Connecting SVG Thread (Scrubbed on scroll) -->
+      <div class="hidden lg:block relative mb-8">
+        <svg class="w-full h-8" viewBox="0 0 1000 30" fill="none">
+          <path id="weave-thread-path" d="M 50 15 L 950 15" stroke="#D4F54F" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Step 1 -->
+        <div class="weave-step-card glass p-7 transition-all duration-300">
+          <div class="font-mono text-2xl font-bold text-[#D4F54F] mb-4">01</div>
+          <h3 class="font-head text-xl font-bold text-[#F2F5EC] mb-2">Map</h3>
+          <p class="text-xs text-[#9AA391] leading-relaxed">
+            Target buyer personas, customer acquisition targets, channel economics, and campaign attribution
+            architecture.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="weave-step-card glass p-7 transition-all duration-300">
+          <div class="font-mono text-2xl font-bold text-[#D4F54F] mb-4">02</div>
+          <h3 class="font-head text-xl font-bold text-[#F2F5EC] mb-2">Match</h3>
+          <p class="text-xs text-[#9AA391] leading-relaxed">
+            Multi-layer creator vetting: audience fraud detection, authentic engagement scoring, and category
+            brand-safety check.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="weave-step-card glass p-7 transition-all duration-300">
+          <div class="font-mono text-2xl font-bold text-[#D4F54F] mb-4">03</div>
+          <h3 class="font-head text-xl font-bold text-[#F2F5EC] mb-2">Make</h3>
+          <p class="text-xs text-[#9AA391] leading-relaxed">
+            Direct response creative briefs, high-converting hooks, revision rounds, and synchronized multi-platform
+            publishing.
+          </p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="weave-step-card glass p-7 transition-all duration-300">
+          <div class="font-mono text-2xl font-bold text-[#D4F54F] mb-4">04</div>
+          <h3 class="font-head text-xl font-bold text-[#F2F5EC] mb-2">Measure</h3>
+          <p class="text-xs text-[#9AA391] leading-relaxed">
+            Tracked promo codes, custom UTM links, real-time conversion dashboard, and paid ad scaling of top-performing
+            creator posts.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10.5 Services Overview ("What we run") -->
+    <section class="py-24 sm:py-32 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+        <div>
+          <div class="label-caps text-[#D4F54F] mb-3">Full-Service Capabilities</div>
+          <h2 class="font-head text-3xl sm:text-5xl font-bold tracking-tight text-[#F2F5EC]">What we run</h2>
+        </div>
+        <a href="{{ route('services.index') }}"
+          class="mt-4 md:mt-0 text-sm font-mono text-[#D4F54F] hover:underline flex items-center gap-1">
+          Explore all 14 services <span>?</span>
+        </a>
+      </div>
+
+      <div class="stagger-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Service 1: Sponsored X Posts (Content) -->
+        <div class="glass glass--lift p-8 flex flex-col justify-between group transition-all">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div
+                class="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#D4F54F] group-hover:border-[#D4F54F]/40 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+                </svg>
+              </div>
+              <span
+                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold border border-[#D4F54F]/30 bg-[#D4F54F]/10 text-[#D4F54F]">
+                Content
+              </span>
+            </div>
+            <h3 class="font-head text-2xl font-bold text-[#F2F5EC] mb-2 group-hover:text-[#D4F54F] transition-colors">
+              Sponsored X Posts
+            </h3>
+            <p class="text-sm text-[#9AA391] leading-relaxed mb-6">
+              Single posts built around your brand or product.
+            </p>
+            <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Native creator voice integration
+              </li>
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Draft review before publishing
+              </li>
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Direct link & tracking setup
+              </li>
+            </ul>
+          </div>
+          <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
+            <a href="contact.html?service=sponsored-x-posts"
+              class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+              <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span
+                  class="btn-text-clone">Start brief</span></span>
+            </a>
+            <a href="{{ route('services.show', 'sponsored-x-posts') }}"
+              class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
+              Details <span>?</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 2: X Threads (Content) -->
+        <div class="glass glass--lift p-8 flex flex-col justify-between group transition-all">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div
+                class="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#D4F54F] group-hover:border-[#D4F54F]/40 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+              <span
+                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold border border-[#D4F54F]/30 bg-[#D4F54F]/10 text-[#D4F54F]">
+                Content
+              </span>
+            </div>
+            <h3 class="font-head text-2xl font-bold text-[#F2F5EC] mb-2 group-hover:text-[#D4F54F] transition-colors">
+              X Threads
+            </h3>
+            <p class="text-sm text-[#9AA391] leading-relaxed mb-6">
+              Educational, storytelling, product-led or launch threads.
+            </p>
+            <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Viral hook & frame structure
+              </li>
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Workflow & code breakdowns</li>
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> High bookmark velocity design
+              </li>
+            </ul>
+          </div>
+          <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
+            <a href="contact.html?service=x-threads"
+              class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+              <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span
+                  class="btn-text-clone">Start brief</span></span>
+            </a>
+            <a href="{{ route('services.show', 'x-threads') }}"
+              class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
+              Details <span>?</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 3: Quote Reposts (Content) -->
+        <div class="glass glass--lift p-8 flex flex-col justify-between group transition-all">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div
+                class="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#D4F54F] group-hover:border-[#D4F54F]/40 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+              </div>
+              <span
+                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold border border-[#D4F54F]/30 bg-[#D4F54F]/10 text-[#D4F54F]">
+                Content
+              </span>
+            </div>
+            <h3 class="font-head text-2xl font-bold text-[#F2F5EC] mb-2 group-hover:text-[#D4F54F] transition-colors">
+              Quote Reposts
+            </h3>
+            <p class="text-sm text-[#9AA391] leading-relaxed mb-6">
+              Relevant creators quote and boost your official posts.
+            </p>
+            <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Instant social proof & authority
+              </li>
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Staggered timing for momentum
+              </li>
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Traffic directed to main handle
+              </li>
+            </ul>
+          </div>
+          <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
+            <a href="contact.html?service=quote-reposts"
+              class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+              <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span
+                  class="btn-text-clone">Start brief</span></span>
+            </a>
+            <a href="{{ route('services.show', 'quote-reposts') }}"
+              class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
+              Details <span>?</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 4: Organic Amplification (Content) -->
+        <div class="glass glass--lift p-8 flex flex-col justify-between group transition-all">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div
+                class="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#D4F54F] group-hover:border-[#D4F54F]/40 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <span
+                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold border border-[#D4F54F]/30 bg-[#D4F54F]/10 text-[#D4F54F]">
+                Content
+              </span>
+            </div>
+            <h3 class="font-head text-2xl font-bold text-[#F2F5EC] mb-2 group-hover:text-[#D4F54F] transition-colors">
+              Organic Amplification
+            </h3>
+            <p class="text-sm text-[#9AA391] leading-relaxed mb-6">
+              Real likes, reposts, replies and bookmarks from engaged accounts.
+            </p>
+            <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> High bookmark velocity triggers
+              </li>
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Real human builder interactions
+              </li>
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Zero bot penalty or shadowban
+                risk</li>
+            </ul>
+          </div>
+          <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
+            <a href="contact.html?service=organic-amplification"
+              class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+              <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span
+                  class="btn-text-clone">Start brief</span></span>
+            </a>
+            <a href="{{ route('services.show', 'organic-amplification') }}"
+              class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
+              Details <span>?</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 5: Launch Campaigns (Campaigns) -->
+        <div class="glass glass--lift p-8 flex flex-col justify-between group transition-all">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div
+                class="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#D4F54F] group-hover:border-[#D4F54F]/40 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.58-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7a14.93 14.93 0 01-2.7-2.7" />
+                </svg>
+              </div>
+              <span
+                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold border border-[#7CB83A]/40 bg-[#7CB83A]/10 text-[#F0FFB0]">
+                Campaigns
+              </span>
+            </div>
+            <h3 class="font-head text-2xl font-bold text-[#F2F5EC] mb-2 group-hover:text-[#D4F54F] transition-colors">
+              Launch Campaigns
+            </h3>
+            <p class="text-sm text-[#9AA391] leading-relaxed mb-6">
+              Creator posts timed together around your product launch.
+            </p>
+            <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Coordinated launch-day surge
+              </li>
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Targeted launch-window
+                scheduling</li>
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Product demo & screenshot
+                priority</li>
+            </ul>
+          </div>
+          <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
+            <a href="contact.html?service=launch-campaigns"
+              class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+              <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span
+                  class="btn-text-clone">Start brief</span></span>
+            </a>
+            <a href="{{ route('services.show', 'launch-campaigns') }}"
+              class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
+              Details <span>?</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 6: Product Promotion (Campaigns) -->
+        <div class="glass glass--lift p-8 flex flex-col justify-between group transition-all">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div
+                class="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#D4F54F] group-hover:border-[#D4F54F]/40 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                </svg>
+              </div>
+              <span
+                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold border border-[#7CB83A]/40 bg-[#7CB83A]/10 text-[#F0FFB0]">
+                Campaigns
+              </span>
+            </div>
+            <h3 class="font-head text-2xl font-bold text-[#F2F5EC] mb-2 group-hover:text-[#D4F54F] transition-colors">
+              Product Promotion
+            </h3>
+            <p class="text-sm text-[#9AA391] leading-relaxed mb-6">
+              Awareness campaigns for AI, SaaS and tech products.
+            </p>
+            <ul class="space-y-2 text-xs font-mono text-[#F2F5EC]/80 mb-6">
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Contextual pain-point
+                positioning</li>
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Targeted tech & founder niches
+              </li>
+              <li class="flex items-center gap-2"><span class="text-[#D4F54F]">?</span> Continuous awareness runway</li>
+            </ul>
+          </div>
+          <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
+            <a href="contact.html?service=product-promotion"
+              class="btn-swap glass glass--lime px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
+              <span class="btn-text-wrap"><span class="btn-text-primary">Start brief</span><span
+                  class="btn-text-clone">Start brief</span></span>
+            </a>
+            <a href="{{ route('services.show', 'product-promotion') }}"
+              class="text-xs font-mono text-[#9AA391] hover:text-[#D4F54F] transition-colors flex items-center gap-1">
+              Details <span>?</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 10.6 Stat Band (Section 10.6 live counter animation) -->
+    <section class="py-20 border-y border-white/[0.06] bg-[#0E120C]/60 backdrop-blur-md">
+      <div class="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-16 grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <div class="font-head text-4xl sm:text-6xl font-bold text-[#D4F54F] tracking-tight">
+            <span class="stat-counter" data-target="500" data-suffix="+">0</span>
+          </div>
+          <div class="label-caps text-[#9AA391] mt-2">Vetted Creators</div>
+        </div>
+
+        <div>
+          <div class="font-head text-4xl sm:text-6xl font-bold text-[#F2F5EC] tracking-tight">
+            <span class="stat-counter" data-target="30" data-suffix="+">0</span>
+          </div>
+          <div class="label-caps text-[#9AA391] mt-2">Campaigns Executed</div>
+        </div>
+
+        <div>
+          <div class="font-head text-4xl sm:text-6xl font-bold text-[#F2F5EC] tracking-tight">
+            <span class="stat-counter" data-target="18.4" data-suffix="M+" data-decimals="1">0</span>
+          </div>
+          <div class="label-caps text-[#9AA391] mt-2">Organic Impressions</div>
+        </div>
+
+        <div>
+          <div class="font-head text-4xl sm:text-6xl font-bold text-[#D4F54F] tracking-tight">
+            <span class="stat-counter" data-target="3.4" data-suffix="x" data-decimals="1">0</span>
+          </div>
+          <div class="label-caps text-[#9AA391] mt-2">Average Verified ROAS</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10.7 Case Studies / Pilot Program (Section 10.7) -->
+    <section class="py-24 sm:py-32 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+        <div>
+          <div class="label-caps text-[#D4F54F] mb-3">Proven Performance</div>
+          <h2 class="font-head text-3xl sm:text-5xl font-bold tracking-tight text-[#F2F5EC]">Results, not reach.</h2>
+        </div>
+        <p class="text-sm font-mono text-[#9AA391] mt-3 md:mt-0">Every number verified by analytics dashboards</p>
+      </div>
+
+      <!-- Founding Brand Pilot Program Banner -->
+      <div
+        class="glass p-6 sm:p-8 mb-12 border-l-4 border-l-[#D4F54F] flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span
+              class="px-2 py-0.5 rounded bg-[#D4F54F] text-[#101210] font-mono text-[10px] font-bold uppercase">Pilot
+              Program</span>
+            <span class="text-xs font-mono text-[#9AA391]">Limited Cohort · Q4 & Q1</span>
+          </div>
+          <h3 class="font-head text-2xl font-bold text-[#F2F5EC]">We're taking 5 founding brands.</h3>
+          <p class="text-sm text-[#9AA391] max-w-2xl mt-1">
+            Reduced rate. Full attribution tracking. You get the high-margin case study, we get the public proof.
+          </p>
+        </div>
+        <a href="{{ route('contact') }}"
+          class="btn-swap glass glass--lime px-6 py-3 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#101210] whitespace-nowrap">
+          Apply for Pilot ?
+        </a>
+      </div>
+
+      <!-- 3 Featured AI Case Study Metric Cards (from the 7 Client Portfolio) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Card 1: HeyGen -->
+        <a href="{{ route('work.case-study') }}" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group"
+          data-cursor-view="true">
+          <div>
+            <div class="flex items-center justify-between mb-8">
+              <span class="label-caps text-[#D4F54F]">Generative AI Video</span>
+              <span class="font-mono text-xs text-[#9AA391]">4-Week Sprint</span>
+            </div>
+            <div
+              class="font-head text-4xl sm:text-5xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-3">
+              4.6x ROAS
+            </div>
+            <p class="text-sm text-[#9AA391]">
+              Engineered launch for HeyGen. 24 AI educators & tech founders demonstrating real-time avatar translation.
+            </p>
+          </div>
+          <div
+            class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs text-[#9AA391]">
+            <span class="font-bold text-[#F2F5EC]">HeyGen</span>
+            <span class="text-[#D4F54F] group-hover:translate-x-1 transition-transform">Read breakdown ?</span>
+          </div>
+        </a>
+
+        <!-- Card 2: higgsfield -->
+        <a href="{{ route('work.case-study') }}" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group"
+          data-cursor-view="true">
+          <div>
+            <div class="flex items-center justify-between mb-8">
+              <span class="label-caps text-[#D4F54F]">Cinematic AI Video</span>
+              <span class="font-mono text-xs text-[#9AA391]">Global Launch</span>
+            </div>
+            <div
+              class="font-head text-4xl sm:text-5xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-3">
+              -48% CAC
+            </div>
+            <p class="text-sm text-[#9AA391]">
+              Coordinated viral video challenge showcasing cinematic camera control, driving 420k+ mobile app installs.
+            </p>
+          </div>
+          <div
+            class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs text-[#9AA391]">
+            <span class="font-bold text-[#F2F5EC]">higgsfield</span>
+            <span class="text-[#D4F54F] group-hover:translate-x-1 transition-transform">Read breakdown ?</span>
+          </div>
+        </a>
+
+        <!-- Card 3: Sintra.ai -->
+        <a href="{{ route('work.case-study') }}" class="case-study-card glass glass--lift p-8 flex flex-col justify-between group"
+          data-cursor-view="true">
+          <div>
+            <div class="flex items-center justify-between mb-8">
+              <span class="label-caps text-[#D4F54F]">AI Automation Bots</span>
+              <span class="font-mono text-xs text-[#9AA391]">Performance Push</span>
+            </div>
+            <div
+              class="font-head text-4xl sm:text-5xl font-bold text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors mb-3">
+              5.2x ROAS
+            </div>
+            <p class="text-sm text-[#9AA391]">
+              Solo founder and agency operator breakdown videos demonstrating pre-built AI assistants replacing admin work.
+            </p>
+          </div>
+          <div
+            class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs text-[#9AA391]">
+            <span class="font-bold text-[#F2F5EC]">Sintra.ai</span>
+            <span class="text-[#D4F54F] group-hover:translate-x-1 transition-transform">Read breakdown ?</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- 10.8 Creator Network Teaser (Vetting Score Meter) -->
+    <section id="vetting-section" class="py-24 sm:py-32 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+      <div class="glass p-8 sm:p-14 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Left: Criteria checks -->
+        <div class="lg:col-span-7">
+          <div class="label-caps text-[#D4F54F] mb-3">Rigorous Quality Gate</div>
+          <h2 class="font-head text-3xl sm:text-5xl font-bold tracking-tight text-[#F2F5EC] mb-4">
+            Creators, vetted.
+          </h2>
+          <p class="text-base text-[#9AA391] mb-8 leading-relaxed">
+            Every creator in our network passes an audience-quality check before they touch your brand. No vanity
+            metrics. No suspicious follower spikes.
+          </p>
+
+          <div class="space-y-4 mb-8">
+            <div class="flex items-start gap-4">
+              <div
+                class="w-6 h-6 rounded-full bg-[#D4F54F]/20 text-[#D4F54F] flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">
+                ?</div>
+              <div>
+                <h4 class="text-sm font-semibold text-[#F2F5EC]">Audience Authenticity</h4>
+                <p class="text-xs text-[#9AA391] mt-0.5">Deep inspection of follower geographic clusters, comment depth,
+                  and bot ratio.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div
+                class="w-6 h-6 rounded-full bg-[#D4F54F]/20 text-[#D4F54F] flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">
+                ?</div>
+              <div>
+                <h4 class="text-sm font-semibold text-[#F2F5EC]">Engagement Quality</h4>
+                <p class="text-xs text-[#9AA391] mt-0.5">Sustained organic watch-through rates and high saves/shares on
+                  recent video posts.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div
+                class="w-6 h-6 rounded-full bg-[#D4F54F]/20 text-[#D4F54F] flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">
+                ?</div>
+              <div>
+                <h4 class="text-sm font-semibold text-[#F2F5EC]">Brand Safety Guarantee</h4>
+                <p class="text-xs text-[#9AA391] mt-0.5">Zero toxic controversy history and strict adherence to creative
+                  delivery timelines.</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="{{ route('creators') }}"
+            class="inline-flex items-center gap-2 text-sm font-mono text-[#D4F54F] hover:underline font-semibold">
+            Explore the creator network <span>?</span>
+          </a>
+        </div>
+
+        <!-- Right: Animated Circular Vetting Score Gauge (Section 10.8) -->
+        <div class="lg:col-span-5 flex flex-col items-center justify-center">
+          <div class="glass glass--sub p-8 w-full max-w-xs flex flex-col items-center text-center">
+            <div class="relative w-36 h-36 mb-4">
+              <svg class="w-full h-full -rotate-90" viewBox="0 0 120 120">
+                <!-- Track circle -->
+                <circle cx="60" cy="60" r="54" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="8" />
+                <!-- Meter fill circle -->
+                <circle id="vetting-score-ring" cx="60" cy="60" r="54" fill="none" stroke="#D4F54F" stroke-width="8"
+                  stroke-linecap="round" />
+              </svg>
+              <!-- Center Metric -->
+              <div class="absolute inset-0 flex flex-col items-center justify-center">
+                <span id="vetting-score-val" class="font-head text-3xl font-bold text-[#F2F5EC]">94%</span>
+                <span class="label-caps text-[9px] text-[#9AA391]">Pass Score</span>
+              </div>
+            </div>
+            <div class="font-mono text-xs font-semibold text-[#D4F54F]">Vetting Standard</div>
+            <p class="text-[11px] text-[#9AA391] mt-1">Average quality threshold for network onboarding.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10.9 Why Famewoven (Differentiation Table) -->
+    <section class="py-24 sm:py-32 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <div class="label-caps text-[#D4F54F] mb-3">Engineered Differentiation</div>
+        <h2 class="font-head text-3xl sm:text-5xl font-bold tracking-tight text-[#F2F5EC]">
+          Built like software. Run like a studio.
+        </h2>
+      </div>
+
+      <!-- Glass Comparison Table (Section 10.9) -->
+      <div class="glass overflow-x-auto">
+        <table class="w-full text-left border-collapse min-w-[620px]">
+          <thead>
+            <tr class="border-b border-white/10 bg-white/[0.02]">
+              <th class="py-5 px-6 label-caps text-[#9AA391] w-1/3">Core Capability</th>
+              <th class="py-5 px-6 label-caps text-[#9AA391] w-1/3">Typical Agency</th>
+              <th class="py-5 px-6 label-caps text-[#D4F54F] w-1/3 bg-[#D4F54F]/[0.05]">Famewoven</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/[0.06] text-sm">
+            <tr>
+              <td class="py-5 px-6 font-semibold text-[#F2F5EC]">Attribution & Reporting</td>
+              <td class="py-5 px-6 text-[#9AA391]">PDF screenshots of views 3 weeks later</td>
+              <td class="py-5 px-6 text-[#F2F5EC] bg-[#D4F54F]/[0.05] font-medium flex items-center gap-2">
+                <span class="text-[#D4F54F]">?</span> Real-time UTM dashboard & revenue tracking
+              </td>
+            </tr>
+            <tr>
+              <td class="py-5 px-6 font-semibold text-[#F2F5EC]">Creator Selection</td>
+              <td class="py-5 px-6 text-[#9AA391]">Whoever replies first on WhatsApp</td>
+              <td class="py-5 px-6 text-[#F2F5EC] bg-[#D4F54F]/[0.05] font-medium">
+                <span class="text-[#D4F54F]">?</span> Multi-layer bot fraud check & brand fit score
+              </td>
+            </tr>
+            <tr>
+              <td class="py-5 px-6 font-semibold text-[#F2F5EC]">Turnaround Speed</td>
+              <td class="py-5 px-6 text-[#9AA391]">3-4 weeks to review a single draft</td>
+              <td class="py-5 px-6 text-[#F2F5EC] bg-[#D4F54F]/[0.05] font-medium">
+                <span class="text-[#D4F54F]">?</span> 7-day turnaround from brief to shoot
+              </td>
+            </tr>
+            <tr>
+              <td class="py-5 px-6 font-semibold text-[#F2F5EC]">Pricing Clarity</td>
+              <td class="py-5 px-6 text-[#9AA391]">Opaque agency markups on talent fees</td>
+              <td class="py-5 px-6 text-[#F2F5EC] bg-[#D4F54F]/[0.05] font-medium">
+                <span class="text-[#D4F54F]">?</span> 100% transparent creator fees + flat management
+              </td>
+            </tr>
+            <tr>
+              <td class="py-5 px-6 font-semibold text-[#F2F5EC]">Asset Ownership & Ads</td>
+              <td class="py-5 px-6 text-[#9AA391]">Organic only; rights expire in 30 days</td>
+              <td class="py-5 px-6 text-[#F2F5EC] bg-[#D4F54F]/[0.05] font-medium">
+                <span class="text-[#D4F54F]">?</span> Full whitelisting rights & reusable raw UGC
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 10.10 Testimonials (Crossfade Slider) -->
+    <section class="py-24 sm:py-32 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+      <div class="glass p-8 sm:p-16 relative overflow-hidden">
+        <div class="label-caps text-[#D4F54F] mb-6">Client Endorsements</div>
+
+        <!-- Slider Wrapper -->
+        <div class="relative min-h-[180px] sm:min-h-[140px]">
+          <!-- Slide 1 -->
+          <div class="testimonial-slide opacity-100 transition-opacity duration-700 absolute inset-0">
+            <blockquote class="font-head text-2xl sm:text-3xl lg:text-4xl font-medium text-[#F2F5EC] leading-snug">
+              "Famewoven is the first agency that didn't hand us screenshot PDFs. They gave us an attribution link that
+              tied every sale directly to creator posts."
+            </blockquote>
+            <div class="mt-6 flex items-center gap-3">
+              <div
+                class="w-8 h-8 rounded-full bg-[#D4F54F] text-[#101210] font-bold text-xs flex items-center justify-center font-mono">
+                TR</div>
+              <div>
+                <div class="font-mono text-sm font-semibold text-[#F2F5EC]">Tanvir Rahman</div>
+                <div class="text-xs text-[#9AA391]">Head of Growth · HeyGen</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="testimonial-slide opacity-0 pointer-events-none transition-opacity duration-700 absolute inset-0">
+            <blockquote class="font-head text-2xl sm:text-3xl lg:text-4xl font-medium text-[#F2F5EC] leading-snug">
+              "Their creator vetting process filtered out 80% of accounts we thought were good. The remaining 20% drove
+              4x the orders of our previous campaigns."
+            </blockquote>
+            <div class="mt-6 flex items-center gap-3">
+              <div
+                class="w-8 h-8 rounded-full bg-[#D4F54F] text-[#101210] font-bold text-xs flex items-center justify-center font-mono">
+                SA</div>
+              <div>
+                <div class="font-mono text-sm font-semibold text-[#F2F5EC]">Samira Ahmed</div>
+                <div class="text-xs text-[#9AA391]">Growth Lead · Sintra.ai</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10.11 FAQ (Redesigned Editorial Glass Accordions) -->
+    <section class="py-24 sm:py-32 px-6 sm:px-10 lg:px-16 max-w-[1040px] mx-auto relative z-10"
+      aria-label="Frequently Asked Questions">
+      <!-- Section Header -->
+      <div
+        class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16 border-b border-white/[0.08] pb-8">
+        <div>
+          <div
+            class="inline-flex items-center gap-2 label-caps text-[#D4F54F] mb-3 px-3 py-1 rounded-full bg-[#D4F54F]/10 border border-[#D4F54F]/20 text-[11px]">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#D4F54F] animate-pulse"></span>
+            Transparent Clarity
+          </div>
+          <h2 class="font-head text-3xl sm:text-5xl font-bold tracking-tight text-[#F2F5EC]">
+            Frequently asked questions.
+          </h2>
+        </div>
+        <div class="md:text-right">
+          <p class="text-sm text-[#9AA391]">Everything you need to know about working together.</p>
+          <a href="{{ route('contact') }}"
+            class="inline-flex items-center gap-1.5 text-xs font-mono text-[#D4F54F] hover:underline mt-2">
+            <span>Have a unique question? Talk to us</span>
+            <span>?</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- FAQ Accordion Stack -->
+      <div class="space-y-4">
+        <!-- Question 1 -->
+        <div class="faq-accordion-item glass">
+          <button
+            class="faq-trigger w-full p-6 sm:p-7 text-left flex items-start sm:items-center justify-between gap-4 group"
+            aria-expanded="false">
+            <div class="flex items-start sm:items-center gap-4 sm:gap-5 flex-1 min-w-0">
+              <span
+                class="faq-index font-mono text-xs font-semibold px-2.5 py-1 rounded-md border border-white/10 text-[#9AA391] bg-white/[0.03] flex-shrink-0 transition-colors">
+                01
+              </span>
+              <span
+                class="faq-question-text font-head text-base sm:text-xl font-bold tracking-tight text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors leading-snug">
+                How do you choose creators?
+              </span>
+            </div>
+            <div
+              class="faq-icon-wrapper w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/10 bg-white/[0.04] flex items-center justify-center flex-shrink-0">
+              <span
+                class="faq-icon text-[#D4F54F] font-mono text-xl leading-none transition-transform duration-300 select-none">+</span>
+            </div>
+          </button>
+          <div class="faq-answer-inner px-6 sm:px-7 pb-6 sm:pb-7">
+            <div
+              class="pt-3 border-t border-white/[0.06] text-sm sm:text-[15px] text-[#9AA391] leading-relaxed font-normal">
+              We start from who you sell to, not from follower counts. We look at each creator's audience, how much real
+              engagement they get, how well they fit your niche (<span class="text-[#F2F5EC] font-medium">AI, SaaS, dev
+                tools, Web3</span>) and how their past sponsored posts did. Then you review and approve the shortlist
+              before anything is booked.
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="faq-accordion-item glass">
+          <button
+            class="faq-trigger w-full p-6 sm:p-7 text-left flex items-start sm:items-center justify-between gap-4 group"
+            aria-expanded="false">
+            <div class="flex items-start sm:items-center gap-4 sm:gap-5 flex-1 min-w-0">
+              <span
+                class="faq-index font-mono text-xs font-semibold px-2.5 py-1 rounded-md border border-white/10 text-[#9AA391] bg-white/[0.03] flex-shrink-0 transition-colors">
+                02
+              </span>
+              <span
+                class="faq-question-text font-head text-base sm:text-xl font-bold tracking-tight text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors leading-snug">
+                What's the minimum budget?
+              </span>
+            </div>
+            <div
+              class="faq-icon-wrapper w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/10 bg-white/[0.04] flex items-center justify-center flex-shrink-0">
+              <span
+                class="faq-icon text-[#D4F54F] font-mono text-xl leading-none transition-transform duration-300 select-none">+</span>
+            </div>
+          </button>
+          <div class="faq-answer-inner px-6 sm:px-7 pb-6 sm:pb-7">
+            <div
+              class="pt-3 border-t border-white/[0.06] text-sm sm:text-[15px] text-[#9AA391] leading-relaxed font-normal">
+              It depends on the format and the creators involved. A single sponsored post costs far less than a
+              50-creator launch. Tell us your range in the form below and we'll suggest the setup that does the most
+              with it.
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="faq-accordion-item glass">
+          <button
+            class="faq-trigger w-full p-6 sm:p-7 text-left flex items-start sm:items-center justify-between gap-4 group"
+            aria-expanded="false">
+            <div class="flex items-start sm:items-center gap-4 sm:gap-5 flex-1 min-w-0">
+              <span
+                class="faq-index font-mono text-xs font-semibold px-2.5 py-1 rounded-md border border-white/10 text-[#9AA391] bg-white/[0.03] flex-shrink-0 transition-colors">
+                03
+              </span>
+              <span
+                class="faq-question-text font-head text-base sm:text-xl font-bold tracking-tight text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors leading-snug">
+                How fast can a campaign launch?
+              </span>
+            </div>
+            <div
+              class="faq-icon-wrapper w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/10 bg-white/[0.04] flex items-center justify-center flex-shrink-0">
+              <span
+                class="faq-icon text-[#D4F54F] font-mono text-xl leading-none transition-transform duration-300 select-none">+</span>
+            </div>
+          </button>
+          <div class="faq-answer-inner px-6 sm:px-7 pb-6 sm:pb-7">
+            <div
+              class="pt-3 border-t border-white/[0.06] text-sm sm:text-[15px] text-[#9AA391] leading-relaxed font-normal">
+              Single posts and small campaigns can usually go live within days of an approved brief. Coordinated
+              multi-creator launches need more lead time so every post is timed to your launch window. We'll give you a
+              timeline on the strategy call.
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="faq-accordion-item glass">
+          <button
+            class="faq-trigger w-full p-6 sm:p-7 text-left flex items-start sm:items-center justify-between gap-4 group"
+            aria-expanded="false">
+            <div class="flex items-start sm:items-center gap-4 sm:gap-5 flex-1 min-w-0">
+              <span
+                class="faq-index font-mono text-xs font-semibold px-2.5 py-1 rounded-md border border-white/10 text-[#9AA391] bg-white/[0.03] flex-shrink-0 transition-colors">
+                04
+              </span>
+              <span
+                class="faq-question-text font-head text-base sm:text-xl font-bold tracking-tight text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors leading-snug">
+                Do you guarantee results?
+              </span>
+            </div>
+            <div
+              class="faq-icon-wrapper w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/10 bg-white/[0.04] flex items-center justify-center flex-shrink-0">
+              <span
+                class="faq-icon text-[#D4F54F] font-mono text-xl leading-none transition-transform duration-300 select-none">+</span>
+            </div>
+          </button>
+          <div class="faq-answer-inner px-6 sm:px-7 pb-6 sm:pb-7">
+            <div
+              class="pt-3 border-t border-white/[0.06] text-sm sm:text-[15px] text-[#9AA391] leading-relaxed font-normal">
+              For performance campaigns, we agree on KPIs up front, such as reach, impressions or engagement, and build
+              the campaign around hitting them. For other formats we set clear expectations and report transparently.
+              Nobody can honestly guarantee virality, and we won't pretend to.
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="faq-accordion-item glass">
+          <button
+            class="faq-trigger w-full p-6 sm:p-7 text-left flex items-start sm:items-center justify-between gap-4 group"
+            aria-expanded="false">
+            <div class="flex items-start sm:items-center gap-4 sm:gap-5 flex-1 min-w-0">
+              <span
+                class="faq-index font-mono text-xs font-semibold px-2.5 py-1 rounded-md border border-white/10 text-[#9AA391] bg-white/[0.03] flex-shrink-0 transition-colors">
+                05
+              </span>
+              <span
+                class="faq-question-text font-head text-base sm:text-xl font-bold tracking-tight text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors leading-snug">
+                Can we approve content before it goes live?
+              </span>
+            </div>
+            <div
+              class="faq-icon-wrapper w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/10 bg-white/[0.04] flex items-center justify-center flex-shrink-0">
+              <span
+                class="faq-icon text-[#D4F54F] font-mono text-xl leading-none transition-transform duration-300 select-none">+</span>
+            </div>
+          </button>
+          <div class="faq-answer-inner px-6 sm:px-7 pb-6 sm:pb-7">
+            <div
+              class="pt-3 border-t border-white/[0.06] text-sm sm:text-[15px] text-[#9AA391] leading-relaxed font-normal">
+              Yes. You can review drafts, key messages and posting schedules before launch. We keep the creator's own
+              voice, because that's why their audience trusts them, but nothing goes out that misrepresents your
+              product.
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="faq-accordion-item glass">
+          <button
+            class="faq-trigger w-full p-6 sm:p-7 text-left flex items-start sm:items-center justify-between gap-4 group"
+            aria-expanded="false">
+            <div class="flex items-start sm:items-center gap-4 sm:gap-5 flex-1 min-w-0">
+              <span
+                class="faq-index font-mono text-xs font-semibold px-2.5 py-1 rounded-md border border-white/10 text-[#9AA391] bg-white/[0.03] flex-shrink-0 transition-colors">
+                06
+              </span>
+              <span
+                class="faq-question-text font-head text-base sm:text-xl font-bold tracking-tight text-[#F2F5EC] group-hover:text-[#D4F54F] transition-colors leading-snug">
+                Do you offer ongoing partnerships?
+              </span>
+            </div>
+            <div
+              class="faq-icon-wrapper w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/10 bg-white/[0.04] flex items-center justify-center flex-shrink-0">
+              <span
+                class="faq-icon text-[#D4F54F] font-mono text-xl leading-none transition-transform duration-300 select-none">+</span>
+            </div>
+          </button>
+          <div class="faq-answer-inner px-6 sm:px-7 pb-6 sm:pb-7">
+            <div
+              class="pt-3 border-t border-white/[0.06] text-sm sm:text-[15px] text-[#9AA391] leading-relaxed font-normal">
+              Yes. Our Long-Term Creator Partnerships run monthly or in batches, so your product keeps showing up in
+              your niche instead of only on launch day.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Help Strip -->
+      <div
+        class="mt-12 p-6 sm:p-8 rounded-2xl border border-white/[0.08] bg-white/[0.02] backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+        <div class="flex flex-col sm:flex-row items-center gap-4">
+          <div
+            class="w-12 h-12 rounded-xl bg-[#D4F54F]/10 border border-[#D4F54F]/25 flex items-center justify-center text-[#D4F54F] flex-shrink-0">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+          </div>
+          <div>
+            <h4 class="text-base font-semibold text-[#F2F5EC]">Need custom terms or private creator rosters?</h4>
+            <p class="text-xs sm:text-sm text-[#9AA391] mt-0.5">We build bespoke contracts, whitelisted ad rights, and
+              multi-creator sprints for tech brands.</p>
+          </div>
+        </div>
+        <a href="{{ route('contact') }}"
+          class="btn-swap glass glass--lime glass--pill px-7 py-3.5 text-xs font-mono font-bold uppercase tracking-wider text-[#101210] flex-shrink-0 shadow-lg">
+          <span class="btn-text-wrap">
+            <span class="btn-text-primary">Talk to our team</span>
+            <span class="btn-text-clone">Talk to our team</span>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 10.12 Final CTA Banner (Section 10.12 Full bleed lime gradient glass) -->
+    <section class="py-20 px-6 sm:px-10 lg:px-16 max-w-[1280px] mx-auto">
+      <div class="glass glass--lime p-10 sm:p-16 rounded-3xl text-center relative overflow-hidden">
+        <div class="max-w-2xl mx-auto relative z-10">
+          <h2 class="font-head text-3xl sm:text-6xl font-bold tracking-tight text-[#101210] mb-4">
+            Let's weave your brand into culture.
+          </h2>
+          <p class="text-base sm:text-lg text-[#101210]/80 mb-8 max-w-xl mx-auto font-medium">
+            Tell us your goal. You get a custom creator strategy and attribution plan in 48 hours.
+          </p>
+          <a href="{{ route('contact') }}"
+            class="btn-swap inline-flex items-center justify-center px-9 py-4 bg-[#101210] text-[#F2F5EC] hover:text-[#D4F54F] rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-colors shadow-2xl">
+            <span class="btn-text-wrap">
+              <span class="btn-text-primary">Book a strategy call</span>
+              <span class="btn-text-clone">Book a strategy call</span>
+            </span>
+            <svg class="btn-icon w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  
+@endsection
+
