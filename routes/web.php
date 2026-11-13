@@ -104,13 +104,12 @@ Route::prefix('services')->name('services.')->group(function () {
     })->name('index');
 
     Route::get('/{slug}', function (string $slug) {
+        if (view()->exists('services.' . $slug)) {
+            return view('services.' . $slug);
+        }
         $viewName = 'services.' . str_replace('-', '_', $slug);
         if (view()->exists($viewName)) {
             return view($viewName);
-        }
-        $altViewName = 'services.' . $slug;
-        if (view()->exists($altViewName)) {
-            return view($altViewName);
         }
         abort(404);
     })->name('show');
