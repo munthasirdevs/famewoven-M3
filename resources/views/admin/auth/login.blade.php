@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
   <title>Admin Login — Famewoven Command Center</title>
   <link rel="icon" type="image/png" href="{{ asset('css/iconnn.png') }}">
 
@@ -45,7 +46,7 @@
     <!-- Brand Header -->
     <div class="text-center mb-8">
       <a href="{{ route('home') }}" class="inline-flex items-center gap-2 group mb-3 focus:outline-none">
-        <img src="{{ asset('css/namelogo.png') }}" alt="Famewoven" class="h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+        <img src="{{ asset('css/namelogo.png') }}" width="195" height="28" alt="Famewoven — Creator Marketing Agency Logo" class="h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
       </a>
       <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#D4F54F]/10 border border-[#D4F54F]/30 text-[#D4F54F] text-[11px] font-mono uppercase tracking-wider">
         <span class="w-1.5 h-1.5 rounded-full bg-[#D4F54F] animate-pulse"></span>

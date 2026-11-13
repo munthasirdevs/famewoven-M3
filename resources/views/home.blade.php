@@ -51,10 +51,10 @@
         "worksFor": {
           "@id": "{{ route('home') }}#organization"
         },
-        "url": "{{ route('home') }}about.html",
+        "url": "{{ route('about') }}",
         "disambiguatingDescription": "Founder and Systems Architect of Famewoven, specializing in quantitative creator distribution networks and AI marketing systems. Frequently transliterated or searched as Muntasir Rahman.",
         "sameAs": [
-          "{{ route('home') }}about.html",
+          "{{ route('about') }}",
           "https://github.com/munthasir"
         ]
       },
@@ -94,9 +94,10 @@
 
       <!-- Hero Visual Backdrop: Neon Lime Planetary Horizon -->
       <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <img id="hero-bg-img" src="{{ asset('css/Neon_Lime_Planetary_Horizon.png') }}" alt=""
-          class="w-full h-full object-cover object-center select-none opacity-85"
-          loading="eager" fetchpriority="high">
+        <picture>
+          <source srcset="{{ asset('css/Neon_Lime_Planetary_Horizon.webp') }}" type="image/webp">
+          <img id="hero-bg-img" src="{{ asset('css/Neon_Lime_Planetary_Horizon.png') }}" width="1672" height="941" alt="Famewoven neon lime planetary horizon hero visual" class="w-full h-full object-cover object-center select-none opacity-85" loading="eager" fetchpriority="high">
+        </picture>
         <!-- Top gradient to protect header/navbar contrast -->
         <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#080A07] via-[#080A07]/70 to-transparent"></div>
         <!-- Bottom gradient to seamlessly blend into Trust Strip and page body -->
@@ -118,8 +119,8 @@
           class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-lg sm:text-2xl font-mono text-[#F2F5EC] my-4 text-center"
           aria-live="polite">
           <span class="text-[#9AA391]">Built for</span>
-          <div id="flap-container" class="inline-flex items-center" aria-label="Built for AI Tools">
-            <span id="flap-board" class="flap-board"></span>
+          <div id="flap-container" class="inline-flex items-center min-h-[2.25rem]" aria-label="Built for AI Tools">
+            <span id="flap-board" class="flap-board min-h-[2.25rem]">AI Tools</span>
           </div>
         </div>
 
@@ -220,6 +221,7 @@
           
           <!-- Native Video Element -->
           <video id="brand-showcase-video"
+            poster="{{ asset('css/Neon_Lime_Planetary_Horizon.png') }}"
             class="w-full h-full object-cover rounded-xl sm:rounded-2xl transition-transform duration-700 group-hover:scale-[1.01]"
             playsinline
             webkit-playsinline
@@ -830,7 +832,7 @@
                 class="w-6 h-6 rounded-full bg-[#D4F54F]/20 text-[#D4F54F] flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">
                 ✓</div>
               <div>
-                <h4 class="text-sm font-semibold text-[#F2F5EC]">Audience Authenticity</h4>
+                <h3 class="font-head text-lg font-bold text-[#F2F5EC] mb-2">Audience Authenticity</h3>
                 <p class="text-xs text-[#9AA391] mt-0.5">Deep inspection of follower geographic clusters, comment depth,
                   and bot ratio.</p>
               </div>
@@ -841,7 +843,7 @@
                 class="w-6 h-6 rounded-full bg-[#D4F54F]/20 text-[#D4F54F] flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">
                 ✓</div>
               <div>
-                <h4 class="text-sm font-semibold text-[#F2F5EC]">Engagement Quality</h4>
+                <h3 class="font-head text-lg font-bold text-[#F2F5EC] mb-2">Engagement Quality</h3>
                 <p class="text-xs text-[#9AA391] mt-0.5">Sustained organic watch-through rates and high saves/shares on
                   recent video posts.</p>
               </div>
@@ -852,7 +854,7 @@
                 class="w-6 h-6 rounded-full bg-[#D4F54F]/20 text-[#D4F54F] flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">
                 ✓</div>
               <div>
-                <h4 class="text-sm font-semibold text-[#F2F5EC]">Brand Safety Guarantee</h4>
+                <h3 class="font-head text-lg font-bold text-[#F2F5EC] mb-2">Brand Safety Guarantee</h3>
                 <p class="text-xs text-[#9AA391] mt-0.5">Zero toxic controversy history and strict adherence to creative
                   delivery timelines.</p>
               </div>
@@ -912,8 +914,10 @@
             <tr>
               <td class="py-5 px-6 font-semibold text-[#F2F5EC]">Attribution & Reporting</td>
               <td class="py-5 px-6 text-[#9AA391]">PDF screenshots of views 3 weeks later</td>
-              <td class="py-5 px-6 text-[#F2F5EC] bg-[#D4F54F]/[0.05] font-medium flex items-center gap-2">
-                <span class="text-[#D4F54F]">✓</span> Real-time UTM dashboard & revenue tracking
+              <td class="py-5 px-6 text-[#F2F5EC] bg-[#D4F54F]/[0.05] font-medium">
+                <div class="flex items-center gap-2">
+                  <span class="text-[#D4F54F]">✓</span> Real-time UTM dashboard & revenue tracking
+                </div>
               </td>
             </tr>
             <tr>
@@ -1220,7 +1224,7 @@
             </svg>
           </div>
           <div>
-            <h4 class="text-base font-semibold text-[#F2F5EC]">Need custom terms or private creator rosters?</h4>
+            <h3 class="font-head text-xl font-bold text-[#F2F5EC] mb-1">Need custom terms or private creator rosters?</h3>
             <p class="text-xs sm:text-sm text-[#9AA391] mt-0.5">We build bespoke contracts, whitelisted ad rights, and
               multi-creator sprints for tech brands.</p>
           </div>

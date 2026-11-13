@@ -81,13 +81,13 @@
             <div>
               <label class="block label-caps text-[#9AA391] mb-2">Your Name</label>
               <input type="text" name="name" required value="{{ old('name') }}" placeholder="Safwan Ahmed"
-                     class="w-full px-4 py-3 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
+                     class="w-full px-4 py-3 bg-white/[0.04] border border-white/10 rounded-xl text-base sm:text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
             </div>
 
             <div>
               <label class="block label-caps text-[#9AA391] mb-2">Company / Brand Name</label>
               <input type="text" name="company_name" required value="{{ old('company_name') }}" placeholder="Aura Goods Ltd"
-                     class="w-full px-4 py-3 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
+                     class="w-full px-4 py-3 bg-white/[0.04] border border-white/10 rounded-xl text-base sm:text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
             </div>
           </div>
 
@@ -95,20 +95,20 @@
             <div>
               <label class="block label-caps text-[#9AA391] mb-2">Work Email</label>
               <input type="email" name="email" required value="{{ old('email') }}" placeholder="safwan@auragoods.com"
-                     class="w-full px-4 py-3 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
+                     class="w-full px-4 py-3 bg-white/[0.04] border border-white/10 rounded-xl text-base sm:text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
             </div>
 
             <div>
               <label class="block label-caps text-[#9AA391] mb-2">Phone / WhatsApp</label>
               <input type="tel" name="phone" required value="{{ old('phone') }}" placeholder="+880 1700 000000"
-                     class="w-full px-4 py-3 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
+                     class="w-full px-4 py-3 bg-white/[0.04] border border-white/10 rounded-xl text-base sm:text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
             </div>
           </div>
 
           <!-- Goal Select -->
           <div>
             <label class="block label-caps text-[#9AA391] mb-2">Primary Campaign Goal</label>
-            <select name="goal" required class="w-full px-4 py-3 bg-[#0E120C] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
+            <select name="goal" required class="w-full px-4 py-3 bg-[#0E120C] border border-white/10 rounded-xl text-base sm:text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
               <option value="ecommerce-sales" {{ old('goal') == 'ecommerce-sales' ? 'selected' : '' }}>Drive Direct E-Commerce Revenue & Orders</option>
               <option value="new-launch" {{ old('goal') == 'new-launch' ? 'selected' : '' }}>Launch a New Collection, Product, or Menu</option>
               <option value="ugc-ads" {{ old('goal') == 'ugc-ads' ? 'selected' : '' }}>Produce UGC Video Assets for Paid Ad Testing</option>
@@ -120,7 +120,7 @@
           <!-- Budget Qualifier -->
           <div>
             <label class="block label-caps text-[#9AA391] mb-2">Estimated Campaign Budget</label>
-            <select name="budget" required class="w-full px-4 py-3 bg-[#0E120C] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
+            <select name="budget" required class="w-full px-4 py-3 bg-[#0E120C] border border-white/10 rounded-xl text-base sm:text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
               <option value="50k-150k" {{ old('budget') == '50k-150k' ? 'selected' : '' }}>$50,000 - $150,000 (Targeted Pilot Sprint)</option>
               <option value="150k-350k" {{ old('budget') == '150k-350k' ? 'selected' : '' }}>$150,000 - $350,000 (Full Multi-Creator Launch)</option>
               <option value="350k-750k" {{ old('budget') == '350k-750k' ? 'selected' : '' }}>$350,000 - $750,000 (Omnichannel Scale & Ads)</option>
@@ -132,7 +132,7 @@
           <div>
             <label class="block label-caps text-[#9AA391] mb-2">Tell us about your product & target customer</label>
             <textarea name="details" rows="4" required placeholder="What are you selling, what is your current monthly revenue, and what would make this campaign a massive win?"
-                      class="w-full px-4 py-3 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">{{ old('details') }}</textarea>
+                      class="w-full px-4 py-3 bg-white/[0.04] border border-white/10 rounded-xl text-base sm:text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">{{ old('details') }}</textarea>
           </div>
 
           <button type="submit" id="strategy-submit-btn" class="btn-swap glass glass--lime w-full py-4 rounded-xl text-center text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">

@@ -10,7 +10,7 @@
       <!-- Brand Info -->
       <div class="lg:col-span-2">
         <a href="{{ route('home') }}" class="inline-flex items-center mb-4 group focus:outline-none" aria-label="Famewoven Home">
-          <img src="{{ asset('css/namelogo.png') }}" alt="Famewoven" class="h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+          <img src="{{ asset('css/namelogo.png') }}" width="223" height="32" loading="lazy" decoding="async" alt="Famewoven — Creator Marketing Agency Logo" class="h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
         </a>
         <p class="text-sm text-[#9AA391] max-w-sm mb-6 leading-relaxed">
           The creator marketing system brands actually track. Weaving influence into culture with verified balance-sheet proof.
@@ -20,7 +20,7 @@
 
       <!-- Column: Services (2 Columns with all 14 services) -->
       <div class="lg:col-span-2">
-        <h4 class="label-caps text-[#F2F5EC] mb-4">Services</h4>
+        <h3 class="label-caps text-[#D4F54F] mb-4">Services</h3>
         <div class="grid grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-2.5 text-xs sm:text-sm text-[#9AA391]">
           <ul class="space-y-2.5">
             <li><a href="{{ route('services.show', 'sponsored-x-posts') }}" class="hover:text-[#D4F54F] transition-colors">Sponsored X Posts</a></li>
@@ -45,11 +45,11 @@
 
       <!-- Column: Newsletter & Direct -->
       <div class="lg:col-span-1">
-        <h4 class="label-caps text-[#F2F5EC] mb-4">Stay Ahead</h4>
+        <h3 class="label-caps text-[#D4F54F] mb-4">Stay Ahead</h3>
         <p class="text-xs text-[#9AA391] mb-3">Bi-weekly teardowns of high-converting creator campaigns.</p>
         <form action="{{ route('newsletter.store') }}" method="POST" class="space-y-2 newsletter-form" id="footer-newsletter-form">
           @csrf
-          <input type="email" name="email" placeholder="work@brand.com" required class="w-full px-3.5 py-2 bg-white/[0.04] border border-white/10 rounded-lg text-xs text-[#F2F5EC] focus:border-[#D4F54F] outline-none transition-colors">
+          <input type="email" name="email" placeholder="work@brand.com" required class="w-full px-3.5 py-2 bg-white/[0.04] border border-white/10 rounded-lg text-base sm:text-xs text-[#F2F5EC] focus:border-[#D4F54F] outline-none transition-colors">
           <button type="submit" class="w-full py-2 bg-[#D4F54F] text-[#101210] rounded-lg text-xs font-mono font-bold uppercase tracking-wider hover:bg-[#F0FFB0] transition-colors flex items-center justify-center gap-1.5">
             <span>Subscribe</span>
           </button>
@@ -69,8 +69,8 @@
           </svg>
           <span>Cookie Preferences</span>
         </button>
-        <a href="#" class="hover:text-[#F2F5EC]">Privacy Policy</a>
-        <a href="#" class="hover:text-[#F2F5EC]">Terms of Service</a>
+        <button type="button" onclick="document.getElementById('open-cookie-modal-btn')?.click()" class="hover:text-[#F2F5EC] transition-colors focus:outline-none">Privacy Policy</button>
+        <button type="button" onclick="document.getElementById('open-cookie-modal-btn')?.click()" class="hover:text-[#F2F5EC] transition-colors focus:outline-none">Terms of Service</button>
         <a href="{{ url('sitemap.xml') }}" class="hover:text-[#F2F5EC]">Sitemap</a>
       </div>
     </div>

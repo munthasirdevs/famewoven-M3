@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="csrf-token" content="{{ csrf_token() }}">
+  <meta name="robots" content="noindex, nofollow">
   <title>@yield('title', 'Dashboard') — Famewoven Command Center</title>
   <link rel="icon" type="image/png" href="{{ asset('css/iconnn.png') }}">
 
@@ -51,7 +52,7 @@
       <!-- Brand Logo & Badge -->
       <div class="p-6 border-b border-white/[0.08] flex items-center justify-between">
         <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-2 group">
-          <img src="{{ asset('css/namelogo.png') }}" alt="Famewoven" class="h-6 w-auto object-contain">
+          <img src="{{ asset('css/namelogo.png') }}" width="167" height="24" alt="Famewoven — Creator Marketing Agency Logo" class="h-6 w-auto object-contain">
         </a>
         <div class="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#D4F54F]/10 border border-[#D4F54F]/30 text-[#D4F54F] text-[10px] font-mono uppercase font-bold tracking-wider">
           <span class="w-1.5 h-1.5 rounded-full bg-[#D4F54F] animate-pulse"></span>
@@ -234,13 +235,13 @@
       
       <!-- Left: Mobile Menu Toggle & Breadcrumbs -->
       <div class="flex items-center gap-4">
-        <button id="mobile-sidebar-toggle" class="lg:hidden p-2 text-[#9AA391] hover:text-[#F2F5EC] rounded-lg border border-white/10">
+        <button id="mobile-sidebar-toggle" class="lg:hidden min-w-[44px] min-h-[44px] p-2.5 flex items-center justify-center text-[#9AA391] hover:text-[#F2F5EC] rounded-lg border border-white/10" aria-label="Toggle navigation sidebar">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
         </button>
         <div>
-          <h1 class="font-head text-lg font-bold text-[#F2F5EC]">@yield('header_title', 'Command Center')</h1>
+          <div class="font-head text-lg font-bold text-[#F2F5EC]" role="heading" aria-level="1">@yield('header_title', 'Command Center')</div>
         </div>
       </div>
 

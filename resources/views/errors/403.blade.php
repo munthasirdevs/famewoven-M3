@@ -2,6 +2,7 @@
 
 @section('title', '403 — Unauthorized Role Access | Famewoven')
 @section('description', 'You do not have the required role permissions to view this resource.')
+@section('robots', 'noindex, nofollow')
 
 @section('content')
 <div class="max-w-lg mx-auto text-center my-auto py-36 px-6">

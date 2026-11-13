@@ -199,7 +199,7 @@
           <p class="text-xs text-[#9AA391] leading-relaxed mb-6">
             Raw teardowns of creator marketing campaigns, CPM changes, and algorithmic ad strategies delivered every other Tuesday.
           </p>
-          <input type="email" name="email" required placeholder="work@brand.com" class="w-full px-4 py-2.5 bg-white/[0.04] border border-white/10 rounded-xl text-xs text-[#F2F5EC] focus:border-[#D4F54F] outline-none mb-3">
+          <input type="email" name="email" required placeholder="work@brand.com" class="w-full px-4 py-2.5 bg-white/[0.04] border border-white/10 rounded-xl text-base sm:text-xs text-[#F2F5EC] focus:border-[#D4F54F] outline-none mb-3">
           <div class="newsletter-status text-xs font-mono hidden pb-3"></div>
         </div>
         <button type="submit" class="btn-swap glass glass--lime w-full py-3 rounded-full text-center text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">

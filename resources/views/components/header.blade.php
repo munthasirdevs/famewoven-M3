@@ -3,7 +3,7 @@
 
     <!-- Brand Logo -->
     <a href="{{ route('home') }}" class="flex items-center group focus:outline-none" aria-label="Famewoven Home">
-      <img src="{{ asset('css/namelogo.png') }}" alt="Famewoven" class="h-7 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+      <img src="{{ asset('css/namelogo.png') }}" width="195" height="28" alt="Famewoven — Creator Marketing Agency Logo" class="h-7 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
     </a>
 
     <!-- Desktop Nav Items Track with Sliding Lime Dot -->
@@ -55,7 +55,7 @@
     </div>
 
     <!-- Mobile Hamburger Button -->
-    <button id="mobile-menu-toggle" class="md:hidden p-2 text-[#F2F5EC] hover:text-[#D4F54F] focus:outline-none" aria-label="Open Mobile Menu">
+    <button id="mobile-menu-toggle" class="md:hidden min-w-[44px] min-h-[44px] p-2.5 flex items-center justify-center text-[#F2F5EC] hover:text-[#D4F54F] focus:outline-none" aria-label="Open mobile navigation menu">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>

@@ -7,15 +7,18 @@
   <title>@yield('title', 'Famewoven — Where Influence Is Woven | Creator Marketing Agency')</title>
   <meta name="description" content="@yield('description', 'Famewoven weaves brands into creator culture, and tracks every dollar of it. Creator marketing, influencer campaigns, UGC production, and paid amplification for high-growth AI and tech companies.')">
   <link rel="canonical" href="@yield('canonical', url()->current())">
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="robots" content="@yield('robots', 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1')">
   <link rel="icon" type="image/png" href="{{ asset('css/iconnn.png') }}">
+  @if(config('services.google.site_verification', env('GOOGLE_SITE_VERIFICATION')))
+  <meta name="google-site-verification" content="{{ config('services.google.site_verification', env('GOOGLE_SITE_VERIFICATION')) }}">
+  @endif
 
   <!-- Open Graph / Facebook -->
   <meta property="og:site_name" content="Famewoven">
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="@yield('og_type', 'website')">
-  <meta property="og:title" content="@yield('og_title', 'Famewoven — Where Influence Is Woven | Creator Marketing Agency')">
-  <meta property="og:description" content="@yield('og_description', 'Famewoven weaves brands into creator culture, and tracks every dollar of it. Creator marketing, influencer campaigns, UGC production, and paid amplification for high-growth AI and tech companies.')">
+  <meta property="og:title" content="{!! $__env->hasSection('og_title') ? $__env->yieldContent('og_title') : $__env->yieldContent('title', 'Famewoven — Where Influence Is Woven | Creator Marketing Agency') !!}">
+  <meta property="og:description" content="{!! $__env->hasSection('og_description') ? $__env->yieldContent('og_description') : $__env->yieldContent('description', 'Famewoven weaves brands into creator culture, and tracks every dollar of it. Creator marketing, influencer campaigns, UGC production, and paid amplification for high-growth AI and tech companies.') !!}">
   <meta property="og:url" content="@yield('canonical', url()->current())">
   <meta property="og:image" content="@yield('og_image', asset('css/namelogo.png'))">
   <meta property="og:image:width" content="1200">
@@ -26,8 +29,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@Famewoven">
   <meta name="twitter:creator" content="@Famewoven">
-  <meta name="twitter:title" content="@yield('og_title', 'Famewoven — Where Influence Is Woven | Creator Marketing Agency')">
-  <meta name="twitter:description" content="@yield('og_description', 'Famewoven weaves brands into creator culture, and tracks every dollar of it.')">
+  <meta name="twitter:title" content="{!! $__env->hasSection('og_title') ? $__env->yieldContent('og_title') : $__env->yieldContent('title', 'Famewoven — Where Influence Is Woven | Creator Marketing Agency') !!}">
+  <meta name="twitter:description" content="{!! $__env->hasSection('og_description') ? $__env->yieldContent('og_description') : $__env->yieldContent('description', 'Famewoven weaves brands into creator culture, and tracks every dollar of it.') !!}">
   <meta name="twitter:image" content="@yield('og_image', asset('css/namelogo.png'))">
 
   @yield('schema')
@@ -64,8 +67,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
   <!-- GSAP & ScrollTrigger -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <!-- Project Styles -->
   <link rel="stylesheet" href="{{ asset('css/glass.css') }}">
@@ -117,13 +120,13 @@
   @include('components.cookie-banner')
 
   <!-- Scripts -->
-  <script src="{{ asset('js/bg.js') }}"></script>
-  <script src="{{ asset('js/loader.js') }}"></script>
-  <script src="{{ asset('js/header.js') }}"></script>
-  <script src="{{ asset('js/hero.js') }}"></script>
-  <script src="{{ asset('js/scroll.js') }}"></script>
-  <script src="{{ asset('js/brand-video.js') }}"></script>
-  <script src="{{ asset('js/main.js') }}"></script>
+  <script defer src="{{ asset('js/bg.js') }}"></script>
+  <script defer src="{{ asset('js/loader.js') }}"></script>
+  <script defer src="{{ asset('js/header.js') }}"></script>
+  <script defer src="{{ asset('js/hero.js') }}"></script>
+  <script defer src="{{ asset('js/scroll.js') }}"></script>
+  <script defer src="{{ asset('js/brand-video.js') }}"></script>
+  <script defer src="{{ asset('js/main.js') }}"></script>
   
   <script>
     document.addEventListener('DOMContentLoaded', function () {

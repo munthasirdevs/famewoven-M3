@@ -1,7 +1,7 @@
 <div id="mobile-drawer" class="fixed inset-0 z-[100] bg-[#080A07]/95 backdrop-blur-2xl p-6 hidden flex-col justify-between pointer-events-auto" aria-hidden="true">
   <div class="flex items-center justify-between">
     <a href="{{ route('home') }}" class="flex items-center group focus:outline-none" aria-label="Famewoven Home">
-      <img src="{{ asset('css/namelogo.png') }}" alt="Famewoven" class="h-8 w-auto object-contain">
+      <img src="{{ asset('css/namelogo.png') }}" width="223" height="32" loading="lazy" decoding="async" alt="Famewoven — Creator Marketing Agency Logo" class="h-8 w-auto object-contain">
     </a>
     <button id="mobile-menu-close" class="p-2 text-[#9AA391] hover:text-[#F2F5EC]" aria-label="Close Mobile Menu">
       <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">

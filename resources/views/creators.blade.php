@@ -85,6 +85,7 @@
     </div>
 
     <!-- Categories Breakdown -->
+    <h2 class="sr-only">Creator Roster Categories</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
       <div class="glass glass--lift p-7">
         <div class="font-mono text-xs text-[#D4F54F] mb-2">95+ Creators</div>
@@ -140,9 +141,9 @@
   <div id="audience-creators-view" class="hidden transition-opacity duration-300">
     <div class="max-w-3xl mb-16">
       <div class="label-caps text-[#D4F54F] mb-3">Creator Onboarding</div>
-      <h1 class="font-head text-5xl sm:text-7xl font-bold tracking-tight text-[#F2F5EC] mb-4">
+      <h2 class="font-head text-5xl sm:text-7xl font-bold tracking-tight text-[#F2F5EC] mb-4">
         Get paid to be you.
-      </h1>
+      </h2>
       <p class="text-xl text-[#9AA391] leading-relaxed">
         No ghosting brands. No delayed payments. Join Famewoven to work with top-tier brands on professional, high-paying campaign sprints.
       </p>
@@ -180,13 +181,13 @@
           <div>
             <label class="block label-caps text-[#9AA391] mb-2">Full Name</label>
             <input type="text" name="name" required value="{{ old('name') }}" placeholder="Safwan Ahmed" 
-                   class="w-full px-4 py-3 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
+                   class="w-full px-4 py-3 bg-white/[0.04] border border-white/10 rounded-xl text-base sm:text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block label-caps text-[#9AA391] mb-2">Primary Platform</label>
-              <select name="platform" required class="w-full px-4 py-3 bg-[#0E120C] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
+              <select name="platform" required class="w-full px-4 py-3 bg-[#0E120C] border border-white/10 rounded-xl text-base sm:text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
                 <option value="instagram" {{ old('platform') == 'instagram' ? 'selected' : '' }}>Instagram</option>
                 <option value="tiktok" {{ old('platform') == 'tiktok' ? 'selected' : '' }}>TikTok</option>
                 <option value="youtube" {{ old('platform') == 'youtube' ? 'selected' : '' }}>YouTube</option>
@@ -197,14 +198,14 @@
             <div>
               <label class="block label-caps text-[#9AA391] mb-2">Handle / Profile URL</label>
               <input type="text" name="handle" required value="{{ old('handle') }}" placeholder="@yourhandle" 
-                     class="w-full px-4 py-3 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
+                     class="w-full px-4 py-3 bg-white/[0.04] border border-white/10 rounded-xl text-base sm:text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
             </div>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block label-caps text-[#9AA391] mb-2">Content Niche</label>
-              <select name="niche" required class="w-full px-4 py-3 bg-[#0E120C] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
+              <select name="niche" required class="w-full px-4 py-3 bg-[#0E120C] border border-white/10 rounded-xl text-base sm:text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
                 <option value="fashion" {{ old('niche') == 'fashion' ? 'selected' : '' }}>Fashion & Apparel</option>
                 <option value="food" {{ old('niche') == 'food' ? 'selected' : '' }}>Food & Beverage</option>
                 <option value="tech" {{ old('niche') == 'tech' ? 'selected' : '' }}>Tech & Gaming</option>
@@ -215,7 +216,7 @@
 
             <div>
               <label class="block label-caps text-[#9AA391] mb-2">Audience Size</label>
-              <select name="audience_size" required class="w-full px-4 py-3 bg-[#0E120C] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
+              <select name="audience_size" required class="w-full px-4 py-3 bg-[#0E120C] border border-white/10 rounded-xl text-base sm:text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
                 <option value="3k-15k" {{ old('audience_size') == '3k-15k' ? 'selected' : '' }}>3,000 - 15,000 (Micro)</option>
                 <option value="15k-75k" {{ old('audience_size') == '15k-75k' ? 'selected' : '' }}>15,000 - 75,000 (Mid-Tier)</option>
                 <option value="75k-250k" {{ old('audience_size') == '75k-250k' ? 'selected' : '' }}>75,000 - 250,000 (Macro)</option>
@@ -227,7 +228,7 @@
           <div>
             <label class="block label-caps text-[#9AA391] mb-2">Email Address</label>
             <input type="email" name="email" required value="{{ old('email') }}" placeholder="safwan@creators.com" 
-                   class="w-full px-4 py-3 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
+                   class="w-full px-4 py-3 bg-white/[0.04] border border-white/10 rounded-xl text-base sm:text-sm text-[#F2F5EC] focus:border-[#D4F54F] outline-none">
           </div>
 
           <button type="submit" id="creator-submit-btn" class="btn-swap glass glass--lime w-full py-4 rounded-xl text-center text-xs font-mono font-bold uppercase tracking-wider text-[#101210]">
