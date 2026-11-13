@@ -25,7 +25,19 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // 2. Editor User
+        // 2. Standard Admin User
+        User::updateOrCreate(
+            ['email' => 'ops@famewoven.com'],
+            [
+                'name' => 'Operations Manager',
+                'password' => Hash::make('Famewoven2026!'),
+                'role' => User::ROLE_ADMIN,
+                'status' => 'active',
+                'email_verified_at' => now(),
+            ]
+        );
+
+        // 3. Editor User
         User::updateOrCreate(
             ['email' => 'editor@famewoven.com'],
             [
@@ -37,7 +49,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // 3. Viewer User
+        // 4. Viewer User
         User::updateOrCreate(
             ['email' => 'viewer@famewoven.com'],
             [
